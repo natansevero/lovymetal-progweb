@@ -15,5 +15,5 @@ import javax.persistence.PersistenceException;
 public interface PassatemposDAOinter {
     /* Interface da classe Passatempos */
     public String adiciona(Passatempos passatempo) throws PersistenceException;
-    public String desfaz(String passatempo) throws PersistenceException;
+    public String exclui(String login, String passatempo) throws PersistenceException;
 }

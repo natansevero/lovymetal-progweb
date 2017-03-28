@@ -7,6 +7,12 @@ package br.edu.ifpb.psd.lovymetal.DAO;
 
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.AmizadeDAOinter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Amizade;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
 
 /**
@@ -14,16 +20,41 @@ import javax.persistence.PersistenceException;
  * @author JuliermeH
  */
 public class AmizadeDAO implements AmizadeDAOinter{
+    /* Objeto conexão e Propriedades do Banco de Dados */
+    private PropBD prop;
+    Connection conexao;
+    
+    /* Estabelecendo conexão com o banco usando as propriedades */
+    public AmizadeDAO() throws PersistenceException, SQLException{
+        this.conexao = DriverManager.getConnection(prop.getURL(),prop.getUser(),prop.getSenha());
+        
+    }
     
     /* Implementação da interface AmizadeDAOinter */
     @Override
-    public String desfaz(Amizade amizade) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String adiciona(String login) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String adiciona(Amizade amizade) throws PersistenceException {
+        String sql = "INSERT INTO Amizade(usuario,amigo)" +
+                "VALUES (1,2)";
+        try{
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setString(1,amizade.getUsuario());
+            statement.setString(2,amizade.getAmigo());
+            return "Amigo adicionado";
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "Amigo não adicionado";
     }
     
+    @Override
+    public void desfaz(String login, String amigo) throws PersistenceException {
+        String sql = "DELETE FROM Amizade WHERE usuario="+ login +
+                "AND amigo=" + amigo;
+        try{
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

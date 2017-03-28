@@ -15,7 +15,7 @@ public interface DAOFactoryInter {
     /* Interface da Fábrica de DAOs */
     public UsuarioDAOinter criaUsuario() throws PersistenceException;
     public AmizadeDAOinter novaAmizade() throws PersistenceException;
-    public MensagemDAOinter armazenaMensagem() throws PersistenceException;
+    public MensagemDAOinter novaMensagem() throws PersistenceException;
     public GaleriaDAOinter novaGaleria() throws PersistenceException;
     public PassatemposDAOinter novoPassatempo() throws PersistenceException;
     public RelacionamentoDAOinter novoRelacionamento() throws PersistenceException;

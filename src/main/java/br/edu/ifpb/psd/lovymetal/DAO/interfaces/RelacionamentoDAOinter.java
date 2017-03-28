@@ -15,5 +15,5 @@ import javax.persistence.PersistenceException;
 public interface RelacionamentoDAOinter {
     /* Interface da classe Relacionamento */
     public void adicionaRelacionamento(Relacionamento relacionamento) throws PersistenceException;
-    public void excluiRelacionamento(String senha) throws PersistenceException;
+    public void excluiRelacionamento(String login) throws PersistenceException;
 }

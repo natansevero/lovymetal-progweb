@@ -7,6 +7,12 @@ package br.edu.ifpb.psd.lovymetal.DAO;
 
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.PassatemposDAOinter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Passatempos;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
 
 /**
@@ -15,14 +21,43 @@ import javax.persistence.PersistenceException;
  */
 public class PassatemposDAO implements PassatemposDAOinter{
 
+    /* Objeto conexão e Propriedades do Banco de Dados */
+    private PropBD prop;
+    Connection conexao;
+    
+    /* Estabelecendo conexão com o banco usando as propriedades */
+    public PassatemposDAO() throws PersistenceException, SQLException{
+        this.conexao = DriverManager.getConnection(prop.getURL(),prop.getUser(),prop.getSenha());
+        
+    }
+    
     /* Implementação da interface PassatempoDAOinter */
     @Override
     public String adiciona(Passatempos passatempo) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "INSERT INTO Passatempos(usuariologin, passatempo)" +
+                "VALUES (1,2)";
+        try{
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setString(1,passatempo.getUsuariologin());
+            statement.setString(2,passatempo.getPassatempo());
+            return "Passatempo adicionado";
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "Passatempo não adcionado";
     }
 
     @Override
-    public String desfaz(String passatempo) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String exclui(String login, String passatempo) throws PersistenceException {
+        String sql = "DELETE FROM Passatempo WHERE usuariologin=" + login +
+                "AND passatempo=" + passatempo;
+        try{
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.execute();
+            return "Passatempo excluído";
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "Passatempo não excluído";
     } 
 }

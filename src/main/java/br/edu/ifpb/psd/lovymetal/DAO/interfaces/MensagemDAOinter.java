@@ -14,6 +14,6 @@ import javax.persistence.PersistenceException;
  */
 public interface MensagemDAOinter {
     /* Interface da classe Mensagem */
-    public String enviar(Mensagem mensagem) throws PersistenceException;
+    public String enviar(String login, Mensagem mensagem) throws PersistenceException;
     public String excluir(String id) throws PersistenceException;
 }

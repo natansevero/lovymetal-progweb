@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
 
 /**
@@ -22,9 +24,11 @@ import javax.persistence.PersistenceException;
  */
 public class UsuarioDAO implements UsuarioDAOinter{
     
+    /* Objeto conexão e Propriedades do Banco de Dados */
     private PropBD prop;
     Connection conexao;
     
+    /* Estabelecendo conexão com o banco usando as propriedades */
     public UsuarioDAO() throws PersistenceException, SQLException{
         this.conexao = DriverManager.getConnection(prop.getURL(),prop.getUser(),prop.getSenha());
         
@@ -72,7 +76,15 @@ public class UsuarioDAO implements UsuarioDAOinter{
 
     @Override
     public String exlui(String login) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM Usuario WHERE login="+ login +" ON CASCADE";
+        try{
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.execute();
+            return "Usuário excluído";
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "Usuário não excluído";
     }
     
    /* private Usuario leUsuario(ResultSet rs) throws SQLException{

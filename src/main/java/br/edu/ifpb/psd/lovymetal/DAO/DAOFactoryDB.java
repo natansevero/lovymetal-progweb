@@ -36,7 +36,6 @@ public class DAOFactoryDB implements DAOFactoryInter{
             jrs.setUsername(prop.getUser());
             jrs.setPassword(prop.getSenha());
         } catch (SQLException e){
-            e.printStackTrace();
         }
     }
     
@@ -54,30 +53,56 @@ public class DAOFactoryDB implements DAOFactoryInter{
     /* Essa classe cria uma nova AmizadeDAO */
     @Override
     public AmizadeDAOinter novaAmizade() throws PersistenceException {
-        return new AmizadeDAO();
+        try {
+            return new AmizadeDAO();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOFactoryDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     /* Essa classe cria uma MensagemDAO */
+    @Override
     public MensagemDAOinter novaMensagem() throws PersistenceException {
-        return new MensagemDAO();
+        try {
+            return new MensagemDAO();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOFactoryDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     /* Essa classe cria uma nova GaleriaDAO */
     @Override
     public GaleriaDAOinter novaGaleria() throws PersistenceException {
-        return new GaleriaDAO();
+        try {
+            return new GaleriaDAO();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOFactoryDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     /* Essa classe cria um novo PassatempoDAO */
     @Override
     public PassatemposDAOinter novoPassatempo() throws PersistenceException {
-        return new PassatemposDAO();
+        try {
+            return new PassatemposDAO();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOFactoryDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     /* Essa classe cria um novo UsuárioDAO */
     @Override
     public RelacionamentoDAOinter novoRelacionamento() throws PersistenceException {
-        return new RelacionamentoDAO();
+        try {
+            return new RelacionamentoDAO();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOFactoryDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
-    
+        
 }

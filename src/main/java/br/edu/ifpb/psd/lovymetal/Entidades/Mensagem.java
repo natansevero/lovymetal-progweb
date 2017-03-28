@@ -29,7 +29,7 @@ public class Mensagem {
     public String getRemetente(){
         return this.remetente;
     }
-    public void setFoto(String remetente){
+    public void setRemetente(String remetente){
         remetente = this.remetente;
     }
     

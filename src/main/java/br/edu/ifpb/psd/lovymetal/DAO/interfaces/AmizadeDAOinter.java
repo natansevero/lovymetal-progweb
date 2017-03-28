@@ -13,6 +13,6 @@ import javax.persistence.PersistenceException;
  */
 public interface AmizadeDAOinter {
     /* Interface da classe Amizade */
-    public String adiciona(String login) throws PersistenceException;
-    public String desfaz(Amizade amizade) throws PersistenceException;
+    public String adiciona(Amizade amizade) throws PersistenceException;
+    public void desfaz(String login,String amigo) throws PersistenceException;
 }
