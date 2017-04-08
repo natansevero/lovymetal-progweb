@@ -5,15 +5,28 @@
  */
 package br.edu.ifpb.psd.lovymetal.Entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JuliermeH
  */
-public class Relacionamento{
+public class Relacionamento implements Serializable{
     /* Todos os atributos da tabela Relacionamento do banco de dados estão declarados aqui */
     private String usuariologin;
     private String tipo;
     private String par;
+    
+    /* Construtor padrão */
+    public Relacionamento(){
+    }
+    
+    /* Contrutor de Relacionamento que recebe todos os atributos */
+    public Relacionamento(String login, String tipo, String par){
+        this.usuariologin = login;
+        this.tipo = tipo;
+        this.par = par;
+    }
     
      /* get e set de usuariologin */
     public String getUsuariologin(){

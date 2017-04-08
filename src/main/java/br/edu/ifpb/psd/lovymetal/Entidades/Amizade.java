@@ -5,14 +5,26 @@
  */
 package br.edu.ifpb.psd.lovymetal.Entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JuliermeH
  */
-public class Amizade {
+public class Amizade implements Serializable{
     /* Todos os atributos da tabela Amizade do banco de dados estão declarados aqui */
     private String usuario;
     private String amigo;
+    
+    /* Construtor padrão */
+    public Amizade(){
+    }
+    
+    /* Contrutor de Amizade que recebe todos os atributos */
+    public Amizade(String usuario,String amigo){
+        this.usuario = usuario;
+        this.amigo = amigo;
+    }
     
     /* get e set de Usuario */
     public String getUsuario(){

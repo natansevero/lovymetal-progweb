@@ -5,17 +5,28 @@
  */
 package br.edu.ifpb.psd.lovymetal.Entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JuliermeH
  */
-public class Mensagem {
+public class Mensagem implements Serializable{
     /* Todos os atributos da tabela Mensagem do banco de dados estão declarados aqui */
     private String mensagemid;
     private String remetente;
     private String destinatario;
     private String mensagem;
     
+    public Mensagem(){
+    }
+    
+    public Mensagem(String id, String remetente, String destinatario, String mensagem){
+        this.mensagemid = id;
+        this.remetente = remetente;
+        this.destinatario = destinatario;
+        this.mensagem = mensagem;
+    }
     
      /* get e set de id */
     public String getMensagemID(){
