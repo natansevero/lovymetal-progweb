@@ -20,6 +20,7 @@
 CREATE TABLE Amizade(
 	usuario VARCHAR(30),
 	amigo VARCHAR(30),
+	PRIMARY KEY(usuario, amigo),
 	FOREIGN KEY (usuario) REFERENCES Usuario(login),
 	FOREIGN KEY (amigo) REFERENCES Usuario(login) ON DELETE CASCADE
 );
@@ -47,7 +48,7 @@ CREATE TABLE Mensagem(
 CREATE TABLE Passatempos(
 	usuariologin VARCHAR(30),
 	passatempo VARCHAR(80),
-	PRIMARY KEY(passatempo),
+	PRIMARY KEY(usuariologin, passatempo),
 	FOREIGN KEY (usuariologin) REFERENCES Usuario(login) ON DELETE CASCADE
 );
 
@@ -55,6 +56,7 @@ CREATE TABLE Relacionamento(
 	usuariologin VARCHAR(30),
 	tipo VARCHAR(10) NOT NULL,
 	par VARCHAR(30),
+	PRIMARY KEY(usuariologin, par),
 	FOREIGN KEY (usuariologin) REFERENCES Usuario(login),
 	FOREIGN KEY (par) REFERENCES Usuario(login) ON DELETE CASCADE
 )

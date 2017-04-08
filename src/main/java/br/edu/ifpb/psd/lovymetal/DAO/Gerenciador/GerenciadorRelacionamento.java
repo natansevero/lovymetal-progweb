@@ -5,10 +5,40 @@
  */
 package br.edu.ifpb.psd.lovymetal.DAO.Gerenciador;
 
+import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
+import br.edu.ifpb.psd.lovymetal.DAO.RelacionamentoDAO;
+import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
+import br.edu.ifpb.psd.lovymetal.Entidades.Relacionamento;
+import javax.persistence.PersistenceException;
+
 /**
  *
  * @author JuliermeH
  */
 public class GerenciadorRelacionamento {
+    /* Declarando os respectivos atributos para esta entidade */
+    private DAOFactoryInter fabrica = null;
+    private RelacionamentoDAO relacaodao = null;
     
+    /* Construtor responsável por criar uma nova Fábrica de Relacionamento */
+    public GerenciadorRelacionamento(){
+        fabrica = DAOFactory.criarFactory();
+        try{
+            relacaodao = (RelacionamentoDAO) fabrica.novoRelacionamento();
+        } catch (PersistenceException e){}
+    }
+    
+    /* Método responsável por criar um novo Tipo de Relacionamento e fazer a persistência no BD */
+    public void novaRelacao(String login, String tipo, String par) throws PersistenceException{
+        Relacionamento relacao = new Relacionamento();
+        relacao.setUsuariologin(login);
+        relacao.setTipo(tipo);
+        relacao.setPar(par);
+        relacaodao.adicionaRelacionamento(relacao);
+    }
+    
+    /* Método responsável por remover o Relacionamento do BD usando o id da mesma */
+    public void removeRelacao(String login) throws PersistenceException{
+        relacaodao.excluiRelacionamento(login);
+    }
 }

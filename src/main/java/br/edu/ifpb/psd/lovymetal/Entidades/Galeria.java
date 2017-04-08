@@ -5,16 +5,30 @@
  */
 package br.edu.ifpb.psd.lovymetal.Entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JuliermeH
  */
-public class Galeria {
+public class Galeria implements Serializable{
     /* Todos os atributos da tabela Galeria do banco de dados estão declarados aqui */
     private String id;
     private String usuariologin;
     private String nomegaleria;
     private String foto;
+    
+    /* Construtor padrão */
+    public Galeria(){
+    }
+    
+    /* Contrutor de Galeria que recebe todos os atributos */
+    public Galeria(String id, String usuariologin, String nomegaleria, String foto){
+        this.id = id;
+        this.usuariologin = usuariologin;
+        this.nomegaleria = nomegaleria;
+        this.foto = foto;
+    }
     
     /* get e set de id */
     public String getID(){
@@ -36,7 +50,7 @@ public class Galeria {
     public String getNomeGaleria(){
         return this.nomegaleria;
     }
-    public void setLogin(String nomegaleria){
+    public void setNomeGaleria(String nomegaleria){
         nomegaleria = this.nomegaleria;
     }
     
