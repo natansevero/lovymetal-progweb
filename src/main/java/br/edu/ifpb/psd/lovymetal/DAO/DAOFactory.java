@@ -13,6 +13,6 @@ import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
 public class DAOFactory {
     /* Entidade que cria a Fábrica de DAO do Banco de Dados */
     public static DAOFactoryInter criarFactory(){
-        return new DAOFactoryBD();
+        return new DAOFactoryDB();
     }
 }

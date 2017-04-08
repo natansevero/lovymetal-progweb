@@ -5,26 +5,14 @@
  */
 package br.edu.ifpb.psd.lovymetal.Entidades;
 
-import java.io.Serializable;
-
 /**
  *
  * @author JuliermeH
  */
-public class Passatempos implements Serializable{
+public class Passatempos {
     /* Todos os atributos da tabela Mensagem do banco de dados estão declarados aqui */
     private String usuariologin;
     private String passatempo;
-    
-    /* Construtor padrão */
-    public Passatempos(){
-    }
-    
-    /* Contrutor de Passatempo que recebe todos os atributos */
-    public Passatempos(String usuariologin, String passatempo){
-        this.usuariologin = usuariologin;
-        this.passatempo = passatempo;
-    }
     
      /* get e set de usuariologin */
     public String getUsuariologin(){

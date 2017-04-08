@@ -5,14 +5,14 @@
  */
 package br.edu.ifpb.psd.lovymetal.Entidades;
 
-import java.io.Serializable;
 import java.sql.Date;
+import java.util.Calendar;
 
 /**
  *
  * @author JuliermeH
  */
-public class Usuario implements Serializable{
+public class Usuario {
     /* Todos os atributos da tabela Usuario do banco de dados estão declarados aqui */
     private String login;
     private String senha;
@@ -29,29 +29,6 @@ public class Usuario implements Serializable{
     private float peso;
     private String cabelo;
     private String fotoperfil;
-    
-    /* Construtor padrão */
-    public Usuario(){
-    }
-    
-    /* Contrutor de Usuario que recebe todos os atributos */
-    public Usuario(String login, String senha, String nome, String apelido, Date nasc, String cidade, String profissao,
-            String descricao, String sexo, String status, float altura, float peso, String cabelo, String fotoperfil){
-        this.login = login;
-        this.senha = senha;
-        this.nome = nome;
-        this.apelido = apelido;
-        this.datanasc = nasc;
-        this.cidade = cidade;
-        this.profissao = profissao;
-        this.descricao = descricao;
-        this.sexo = sexo;
-        this.status = status;
-        this.altura = altura;
-        this.peso = peso;
-        this.cabelo = cabelo;
-        this.fotoperfil = fotoperfil;
-    }
     
     /* get e set de Login */
     public String getLogin(){

@@ -33,7 +33,7 @@ public class MensagemDAO implements MensagemDAOinter{
     
     /* Implementação da interface MensagemDAOinter */
     @Override
-    public String enviar(Mensagem mensagem) throws PersistenceException {
+    public String enviar(String login, Mensagem mensagem) throws PersistenceException {
         String sql = "INSERT INTO Mensagem(mensagemid, remetente, destinatario, mensagem)" +
                 "VALUES (1,2,3,4)";
         try{
