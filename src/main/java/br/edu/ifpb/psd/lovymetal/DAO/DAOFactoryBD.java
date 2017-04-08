@@ -23,13 +23,13 @@ import javax.sql.rowset.JdbcRowSet;
  *
  * @author JuliermeH
  */
-public class DAOFactoryDB implements DAOFactoryInter{
+public class DAOFactoryBD implements DAOFactoryInter{
     
     private PropBD prop;
     JdbcRowSet jrs = null;
     /* Classe que implementa interface da Fábrica de DAOs e persiste no Banco de Dados*/
-    private DAOFactoryDB instance;
-    public DAOFactoryDB(){
+    private DAOFactoryBD instance;
+    public DAOFactoryBD(){
         try{
             jrs = new JdbcRowSetImpl();
             jrs.setUrl(prop.getURL());
@@ -45,7 +45,7 @@ public class DAOFactoryDB implements DAOFactoryInter{
         try {
             return new UsuarioDAO();
         } catch (SQLException e) {
-            Logger.getLogger(DAOFactoryDB.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
     }
@@ -56,7 +56,7 @@ public class DAOFactoryDB implements DAOFactoryInter{
         try {
             return new AmizadeDAO();
         } catch (SQLException ex) {
-            Logger.getLogger(DAOFactoryDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -67,7 +67,7 @@ public class DAOFactoryDB implements DAOFactoryInter{
         try {
             return new MensagemDAO();
         } catch (SQLException ex) {
-            Logger.getLogger(DAOFactoryDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -78,7 +78,7 @@ public class DAOFactoryDB implements DAOFactoryInter{
         try {
             return new GaleriaDAO();
         } catch (SQLException ex) {
-            Logger.getLogger(DAOFactoryDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -89,7 +89,7 @@ public class DAOFactoryDB implements DAOFactoryInter{
         try {
             return new PassatemposDAO();
         } catch (SQLException ex) {
-            Logger.getLogger(DAOFactoryDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -100,7 +100,7 @@ public class DAOFactoryDB implements DAOFactoryInter{
         try {
             return new RelacionamentoDAO();
         } catch (SQLException ex) {
-            Logger.getLogger(DAOFactoryDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
