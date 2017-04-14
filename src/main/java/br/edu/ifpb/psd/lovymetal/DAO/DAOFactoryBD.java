@@ -44,7 +44,7 @@ public class DAOFactoryBD implements DAOFactoryInter{
     public UsuarioDAOinter criaUsuario() throws PersistenceException {
         try {
             return new UsuarioDAO();
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
@@ -55,7 +55,7 @@ public class DAOFactoryBD implements DAOFactoryInter{
     public AmizadeDAOinter novaAmizade() throws PersistenceException {
         try {
             return new AmizadeDAO();
-        } catch (SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -66,7 +66,7 @@ public class DAOFactoryBD implements DAOFactoryInter{
     public MensagemDAOinter novaMensagem() throws PersistenceException {
         try {
             return new MensagemDAO();
-        } catch (SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -77,7 +77,7 @@ public class DAOFactoryBD implements DAOFactoryInter{
     public GaleriaDAOinter novaGaleria() throws PersistenceException {
         try {
             return new GaleriaDAO();
-        } catch (SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -88,7 +88,7 @@ public class DAOFactoryBD implements DAOFactoryInter{
     public PassatemposDAOinter novoPassatempo() throws PersistenceException {
         try {
             return new PassatemposDAO();
-        } catch (SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -99,7 +99,7 @@ public class DAOFactoryBD implements DAOFactoryInter{
     public RelacionamentoDAOinter novoRelacionamento() throws PersistenceException {
         try {
             return new RelacionamentoDAO();
-        } catch (SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DAOFactoryBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;

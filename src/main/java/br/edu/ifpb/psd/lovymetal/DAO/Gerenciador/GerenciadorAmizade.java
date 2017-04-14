@@ -5,8 +5,8 @@
  */
 package br.edu.ifpb.psd.lovymetal.DAO.Gerenciador;
 
-import br.edu.ifpb.psd.lovymetal.DAO.AmizadeDAO;
 import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
+import br.edu.ifpb.psd.lovymetal.DAO.interfaces.AmizadeDAOinter;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Amizade;
 import javax.persistence.PersistenceException;
@@ -18,13 +18,13 @@ import javax.persistence.PersistenceException;
 public class GerenciadorAmizade {
     /* Declarando os respectivos atributos para esta entidade */
     private DAOFactoryInter fabrica = null;
-    private AmizadeDAO amizadedao = null;
+    private AmizadeDAOinter amizadedao = null;
     
     /* Construtor responsável por criar uma nova Amizade */
     public GerenciadorAmizade(){
         fabrica = DAOFactory.criarFactory();
         try{
-            amizadedao = (AmizadeDAO) fabrica.novaAmizade();
+            amizadedao = (AmizadeDAOinter) fabrica.novaAmizade();
         } catch (PersistenceException e){}
     }
     

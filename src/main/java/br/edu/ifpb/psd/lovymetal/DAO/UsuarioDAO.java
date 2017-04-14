@@ -26,12 +26,11 @@ public class UsuarioDAO implements UsuarioDAOinter{
     
     /* Objeto conexão e Propriedades do Banco de Dados */
     private PropBD prop;
-    Connection conexao;
+    private Connection conexao;
     
     /* Estabelecendo conexão com o banco usando as propriedades */
-    public UsuarioDAO() throws PersistenceException, SQLException{
-        this.conexao = DriverManager.getConnection(prop.getURL(),prop.getUser(),prop.getSenha());
-        
+    public UsuarioDAO() throws PersistenceException, SQLException, ClassNotFoundException {
+        this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha());
     }
     /* Implementação da interface UsuarioDAOinter */
     @Override

@@ -23,12 +23,11 @@ public class MensagemDAO implements MensagemDAOinter{
 
     /* Objeto conexão e Propriedades do Banco de Dados */
     private PropBD prop;
-    Connection conexao;
+    private Connection conexao;
     
     /* Estabelecendo conexão com o banco usando as propriedades */
-    public MensagemDAO() throws PersistenceException, SQLException{
-        this.conexao = DriverManager.getConnection(prop.getURL(),prop.getUser(),prop.getSenha());
-        
+    public MensagemDAO() throws PersistenceException, SQLException, ClassNotFoundException{
+        this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha());
     }
     
     /* Implementação da interface MensagemDAOinter */

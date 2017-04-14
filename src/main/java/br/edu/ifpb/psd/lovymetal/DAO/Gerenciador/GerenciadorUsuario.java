@@ -7,7 +7,7 @@ package br.edu.ifpb.psd.lovymetal.DAO.Gerenciador;
 
 import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
-import br.edu.ifpb.psd.lovymetal.DAO.UsuarioDAO;
+import br.edu.ifpb.psd.lovymetal.DAO.interfaces.UsuarioDAOinter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Usuario;
 import java.sql.Date;
 import javax.persistence.PersistenceException;
@@ -19,13 +19,13 @@ import javax.persistence.PersistenceException;
 public class GerenciadorUsuario {
     /* Declarando os respectivos atributos para esta entidade */
     private DAOFactoryInter fabrica = null;
-    private UsuarioDAO userdao = null;
+    private UsuarioDAOinter userdao = null;
     
     /* Construtor responsável por criar uma nova Fábrica de Usuários */
     public GerenciadorUsuario(){
         fabrica = DAOFactory.criarFactory();
         try{
-            userdao = (UsuarioDAO) fabrica.criaUsuario();
+            userdao = (UsuarioDAOinter) fabrica.criaUsuario();
         } catch (PersistenceException e){}
     }
     

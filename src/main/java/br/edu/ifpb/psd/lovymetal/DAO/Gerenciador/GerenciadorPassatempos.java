@@ -8,6 +8,7 @@ package br.edu.ifpb.psd.lovymetal.DAO.Gerenciador;
 import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
 import br.edu.ifpb.psd.lovymetal.DAO.PassatemposDAO;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
+import br.edu.ifpb.psd.lovymetal.DAO.interfaces.PassatemposDAOinter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Passatempos;
 import javax.persistence.PersistenceException;
 
@@ -18,13 +19,13 @@ import javax.persistence.PersistenceException;
 public class GerenciadorPassatempos {
     /* Declarando os respectivos atributos para esta entidade */
     private DAOFactoryInter fabrica = null;
-    private PassatemposDAO passatemposdao = null;
+    private PassatemposDAOinter passatemposdao = null;
     
     /* Construtor responsável por criar uma nova Fábrica de Passatempos */
     public GerenciadorPassatempos(){
         fabrica = DAOFactory.criarFactory();
         try{
-            passatemposdao = (PassatemposDAO) fabrica.novoPassatempo();
+            passatemposdao = (PassatemposDAOinter) fabrica.novoPassatempo();
         } catch (PersistenceException e){}
     }
     

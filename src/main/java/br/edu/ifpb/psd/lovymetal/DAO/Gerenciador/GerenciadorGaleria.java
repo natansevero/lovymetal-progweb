@@ -6,8 +6,8 @@
 package br.edu.ifpb.psd.lovymetal.DAO.Gerenciador;
 
 import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
-import br.edu.ifpb.psd.lovymetal.DAO.GaleriaDAO;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
+import br.edu.ifpb.psd.lovymetal.DAO.interfaces.GaleriaDAOinter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Galeria;
 import javax.persistence.PersistenceException;
 
@@ -18,13 +18,13 @@ import javax.persistence.PersistenceException;
 public class GerenciadorGaleria {
     /* Declarando os respectivos atributos para esta entidade */
     private DAOFactoryInter fabrica = null;
-    private GaleriaDAO galeriadao = null;
+    private GaleriaDAOinter galeriadao = null;
     
     /* Construtor responsável por criar uma nova Fábrica de Galeria */
     public GerenciadorGaleria(){
         fabrica = DAOFactory.criarFactory();
         try{
-            galeriadao = (GaleriaDAO) fabrica.novaGaleria();
+            galeriadao = (GaleriaDAOinter) fabrica.novaGaleria();
         } catch (PersistenceException e){}
     }
     

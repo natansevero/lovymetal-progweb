@@ -6,8 +6,8 @@
 package br.edu.ifpb.psd.lovymetal.DAO.Gerenciador;
 
 import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
-import br.edu.ifpb.psd.lovymetal.DAO.MensagemDAO;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
+import br.edu.ifpb.psd.lovymetal.DAO.interfaces.MensagemDAOinter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Mensagem;
 import javax.persistence.PersistenceException;
 
@@ -18,13 +18,13 @@ import javax.persistence.PersistenceException;
 public class GerenciadorMensagem {
     /* Declarando os respectivos atributos para esta entidade */
     private DAOFactoryInter fabrica = null;
-    private MensagemDAO mensagemdao = null;
+    private MensagemDAOinter mensagemdao = null;
     
     /* Construtor responsável por criar uma nova Fábrica de Mensagem */
     public GerenciadorMensagem(){
         fabrica = DAOFactory.criarFactory();
         try{
-            mensagemdao = (MensagemDAO) fabrica.novaMensagem();
+            mensagemdao = (MensagemDAOinter) fabrica.novaMensagem();
         } catch (PersistenceException e){}
     }
     
