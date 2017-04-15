@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.psd.lovymetal.DAO.Gerenciador;
+package br.edu.ifpb.psd.lovymetal.DAO.objneg;
 
 import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
@@ -48,9 +48,9 @@ public class GerenciadorUsuario {
         novousuario.setPeso(peso);
         novousuario.setCabelo(cabelo);
         novousuario.setFotoPerfil(fotoperfil);
-        userdao.persiste(novousuario);
+        userdao.cadastra(novousuario);
     }
-    
+        
     /* Método responsável por remover um usuário do BD usando o login */
     public void removeUsuario(String login) throws PersistenceException{
         userdao.exlui(login);

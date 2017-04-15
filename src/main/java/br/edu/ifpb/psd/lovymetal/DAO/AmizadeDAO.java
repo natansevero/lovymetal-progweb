@@ -8,7 +8,6 @@ package br.edu.ifpb.psd.lovymetal.DAO;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.AmizadeDAOinter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Amizade;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -29,7 +28,8 @@ public class AmizadeDAO implements AmizadeDAOinter{
         this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha()); 
     }
     
-    /* Implementação da interface AmizadeDAOinter */
+    /* Implementação da interface AmizadeDAOinter de acordo com a Regra 01*/
+    /* De acordo com a RF_05 dos Requisitos Funcionais */
     @Override
     public String adiciona(Amizade amizade) throws PersistenceException {
         String sql = "INSERT INTO Amizade(usuario,amigo)" +
@@ -38,6 +38,7 @@ public class AmizadeDAO implements AmizadeDAOinter{
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.setString(1,amizade.getUsuario());
             statement.setString(2,amizade.getAmigo());
+            conexao.close();
             return "Amigo adicionado";
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -45,6 +46,7 @@ public class AmizadeDAO implements AmizadeDAOinter{
         return "Amigo não adicionado";
     }
     
+    /* De acordo com a RF_07 dos Requisitos Funcionais */
     @Override
     public void desfaz(String login, String amigo) throws PersistenceException {
         String sql = "DELETE FROM Amizade WHERE usuario="+ login +
@@ -52,6 +54,7 @@ public class AmizadeDAO implements AmizadeDAOinter{
         try{
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.execute();
+            conexao.close();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

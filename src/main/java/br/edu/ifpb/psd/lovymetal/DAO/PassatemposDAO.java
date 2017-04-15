@@ -8,7 +8,6 @@ package br.edu.ifpb.psd.lovymetal.DAO;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.PassatemposDAOinter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Passatempos;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -39,6 +38,7 @@ public class PassatemposDAO implements PassatemposDAOinter{
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.setString(1,passatempo.getUsuariologin());
             statement.setString(2,passatempo.getPassatempo());
+            conexao.close();
             return "Passatempo adicionado";
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,6 +53,7 @@ public class PassatemposDAO implements PassatemposDAOinter{
         try{
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.execute();
+            conexao.close();
             return "Passatempo excluído";
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);

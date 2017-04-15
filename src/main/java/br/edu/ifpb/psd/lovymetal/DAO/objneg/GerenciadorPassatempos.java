@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.psd.lovymetal.DAO.Gerenciador;
+package br.edu.ifpb.psd.lovymetal.DAO.objneg;
 
 import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
-import br.edu.ifpb.psd.lovymetal.DAO.PassatemposDAO;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.PassatemposDAOinter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Passatempos;

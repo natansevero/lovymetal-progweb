@@ -8,7 +8,6 @@ package br.edu.ifpb.psd.lovymetal.DAO;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.GaleriaDAOinter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Galeria;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -41,6 +40,7 @@ public class GaleriaDAO implements GaleriaDAOinter{
             statement.setString(2,galeria.getUsuariologin());
             statement.setString(3,galeria.getNomeGaleria());
             statement.setString(4,galeria.getFoto());
+            conexao.close();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -52,6 +52,7 @@ public class GaleriaDAO implements GaleriaDAOinter{
         try{
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.execute();
+            conexao.close();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
