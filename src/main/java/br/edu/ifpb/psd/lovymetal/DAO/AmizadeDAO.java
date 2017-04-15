@@ -29,7 +29,8 @@ public class AmizadeDAO implements AmizadeDAOinter{
         this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha()); 
     }
     
-    /* Implementação da interface AmizadeDAOinter */
+    /* Implementação da interface AmizadeDAOinter de acordo com a Regra 01*/
+    /* De acordo com a RF_05 dos Requisitos Funcionais */
     @Override
     public String adiciona(Amizade amizade) throws PersistenceException {
         String sql = "INSERT INTO Amizade(usuario,amigo)" +
@@ -45,6 +46,7 @@ public class AmizadeDAO implements AmizadeDAOinter{
         return "Amigo não adicionado";
     }
     
+    /* De acordo com a RF_07 dos Requisitos Funcionais */
     @Override
     public void desfaz(String login, String amigo) throws PersistenceException {
         String sql = "DELETE FROM Amizade WHERE usuario="+ login +
