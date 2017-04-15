@@ -8,7 +8,6 @@ package br.edu.ifpb.psd.lovymetal.DAO;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.RelacionamentoDAOinter;
 import br.edu.ifpb.psd.lovymetal.Entidades.Relacionamento;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -30,7 +29,7 @@ public class RelacionamentoDAO implements RelacionamentoDAOinter{
         this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha());   
     }
     
-    /* Implementação da interface RelacionamentoDAOinter */
+    /* Implementação da interface RelacionamentoDAOinter de acordo com a Regra 03 */
     @Override
     public void adicionaRelacionamento(Relacionamento relacionamento) throws PersistenceException {
         String sql = "INSERT INTO Relacionamento(usuariologin, tipo, par)" +
@@ -40,6 +39,7 @@ public class RelacionamentoDAO implements RelacionamentoDAOinter{
             statement.setString(1,relacionamento.getUsuariologin());
             statement.setString(2,relacionamento.getTipo());
             statement.setString(3,relacionamento.getPar());
+            conexao.close();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,6 +51,7 @@ public class RelacionamentoDAO implements RelacionamentoDAOinter{
         try{
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.execute();
+            conexao.close();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
