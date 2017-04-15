@@ -30,7 +30,7 @@ public class RelacionamentoDAO implements RelacionamentoDAOinter{
         this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha());   
     }
     
-    /* Implementação da interface RelacionamentoDAOinter de acordo com a Regra 03 */
+    /* Implementação da interface RelacionamentoDAOinter */
     @Override
     public void adicionaRelacionamento(Relacionamento relacionamento) throws PersistenceException {
         String sql = "INSERT INTO Relacionamento(usuariologin, tipo, par)" +

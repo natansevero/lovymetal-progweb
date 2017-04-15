@@ -30,8 +30,7 @@ public class MensagemDAO implements MensagemDAOinter{
         this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha());
     }
     
-    /* Implementação da interface MensagemDAOinter de acordo com a Regra 02 */
-    /* De acordo com a RF_08 dos Requisitos Funcionais */
+    /* Implementação da interface MensagemDAOinter */
     @Override
     public String enviar(Mensagem mensagem) throws PersistenceException {
         String sql = "INSERT INTO Mensagem(mensagemid, remetente, destinatario, mensagem)" +
