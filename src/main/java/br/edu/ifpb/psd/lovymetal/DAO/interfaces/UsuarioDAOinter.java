@@ -5,7 +5,7 @@
  */
 package br.edu.ifpb.psd.lovymetal.DAO.interfaces;
 
-import br.edu.ifpb.psd.lovymetal.Entidades.Usuario;
+import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import java.util.ArrayList;
 import javax.persistence.PersistenceException;
 

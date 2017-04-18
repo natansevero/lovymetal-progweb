@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package br.edu.ifpb.psd.lovymetal.DAO.interfaces;
-import br.edu.ifpb.psd.lovymetal.Entidades.Amizade;
+import br.edu.ifpb.psd.lovymetal.entidades.Amizade;
 import javax.persistence.PersistenceException;
 
 /**

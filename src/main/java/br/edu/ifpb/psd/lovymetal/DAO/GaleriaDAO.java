@@ -6,7 +6,7 @@
 package br.edu.ifpb.psd.lovymetal.DAO;
 
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.GaleriaDAOinter;
-import br.edu.ifpb.psd.lovymetal.Entidades.Galeria;
+import br.edu.ifpb.psd.lovymetal.entidades.Galeria;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

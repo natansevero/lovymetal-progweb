@@ -5,7 +5,7 @@
  */
 package br.edu.ifpb.psd.lovymetal.DAO.interfaces;
 
-import br.edu.ifpb.psd.lovymetal.Entidades.Mensagem;
+import br.edu.ifpb.psd.lovymetal.entidades.Mensagem;
 import javax.persistence.PersistenceException;
 
 /**
