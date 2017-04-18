@@ -6,7 +6,7 @@
 package br.edu.ifpb.psd.lovymetal.DAO;
 
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.PassatemposDAOinter;
-import br.edu.ifpb.psd.lovymetal.Entidades.Passatempos;
+import br.edu.ifpb.psd.lovymetal.entidades.Passatempos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

@@ -6,7 +6,7 @@
 package br.edu.ifpb.psd.lovymetal.DAO;
 
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.MensagemDAOinter;
-import br.edu.ifpb.psd.lovymetal.Entidades.Mensagem;
+import br.edu.ifpb.psd.lovymetal.entidades.Mensagem;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

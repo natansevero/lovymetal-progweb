@@ -6,7 +6,7 @@
 package br.edu.ifpb.psd.lovymetal.DAO;
 
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.UsuarioDAOinter;
-import br.edu.ifpb.psd.lovymetal.Entidades.Usuario;
+import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

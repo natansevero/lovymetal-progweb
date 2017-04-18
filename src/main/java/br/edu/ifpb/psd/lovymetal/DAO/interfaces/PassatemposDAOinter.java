@@ -5,7 +5,7 @@
  */
 package br.edu.ifpb.psd.lovymetal.DAO.interfaces;
 
-import br.edu.ifpb.psd.lovymetal.Entidades.Passatempos;
+import br.edu.ifpb.psd.lovymetal.entidades.Passatempos;
 import javax.persistence.PersistenceException;
 
 /**

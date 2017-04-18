@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.psd.lovymetal.DAO.objneg;
+package br.edu.ifpb.psd.lovymetal.DAO.managers;
 
 import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.MensagemDAOinter;
-import br.edu.ifpb.psd.lovymetal.Entidades.Mensagem;
+import br.edu.ifpb.psd.lovymetal.entidades.Mensagem;
 import javax.persistence.PersistenceException;
 
 /**
