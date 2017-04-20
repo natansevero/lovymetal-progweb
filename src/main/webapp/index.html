@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="This is social network html5 template available in themeforest......" />
+		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
+		<meta name="robots" content="index, follow" />
+		<title>LovyMetal - Site de relacionamentos</title>
+
+    <!-- Stylesheets
+    ================================================= -->
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/ionicons.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
+	</head>
+	<body>
+    
+    <!-- Landing Page Contents
+    ================================================= -->
+    <div id="lp-register">
+    	<div class="container wrapper">
+        <div class="row">
+        	
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="reg-form-container"> 
+            
+              <!-- Register/Login Tabs-->
+              <div class="reg-options">
+                <ul class="nav nav-tabs">
+                    <li><a href="#register" data-toggle="tab">Cadastre-se</a></li>
+                    <li class="active"><a href="#login" data-toggle="tab">Entrar</a></li>
+                </ul><!--Tabs End-->
+              </div>
+              
+              <!--Registration Form Contents-->
+              <div class="tab-content">
+                
+                  <!--Login-->
+                <div class="tab-pane active" id="login">
+                  <h3>Login ;)</h3>
+                  <p class="text-muted">Entre com sua conta e continue sendo feliz!</p>
+                  
+                  <!--Login Form-->
+                  <form name="Login_form" id='Login_form'>
+                     <div class="row">
+                      <div class="form-group col-xs-12">
+                        <label for="meu-email" class="sr-only">Email</label>
+                        <input id="meu-email" class="form-control input-group-lg" type="text" name="email" placeholder="Email"/>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-xs-12">
+                        <label for="minha-senha" class="sr-only">Senha</label>
+                        <input id="minha-senha" class="form-control input-group-lg" type="password" name="senha" placeholder="Senha"/>
+                      </div>
+                    </div>
+                    <button class="btn btn-primary">Entrar</button>
+                  </form>
+                </div> <!-- Login -->
+                  
+                  
+                <div class="tab-pane" id="register">
+                  <h3>Cadastre-se agora mesmo!</h3>
+                  <p class="text-muted">Encontre o amor da sua vida!</p>
+                  
+                  <!--Register Form-->
+                  <form name="registration_form" id='registration_form' class="form-inline">
+                      <div class="row">
+                          <div class="form-group col-xs-12">
+                       <label for="nome_completo" class="sr-only">Nome Completo:</label>
+                       <input id="nome_completo" class="form-control input-group-lg" type="text" name="nome_completo" placeholder="Nome completo"/>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="form-group col-xs-12">
+                           <label for="apelido" class="sr-only">Apelido:</label>
+                           <input id="apelido" class="form-control input-group-lg" type="text" name="apelido" placeholder="Apelido"/>
+                        </div>
+                     </div>
+                    <div class="row">
+                      <div class="form-group col-xs-12">
+                        <label for="email" class="sr-only">Email</label>
+                        <input id="email" class="form-control input-group-lg" type="text" name="email" placeholder="Email"/>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-xs-12">
+                        <label for="senha" class="sr-only">Senha</label>
+                        <input id="senha" class="form-control input-group-lg" type="password" name="senha" placeholder="Senha"/>
+                      </div>
+                    </div>
+                    <div class="row">     
+                      <div class="form-group gender col-xs-12">
+                        <label class="radio-inline">
+                          <input type="radio" name="sexo" value="m" checked>Masculino
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="sexo" value="f">Feminino
+                        </label>
+                          <label class="radio-inline">
+                          <input type="radio" name="sexo" value="o">Outro
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                       <div class="form-group col-xs-12">
+                        <label for="data_nasc">Data de Nascimento: </label>
+                        <input id="data_nasc" class="form-control input-group-lg" type="date" name="data_nasc"/>
+                      </div> 
+                    </div>
+                    <div class="row">
+                       <div class="form-group col-xs-12">
+                        <label for="cidade" class="sr-only">Cidade: </label>
+                        <input id="cidade" class="form-control input-group-lg" type="text" name="cidade" placeholder="Cidade"/>
+                      </div> 
+                    </div>
+                    <div class="row">
+                       <div class="form-group col-xs-12">
+                        <label for="profissao" class="sr-only">Profisão: </label>
+                        <input id="profissao" class="form-control input-group-lg" type="text" name="profissao" placeholder="Profissão"/>
+                      </div> 
+                    </div>
+                    <div class="row">
+                       <div class="form-group col-xs-12">
+                        <label for="descricao" class="sr-only">Descrição: </label>
+                        <textarea name="descricao" class="form-control" rows="5" placeholder="Descrição"></textarea>
+                      </div> 
+                    </div>  
+                    <div class="row">
+                       <div class="form-group col-xs-12">
+                            <label for="status" class="">Status: </label>
+                            <select name="status" class="form-control">
+                                <option value="Solteiro(a)">Solteiro(a)</option>
+                                <option value="Divorciado(a)">Divorciado(a)</option>
+                                <option value="Viúvo(a)">Viúvo(a)</option>
+                            </select>
+                       </div> 
+                    </div>
+                     <div class="row">
+                       <div class="form-group col-xs-12">
+                        <label for="altura" class="sr-only">Altura: </label>
+                        <input id="altura" class="form-control input-group-lg" type="number" name="altura" placeholder="Altura"/>
+                      </div> 
+                    </div>
+                    <div class="row">
+                       <div class="form-group col-xs-12">
+                        <label for="cor_cabelo" class="sr-only">Cor do Cabelo: </label>
+                        <input id="cor_cabelo" class="form-control input-group-lg" type="text" name="cor_cabelo" placeholder="Cor do Cabelo"/>
+                      </div> 
+                    </div>
+                    <div class="row">
+                       <div class="form-group col-xs-12">
+                        <label for="foto_perfil">Foto de Perfil: </label>
+                        <input id="foto_perfil" class="form-control input-group-lg" type="file" name=""/>
+                      </div> 
+                    </div>  
+                    <input type="submit" class="btn btn-primary" value="Cadastrar-se">
+                  </form><!--Register Now Form Ends-->
+                </div><!--Registration Form Contents Ends-->
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--preloader-->
+    <div id="spinner-wrapper">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts
+    ================================================= -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.appear.min.js"></script>
+		<script src="js/jquery.incremental-counter.js"></script>
+    <script src="js/script.js"></script>
+    
+	</body>
+</html>
