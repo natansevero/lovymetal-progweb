@@ -13,7 +13,7 @@ public class PropBD {
     /* Propriedades do Banco de Dados PostgreSQL */
     private String url = "jdbc:postgresql://127.0.0.1:5432/lovymetal";
     private String user = "postgres";
-    private String senha = "nightwish";
+    private String senha = "12345";
     
     /* Métodos GET apenas para acessar os valores das propriedades*/
     public String getURL(){
