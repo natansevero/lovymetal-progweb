@@ -1,4 +1,4 @@
-﻿CREATE TABLE usuario(
+CREATE TABLE usuario(
         id serial,
 	nome_completo varchar(50) not null,
 	apelido varchar(10) not null,
@@ -29,7 +29,7 @@ CREATE TABLE galeria(
 	id_usuario int,
 	nomegaleria VARCHAR(100) NOT NULL,
 	foto VARCHAR(500),
-	PRIMARY KEY (id, id_usuario),
+	PRIMARY KEY (id_galeria, id_usuario),
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id) ON DELETE CASCADE
 );
 
