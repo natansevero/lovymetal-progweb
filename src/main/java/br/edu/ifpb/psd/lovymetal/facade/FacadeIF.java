@@ -6,13 +6,12 @@
 
 package br.edu.ifpb.psd.lovymetal.facade;
 
-import java.sql.Date;
 
 /**
  *
  * @author Natan Severo
  */
 public interface FacadeIF {
-    public void adicionarUsuario(int id, String senha, String nome, String apelido, Date nasc, String cidade, String profissao,
-            String descricao, String sexo, String status, float altura, float peso, String cabelo, String fotoperfil);
+    public void adicionarUsuario(String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
+            String descricao, String sexo, String status, double altura, String cabelo, String fotoperfil);
 }

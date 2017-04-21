@@ -11,9 +11,15 @@ package br.edu.ifpb.psd.lovymetal.DAO;
  */
 public class PropBD {
     /* Propriedades do Banco de Dados PostgreSQL */
-    private String url = "jdbc:postgresql://127.0.0.1:5432/lovymetal";
-    private String user = "postgres";
-    private String senha = "12345";
+    private String url;
+    private String user;
+    private String senha;
+    
+    public PropBD() {
+        url = "jdbc:postgresql://127.0.0.1:5432/lovymetal";
+        user = "postgres";
+        senha = "12345";
+    }
     
     /* Métodos GET apenas para acessar os valores das propriedades*/
     public String getURL(){

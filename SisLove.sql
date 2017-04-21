@@ -1,19 +1,18 @@
-﻿CREATE TABLE Usuario(
+CREATE TABLE Usuario(
 	id serial,
-	senha VARCHAR(13) UNIQUE NOT NULL,
-	nome VARCHAR(100) NOT NULL,
-	apelido VARCHAR (80),
-	datanasc DATE NOT NULL,
+	senha VARCHAR(13) NOT NULL,
+	nome_completo VARCHAR(100) NOT NULL UNIQUE,
+	apelido VARCHAR(80),
+	data_nasc VARCHAR(11) NOT NULL,
 	cidade VARCHAR(80) NOT NULL,
 	email VARCHAR(80) UNIQUE NOT NULL,
 	profissao VARCHAR(80) NOT NULL,
 	descricao VARCHAR (200),
-	sexo VARCHAR(2) NOT NULL,
-	status VARCHAR(3) UNIQUE NOT NULL,
+	sexo VARCHAR(1) NOT NULL,
+	status VARCHAR(30) UNIQUE NOT NULL,
 	altura REAL NOT NULL,
-	peso REAL NOT NULL,
-	cabelo VARCHAR(20) NOT NULL,
-	fotoperfil VARCHAR(500),
+	cor_cabelo VARCHAR(20) NOT NULL,
+	foto_perfil VARCHAR(500),
 	PRIMARY KEY(id)
 );
 
@@ -37,10 +36,10 @@ CREATE TABLE Amizade(
 
 CREATE TABLE Galeria(
 	galeria_id serial,
-	id_usuario VARCHAR(30),
+	usuario_id int,
 	nomegaleria VARCHAR(100) NOT NULL,
 	foto VARCHAR(1000),
-	PRIMARY KEY (id_galeria,usuario_id),
+	PRIMARY KEY (galeria_id,usuario_id),
 	FOREIGN KEY (usuario_id) REFERENCES Usuario(id) ON DELETE CASCADE
 );
 
@@ -50,7 +49,7 @@ CREATE TABLE Mensagem(
 	destinatario int,
 	mensagem text,
 	status int NOT NULL,
-	PRIMARY KEY (mensagemid),
+	PRIMARY KEY (mensagem_id),
 	FOREIGN KEY (remetente) REFERENCES Usuario(id) ON DELETE CASCADE,
 	FOREIGN KEY (destinatario) REFERENCES Usuario(id) ON DELETE CASCADE
 );
@@ -73,9 +72,9 @@ CREATE TABLE Relacionamento(
 
 CREATE TABLE Postagem(
 	postagem_id serial,
-	id_usuario int,
+	usuario_id int,
 	descricao text,
 	foto VARCHAR(1000),
-	PRIMARY KEY(postagem_id,id_usuario),
+	PRIMARY KEY(postagem_id,usuario_id),
 	FOREIGN KEY(usuario_id) REFERENCES Usuario(id) ON DELETE CASCADE
 )	

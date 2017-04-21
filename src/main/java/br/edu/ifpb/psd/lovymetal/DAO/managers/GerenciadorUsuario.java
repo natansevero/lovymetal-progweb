@@ -30,25 +30,18 @@ public class GerenciadorUsuario {
     }
     
     /* Método responsável por adicionar um usuário e fazer a persistência no BD */
-    public void adicionaUsuario(int id, String senha, String nome, String apelido, Date nasc, String cidade, String profissao,
-            String descricao, String sexo, String status, float altura, float peso, String cabelo, String fotoperfil)
+    public void adicionaUsuario(String senha, String nome_completo, String apelido, String nasc, String cidade, String email, String profissao,
+            String descricao, String sexo, String status, double altura,String cor_cabelo, String foto_perfil)
             throws PersistenceException{
-        Usuario novousuario = new Usuario();
-        novousuario.setID(id);
-        novousuario.setSenha(senha);
-        novousuario.setNome(nome);
-        novousuario.setApelido(apelido);
-        novousuario.setDataNasc(nasc);
-        novousuario.setCidade(cidade);
-        novousuario.setProfissao(profissao);
-        novousuario.setDescricao(descricao);
-        novousuario.setSexo(sexo);
-        novousuario.setStatus(status);
-        novousuario.setAltura(altura);
-        novousuario.setPeso(peso);
-        novousuario.setCabelo(cabelo);
-        novousuario.setFotoPerfil(fotoperfil);
-        userdao.cadastra(novousuario);
+        Usuario novousuario = new Usuario(senha, nome_completo, apelido, nasc, cidade, email, profissao, descricao, sexo, status, altura, cor_cabelo, foto_perfil);
+        
+//        novousuario.setID(id);
+        
+        
+        System.out.println("Novo usuario: " + novousuario.toString());
+        
+        String cadastra = userdao.cadastra(novousuario);
+        System.out.println(cadastra);
     }
         
     /* Método responsável por remover um usuário do BD usando o login */
