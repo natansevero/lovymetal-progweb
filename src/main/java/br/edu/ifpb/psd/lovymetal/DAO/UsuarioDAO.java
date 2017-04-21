@@ -30,33 +30,37 @@ public class UsuarioDAO implements UsuarioDAOinter{
     
     /* Estabelecendo conexão com o banco usando as propriedades */
     public UsuarioDAO() throws PersistenceException, SQLException, ClassNotFoundException {
+        this.prop = new PropBD();
         this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha());
     }
     /* Implementação da interface UsuarioDAOinter */
     /* De acordo com a RF_01 dos Requisitos Funcionais */
     @Override
     public String cadastra(Usuario usuario) throws PersistenceException {
-        String sql = "INSERT INTO USUARIO (id,senha,nome_completo,apelido,datanasc,cidade, email, profissao, descricao, sexo,status, altura, peso, cabelo, fotoperfil)"
-                + "VALUES (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)";
+        String sql = "INSERT INTO usuario (senha,nome_completo,apelido,data_nasc,cidade, email, profissao, descricao, sexo,status, altura, cor_cabelo, foto_perfil)"
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+        System.out.println("Cadastra usuario no DAO: " + usuario.toString());
         try{
             PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.setInt(1, usuario.getID());
-            statement.setString(2, usuario.getSenha());
-            statement.setString(3, usuario.getNome());
-            statement.setString(4, usuario.getApelido());
-            statement.setDate(5, usuario.getDataNasc());
-            statement.setString(6, usuario.getCidade());
-            statement.setString(7, usuario.getEmail());
-            statement.setString(8, usuario.getProfissao());
-            statement.setString(9, usuario.getDescricao());
-            statement.setString(10, usuario.getSexo());
-            statement.setString(11, usuario.getStatus());
-            statement.setFloat(12, usuario.getAltura());
-            statement.setFloat(13, usuario.getPeso());
-            statement.setString(14, usuario.getCabelo());
-            statement.setString(15, usuario.getFotoPerfil());
+//            statement.setInt(1, usuario.getID());
+            statement.setString(1, usuario.getSenha());
+            statement.setString(2, usuario.getNome());
+            statement.setString(3, usuario.getApelido());
+            statement.setString(4, usuario.getDataNasc());
+            statement.setString(5, usuario.getCidade());
+            statement.setString(6, usuario.getEmail());
+            statement.setString(7, usuario.getProfissao());
+            statement.setString(8, usuario.getDescricao());
+            statement.setString(9, usuario.getSexo());
+            statement.setString(10, usuario.getStatus());
+            statement.setDouble(11, usuario.getAltura());
+            statement.setString(12, usuario.getCabelo());
+            statement.setString(13, usuario.getFotoPerfil());
+            
+            statement.executeUpdate();
             conexao.close();
-            return "Usuário Atualizado!";
+            return "Usuário Cadastrado!";
         } catch (SQLException e){
             throw new PersistenceException(e);
         }
@@ -65,8 +69,8 @@ public class UsuarioDAO implements UsuarioDAOinter{
      /* De acordo com a RF_03 dos Requisitos Funcionais */
     @Override
     public String atualiza(Usuario usuario) throws PersistenceException{
-        String sql = "UPDATE TABLE Usuario SET senha = ?, nome = ?, apelido = ?,datanasc = ?,cidade = ?,"
-                + "email = ?, profissao = ?, descricao = ?, sexo = ?,status = ?, altura = ?, peso = ?, cabelo = ?, fotoperfil = ?"
+        String sql = "UPDATE TABLE Usuario SET senha = ?, nom_completoe = ?, apelido = ?,data_nasc = ?,cidade = ?,"
+                + "email = ?, profissao = ?, descricao = ?, sexo = ?, status = ?, altura = ?, cor_cabelo = ?, foto_perfil = ?"
                 + "WHERE id = " + usuario.getID();
         
         try{
@@ -74,17 +78,16 @@ public class UsuarioDAO implements UsuarioDAOinter{
             statement.setString(1, usuario.getSenha());
             statement.setString(2, usuario.getNome());
             statement.setString(3, usuario.getApelido());
-            statement.setDate(4, usuario.getDataNasc());
+            statement.setString(4, usuario.getDataNasc());
             statement.setString(5, usuario.getCidade());
             statement.setString(6, usuario.getEmail());
             statement.setString(7, usuario.getProfissao());
             statement.setString(8, usuario.getDescricao());
             statement.setString(9, usuario.getSexo());
             statement.setString(10, usuario.getStatus());
-            statement.setFloat(11, usuario.getAltura());
-            statement.setFloat(12, usuario.getPeso());
-            statement.setString(13, usuario.getCabelo());
-            statement.setString(14, usuario.getFotoPerfil());
+            statement.setDouble(11, usuario.getAltura());
+            statement.setString(12, usuario.getCabelo());
+            statement.setString(13, usuario.getFotoPerfil());
             conexao.close();
             return "Usuário Atualizado!";
         } catch (SQLException e){

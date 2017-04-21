@@ -15,12 +15,12 @@ import java.sql.Date;
 public class Facade implements FacadeIF {
 
     @Override
-    public void adicionarUsuario(int id, String senha, String nome, String apelido, Date nasc, String cidade, String profissao,
-            String descricao, String sexo, String status, float altura, float peso, String cabelo, String fotoperfil) {
+    public void adicionarUsuario(String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
+            String descricao, String sexo, String status, double altura, String cabelo, String fotoperfil) {
         
         GerenciadorUsuario gerenciadorUsuario = new GerenciadorUsuario();
         
-        gerenciadorUsuario.adicionaUsuario(id, senha, nome, apelido, nasc, cidade, profissao, descricao, sexo, status, altura, peso, cabelo, fotoperfil);
+        gerenciadorUsuario.adicionaUsuario(senha, nome, apelido, nasc, cidade, email, profissao, descricao, sexo, status, altura, cabelo, fotoperfil);
     }
     
 }

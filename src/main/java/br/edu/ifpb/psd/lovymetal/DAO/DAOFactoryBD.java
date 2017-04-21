@@ -14,32 +14,17 @@ import br.edu.ifpb.psd.lovymetal.DAO.interfaces.PostagemDAOinter;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.RelacionamentoDAOinter;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.Solicita_amizadeDAOinter;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.UsuarioDAOinter;
-import com.sun.rowset.JdbcRowSetImpl;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
-import javax.sql.rowset.JdbcRowSet;
-
 /**
  *
  * @author JuliermeH
  */
 public class DAOFactoryBD implements DAOFactoryInter{
     
-    private PropBD prop;
-    JdbcRowSet jrs = null;
-    /* Classe que implementa interface da Fábrica de DAOs e persiste no Banco de Dados*/
-    private DAOFactoryBD instance;
-    public DAOFactoryBD(){
-        try{
-            jrs = new JdbcRowSetImpl();
-            jrs.setUrl(prop.getURL());
-            jrs.setUsername(prop.getUser());
-            jrs.setPassword(prop.getSenha());
-        } catch (SQLException e){
-        }
-    }
+    
     
     /* Essa classe cria um novo UsuárioDAO */
     @Override

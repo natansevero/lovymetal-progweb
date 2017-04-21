@@ -7,6 +7,7 @@ package br.edu.ifpb.psd.lovymetal.entidades;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Objects;
 
 /**
  *
@@ -18,15 +19,14 @@ public class Usuario implements Serializable{
     private String senha;
     private String nome_completo;
     private String apelido;
-    private Date datanasc;
+    private String datanasc;
     private String cidade;
     private String email;
     private String profissao;
     private String descricao;
     private String sexo;
     private String status;
-    private float altura;
-    private float peso;
+    private double altura;
     private String cabelo;
     private String fotoperfil;
     
@@ -35,20 +35,20 @@ public class Usuario implements Serializable{
     }
     
     /* Contrutor de Usuario que recebe todos os atributos */
-    public Usuario(int id, String senha, String nome_completo, String apelido, Date nasc, String cidade, String profissao,
-            String descricao, String sexo, String status, float altura, float peso, String cabelo, String fotoperfil){
-        this.id = id;
+    public Usuario(String senha, String nome_completo, String apelido, String nasc, String cidade, String email, String profissao,
+            String descricao, String sexo, String status, double altura, String cabelo, String fotoperfil){
+        
         this.senha = senha;
         this.nome_completo = nome_completo;
         this.apelido = apelido;
         this.datanasc = nasc;
         this.cidade = cidade;
+        this.email = email;
         this.profissao = profissao;
         this.descricao = descricao;
         this.sexo = sexo;
         this.status = status;
         this.altura = altura;
-        this.peso = peso;
         this.cabelo = cabelo;
         this.fotoperfil = fotoperfil;
     }
@@ -86,10 +86,10 @@ public class Usuario implements Serializable{
     }
     
      /* get e set de DataNasc */
-    public Date getDataNasc(){
+    public String getDataNasc(){
         return this.datanasc;
     }
-    public void setDataNasc(Date datanasc){
+    public void setDataNasc(String datanasc){
         datanasc = this.datanasc;
     }
     
@@ -143,20 +143,14 @@ public class Usuario implements Serializable{
     }
     
      /* get e set de Altura */
-    public float getAltura(){
+    public double getAltura(){
         return this.altura;
     }
-    public void setAltura(float altura){
+    public void setAltura(double altura){
         altura = this.altura;
     }
     
-     /* get e set de Peso */
-    public float getPeso(){
-        return this.peso;
-    }
-    public void setPeso(float peso){
-        peso = this.peso;
-    }
+   
     
      /* get e set de Cabelo */
     public String getCabelo(){
@@ -173,4 +167,85 @@ public class Usuario implements Serializable{
     public void setFotoPerfil(String fotoperfil){
         fotoperfil = this.fotoperfil;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + this.id;
+        hash = 71 * hash + Objects.hashCode(this.senha);
+        hash = 71 * hash + Objects.hashCode(this.nome_completo);
+        hash = 71 * hash + Objects.hashCode(this.apelido);
+        hash = 71 * hash + Objects.hashCode(this.datanasc);
+        hash = 71 * hash + Objects.hashCode(this.cidade);
+        hash = 71 * hash + Objects.hashCode(this.email);
+        hash = 71 * hash + Objects.hashCode(this.profissao);
+        hash = 71 * hash + Objects.hashCode(this.descricao);
+        hash = 71 * hash + Objects.hashCode(this.sexo);
+        hash = 71 * hash + Objects.hashCode(this.status);
+        hash = 71 * hash + (int) (Double.doubleToLongBits(this.altura) ^ (Double.doubleToLongBits(this.altura) >>> 32));
+        hash = 71 * hash + Objects.hashCode(this.cabelo);
+        hash = 71 * hash + Objects.hashCode(this.fotoperfil);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.senha, other.senha)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome_completo, other.nome_completo)) {
+            return false;
+        }
+        if (!Objects.equals(this.apelido, other.apelido)) {
+            return false;
+        }
+        if (!Objects.equals(this.datanasc, other.datanasc)) {
+            return false;
+        }
+        if (!Objects.equals(this.cidade, other.cidade)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.profissao, other.profissao)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.sexo, other.sexo)) {
+            return false;
+        }
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.altura) != Double.doubleToLongBits(other.altura)) {
+            return false;
+        }
+        if (!Objects.equals(this.cabelo, other.cabelo)) {
+            return false;
+        }
+        if (!Objects.equals(this.fotoperfil, other.fotoperfil)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", senha=" + senha + ", nome_completo=" + nome_completo + ", apelido=" + apelido + ", datanasc=" + datanasc + ", cidade=" + cidade + ", email=" + email + ", profissao=" + profissao + ", descricao=" + descricao + ", sexo=" + sexo + ", status=" + status + ", altura=" + altura + ", cabelo=" + cabelo + ", fotoperfil=" + fotoperfil + '}';
+    }
+    
+    
 }

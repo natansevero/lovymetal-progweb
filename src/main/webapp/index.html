@@ -69,7 +69,7 @@
                   <p class="text-muted">Encontre o amor da sua vida!</p>
                   
                   <!--Register Form-->
-                  <form name="registration_form" id='registration_form' class="form-inline">
+                  <form name="registration_form" id='registration_form' action="controller?command=AdicionarUsuario" enctype="multipart/form-data" method="post" class="form-inline">
                       <div class="row">
                           <div class="form-group col-xs-12">
                        <label for="nome_completo" class="sr-only">Nome Completo:</label>
@@ -156,7 +156,7 @@
                     <div class="row">
                        <div class="form-group col-xs-12">
                         <label for="foto_perfil">Foto de Perfil: </label>
-                        <input id="foto_perfil" class="form-control input-group-lg" type="file" name=""/>
+                        <input id="foto_perfil" class="form-control input-group-lg" type="file" name="foto_perfil"/>
                       </div> 
                     </div>  
                     <input type="submit" class="btn btn-primary" value="Cadastrar-se">
