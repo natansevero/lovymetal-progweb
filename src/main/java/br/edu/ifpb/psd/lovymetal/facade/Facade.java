@@ -6,7 +6,9 @@
 package br.edu.ifpb.psd.lovymetal.facade;
 
 import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorUsuario;
+import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -14,13 +16,24 @@ import java.sql.Date;
  */
 public class Facade implements FacadeIF {
 
+    GerenciadorUsuario gerenciadorUsuario;
+    
+    public Facade() {
+        gerenciadorUsuario = new GerenciadorUsuario();
+    }
+    
     @Override
     public void adicionarUsuario(String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
             String descricao, String sexo, String status, double altura, String cabelo, String fotoperfil) {
         
-        GerenciadorUsuario gerenciadorUsuario = new GerenciadorUsuario();
+        gerenciadorUsuario = new GerenciadorUsuario();
         
         gerenciadorUsuario.adicionaUsuario(senha, nome, apelido, nasc, cidade, email, profissao, descricao, sexo, status, altura, cabelo, fotoperfil);
+    }
+    
+    @Override
+    public List<Usuario> listarUsuarios() {
+        return gerenciadorUsuario.listarUsuarios();
     }
     
 }

@@ -32,6 +32,7 @@ public class Usuario implements Serializable{
     
     /* Construtor padrão */
     public Usuario(){
+        
     }
     
     /* Contrutor de Usuario que recebe todos os atributos */
@@ -52,121 +53,120 @@ public class Usuario implements Serializable{
         this.cabelo = cabelo;
         this.fotoperfil = fotoperfil;
     }
+
+    public int getID() {
+        return id;
+    }
+
+    public void setID(int id) {
+        this.id = id;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getNome_completo() {
+        return nome_completo;
+    }
+
+    public void setNome_completo(String nome_completo) {
+        this.nome_completo = nome_completo;
+    }
+
+    public String getApelido() {
+        return apelido;
+    }
+
+    public void setApelido(String apelido) {
+        this.apelido = apelido;
+    }
+
+    public String getDatanasc() {
+        return datanasc;
+    }
+
+    public void setDatanasc(String datanasc) {
+        this.datanasc = datanasc;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getProfissao() {
+        return profissao;
+    }
+
+    public void setProfissao(String profissao) {
+        this.profissao = profissao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+
+    public String getCabelo() {
+        return cabelo;
+    }
+
+    public void setCabelo(String cabelo) {
+        this.cabelo = cabelo;
+    }
+
+    public String getFotoperfil() {
+        return fotoperfil;
+    }
+
+    public void setFotoperfil(String fotoperfil) {
+        this.fotoperfil = fotoperfil;
+    }
     
-    /* get e set de ID */
-    public int getID(){
-        return this.id;
-    }
-    public void setID(int id){
-        id = this.id;
-    }
     
-     /* get e set de Senha */
-    public String getSenha(){
-        return this.senha;
-    }
-    public void setSenha(String senha){
-        senha = this.senha;
-    }
-    
-     /* get e set de Nome */
-    public String getNome(){
-        return this.nome_completo;
-    }
-    public void setNome(String nome_completo){
-        nome_completo = this.nome_completo;
-    }
-    
-     /* get e set de Apelido */
-    public String getApelido(){
-        return this.apelido;
-    }
-    public void setApelido(String apelido){
-        apelido = this.apelido;
-    }
-    
-     /* get e set de DataNasc */
-    public String getDataNasc(){
-        return this.datanasc;
-    }
-    public void setDataNasc(String datanasc){
-        datanasc = this.datanasc;
-    }
-    
-     /* get e set de Cidade */
-    public String getCidade(){
-        return this.cidade;
-    }
-    public void setCidade(String cidade){
-        cidade = this.cidade;
-    }
-    
-     /* get e set de Email */
-    public String getEmail(){
-        return this.email;
-    }
-    public void setEmail(String email){
-        email = this.email;
-    }
-    
-    
-     /* get e set de Profissao */
-    public String getProfissao(){
-        return this.profissao;
-    }
-    public void setProfissao(String profissao){
-        profissao = this.profissao;
-    }
-    
-     /* get e set de Descricao */
-    public String getDescricao(){
-        return this.apelido;
-    }
-    public void setDescricao(String descricao){
-        descricao = this.descricao;
-    }
-    
-     /* get e set de Sexo */
-    public String getSexo(){
-        return this.sexo;
-    }
-    public void setSexo(String sexo){
-        sexo = this.sexo;
-    }
-    
-    /* get e set Status */
-    public String getStatus(){
-        return this.status;
-    }
-    public void setStatus(String status){
-        status = this.status;
-    }
-    
-     /* get e set de Altura */
-    public double getAltura(){
-        return this.altura;
-    }
-    public void setAltura(double altura){
-        altura = this.altura;
-    }
-    
-   
-    
-     /* get e set de Cabelo */
-    public String getCabelo(){
-        return this.cabelo;
-    }
-    public void setCabelo(String cabelo){
-        cabelo = this.cabelo;
-    }
-    
-     /* get e set de FotoPerfil */
-    public String getFotoPerfil(){
-        return this.fotoperfil;
-    }
-    public void setFotoPerfil(String fotoperfil){
-        fotoperfil = this.fotoperfil;
-    }
 
     @Override
     public int hashCode() {

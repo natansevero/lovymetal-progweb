@@ -10,6 +10,7 @@ import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.UsuarioDAOinter;
 import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.PersistenceException;
 
 /**
@@ -42,6 +43,10 @@ public class GerenciadorUsuario {
         
         String cadastra = userdao.cadastra(novousuario);
         System.out.println(cadastra);
+    }
+    
+    public List<Usuario> listarUsuarios() {
+        return userdao.listar();
     }
         
     /* Método responsável por remover um usuário do BD usando o login */

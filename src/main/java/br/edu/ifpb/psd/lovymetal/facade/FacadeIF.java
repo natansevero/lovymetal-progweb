@@ -6,6 +6,9 @@
 
 package br.edu.ifpb.psd.lovymetal.facade;
 
+import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
+import java.util.List;
+
 
 /**
  *
@@ -14,4 +17,6 @@ package br.edu.ifpb.psd.lovymetal.facade;
 public interface FacadeIF {
     public void adicionarUsuario(String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
             String descricao, String sexo, String status, double altura, String cabelo, String fotoperfil);
+    
+    public List<Usuario> listarUsuarios();
 }
