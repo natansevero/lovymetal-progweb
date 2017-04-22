@@ -6,7 +6,6 @@
 package br.edu.ifpb.psd.lovymetal.entidades;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.Objects;
 
 /**

@@ -7,7 +7,7 @@ package br.edu.ifpb.psd.lovymetal.entidades;
 
 /**
  *
- * @author Julierme Heinstein
+ * @author JuliermeH
  */
 public class Solicita_amizade {
     /* Todos os atributos da tabela Solicita_amizade do banco de dados estão declarados aqui */

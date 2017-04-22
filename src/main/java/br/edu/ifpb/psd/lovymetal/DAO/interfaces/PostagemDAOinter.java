@@ -10,7 +10,7 @@ import javax.persistence.PersistenceException;
 
 /**
  *
- * @author Julierme Heinstein
+ * @author JuliermeH
  */
 public interface PostagemDAOinter {
      /* Interface da classe Galeria */

@@ -16,7 +16,7 @@ import javax.persistence.PersistenceException;
 
 /**
  *
- * @author Julierme Heinstein
+ * @author JuliermeH
  */
 public class Solicita_amizadeDAO implements Solicita_amizadeDAOinter {
     /* Objeto conexão e Propriedades do Banco de Dados */

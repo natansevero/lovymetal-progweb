@@ -15,11 +15,19 @@ public class PropBD {
     private String user;
     private String senha;
     
+    /* BD Natan */
     public PropBD() {
         url = "jdbc:postgresql://127.0.0.1:5432/lovymetal";
         user = "postgres";
         senha = "12345";
     }
+    
+    /* BD Julierme */
+    /* public PropBD(){
+        url = "jdbc:postgresql://127.0.0.1:5432/lovymetal";
+        user = "postgres";
+        senha = "nightwish";
+    } */
     
     /* Métodos GET apenas para acessar os valores das propriedades*/
     public String getURL(){

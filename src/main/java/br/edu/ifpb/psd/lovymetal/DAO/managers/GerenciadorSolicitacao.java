@@ -13,7 +13,7 @@ import javax.persistence.PersistenceException;
 
 /**
  *
- * @author Julierme Heinstein
+ * @author JuliermeH
  */
 public class GerenciadorSolicitacao {
     /* Declarando os respectivos atributos para esta entidade */

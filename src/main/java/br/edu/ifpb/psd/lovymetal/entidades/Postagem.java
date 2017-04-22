@@ -7,7 +7,7 @@ package br.edu.ifpb.psd.lovymetal.entidades;
 
 /**
  *
- * @author Julierme Heinstein
+ * @author JuliermeH
  */
 public class Postagem {
     /* Todos os atributos da tabela Postagem do banco de dados estão declarados aqui */
