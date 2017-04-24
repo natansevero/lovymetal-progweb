@@ -9,7 +9,10 @@ import br.edu.ifpb.psd.lovymetal.DAO.interfaces.MensagemDAOinter;
 import br.edu.ifpb.psd.lovymetal.entidades.Mensagem;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
@@ -48,6 +51,35 @@ public class MensagemDAO implements MensagemDAOinter{
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "Mensagem não enviada";
+    }
+    
+    /* De acordo com a RF_09 dos Requisitos Funcionais */
+    @Override
+    public List<Mensagem> verificarmensagens(int destinatario) throws PersistenceException{
+        String sql = "select * from Mensagem where destinatario=" + destinatario;
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            
+            ResultSet rs = statement.executeQuery();
+            
+            List<Mensagem> mensagens = new ArrayList<>();
+            
+            while(rs.next()) {
+                Mensagem mensagem = new Mensagem();
+                mensagem.setMensagemID(rs.getInt(1));
+                mensagem.setRemetente(rs.getInt(2));
+                mensagem.setMensagem(rs.getString(4));
+                mensagem.setStatus(rs.getInt(5));
+                
+                mensagens.add(mensagem);
+            }
+            
+            return mensagens;
+            
+        } catch(SQLException e) {
+            throw new PersistenceException(e);
+        }
     }
 
     @Override

@@ -4,7 +4,7 @@
 
     <groupId>br.edu.ifpb.psd</groupId>
     <artifactId>LovyMetal</artifactId>
-    <version>1.3</version>
+    <version>1.4</version>
     <packaging>war</packaging>
 
     <name>Lovy Metal</name>

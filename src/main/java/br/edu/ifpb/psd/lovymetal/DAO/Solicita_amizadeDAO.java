@@ -6,10 +6,14 @@
 package br.edu.ifpb.psd.lovymetal.DAO;
 
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.Solicita_amizadeDAOinter;
+import br.edu.ifpb.psd.lovymetal.entidades.Mensagem;
 import br.edu.ifpb.psd.lovymetal.entidades.Solicita_amizade;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
@@ -57,6 +61,33 @@ public class Solicita_amizadeDAO implements Solicita_amizadeDAOinter {
             conexao.close();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+     /* De acordo com a RF_06 dos Requisitos Funcionais */
+    @Override
+    public List<Solicita_amizade> verificasolicitacoes(int solicitante) throws PersistenceException {
+        String sql = "select * from solicita_amizade where solicitante=" + solicitante;
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            
+            ResultSet rs = statement.executeQuery();
+            
+            List<Solicita_amizade> solicitacoes = new ArrayList<>();
+            
+            while(rs.next()) {
+                Solicita_amizade solicitacao = new Solicita_amizade();
+                solicitacao.setSolicitador(rs.getInt(1));
+                solicitacao.setStatus(rs.getInt(3));
+                
+                solicitacoes.add(solicitacao);
+            }
+            
+            return solicitacoes;
+            
+        } catch(SQLException e) {
+            throw new PersistenceException(e);
         }
     }
 }
