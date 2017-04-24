@@ -38,8 +38,8 @@ public class UsuarioDAO implements UsuarioDAOinter{
     /* De acordo com a RF_01 dos Requisitos Funcionais */
     @Override
     public String cadastra(Usuario usuario) throws PersistenceException {
-        String sql = "INSERT INTO usuario (senha,nome_completo,apelido,data_nasc,cidade, email, profissao, descricao, sexo,status, altura, cor_cabelo, foto_perfil)"
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO usuario (senha,nome_completo,apelido,data_nasc,cidade, email, profissao, descricao, sexo,status, altura, peso, cor_cabelo, foto_perfil)"
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
         System.out.println("Cadastra usuario no DAO: " + usuario.toString());
         try{
@@ -56,8 +56,9 @@ public class UsuarioDAO implements UsuarioDAOinter{
             statement.setString(9, usuario.getSexo());
             statement.setString(10, usuario.getStatus());
             statement.setDouble(11, usuario.getAltura());
-            statement.setString(12, usuario.getCabelo());
-            statement.setString(13, usuario.getFotoperfil());
+            statement.setDouble(12, usuario.getPeso());
+            statement.setString(13, usuario.getCabelo());
+            statement.setString(14, usuario.getFotoperfil());
             
             statement.executeUpdate();
             conexao.close();
@@ -92,8 +93,9 @@ public class UsuarioDAO implements UsuarioDAOinter{
                 usuario.setSexo(rs.getString(10));
                 usuario.setStatus(rs.getString(11));
                 usuario.setAltura(rs.getDouble(12));
-                usuario.setCabelo(rs.getString(13));
-                usuario.setFotoperfil(rs.getString(14));
+                usuario.setPeso(rs.getDouble(13));
+                usuario.setCabelo(rs.getString(14));
+                usuario.setFotoperfil(rs.getString(15));
                 
                 usuarios.add(usuario);
             }
@@ -125,8 +127,9 @@ public class UsuarioDAO implements UsuarioDAOinter{
             statement.setString(9, usuario.getSexo());
             statement.setString(10, usuario.getStatus());
             statement.setDouble(11, usuario.getAltura());
-            statement.setString(12, usuario.getCabelo());
-            statement.setString(13, usuario.getFotoperfil());
+            statement.setDouble(12, usuario.getPeso());
+            statement.setString(13, usuario.getCabelo());
+            statement.setString(14, usuario.getFotoperfil());
             conexao.close();
             return "Usuário Atualizado!";
         } catch (SQLException e){

@@ -24,11 +24,11 @@ public class Facade implements FacadeIF {
     
     @Override
     public void adicionarUsuario(String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
-            String descricao, String sexo, String status, double altura, String cabelo, String fotoperfil) {
+            String descricao, String sexo, String status, double altura, double peso, String cabelo, String fotoperfil) {
         
         gerenciadorUsuario = new GerenciadorUsuario();
         
-        gerenciadorUsuario.adicionaUsuario(senha, nome, apelido, nasc, cidade, email, profissao, descricao, sexo, status, altura, cabelo, fotoperfil);
+        gerenciadorUsuario.adicionaUsuario(senha, nome, apelido, nasc, cidade, email, profissao, descricao, sexo, status, altura, peso, cabelo, fotoperfil);
     }
     
     @Override

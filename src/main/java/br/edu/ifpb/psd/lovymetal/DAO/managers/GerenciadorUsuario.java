@@ -32,9 +32,9 @@ public class GerenciadorUsuario {
     
     /* Método responsável por adicionar um usuário e fazer a persistência no BD */
     public void adicionaUsuario(String senha, String nome_completo, String apelido, String nasc, String cidade, String email, String profissao,
-            String descricao, String sexo, String status, double altura,String cor_cabelo, String foto_perfil)
+            String descricao, String sexo, String status, double altura, double peso, String cor_cabelo, String foto_perfil)
             throws PersistenceException{
-        Usuario novousuario = new Usuario(senha, nome_completo, apelido, nasc, cidade, email, profissao, descricao, sexo, status, altura, cor_cabelo, foto_perfil);
+        Usuario novousuario = new Usuario(senha, nome_completo, apelido, nasc, cidade, email, profissao, descricao, sexo, status, altura, peso, cor_cabelo, foto_perfil);
         
 //        novousuario.setID(id);
         

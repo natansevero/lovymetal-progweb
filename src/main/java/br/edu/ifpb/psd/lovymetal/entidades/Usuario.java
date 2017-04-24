@@ -27,6 +27,7 @@ public class Usuario implements Serializable{
     private String sexo;
     private String status;
     private double altura;
+    private double peso;
     private String cabelo;
     private String fotoperfil;
     
@@ -37,7 +38,7 @@ public class Usuario implements Serializable{
     
     /* Contrutor de Usuario que recebe todos os atributos */
     public Usuario(String senha, String nome_completo, String apelido, String nasc, String cidade, String email, String profissao,
-            String descricao, String sexo, String status, double altura, String cabelo, String fotoperfil){
+            String descricao, String sexo, String status, double altura, double peso, String cabelo, String fotoperfil){
         
         this.senha = senha;
         this.nome_completo = nome_completo;
@@ -50,6 +51,7 @@ public class Usuario implements Serializable{
         this.sexo = sexo;
         this.status = status;
         this.altura = altura;
+        this.peso = peso;
         this.cabelo = cabelo;
         this.fotoperfil = fotoperfil;
     }
@@ -148,6 +150,14 @@ public class Usuario implements Serializable{
 
     public void setAltura(double altura) {
         this.altura = altura;
+    }
+    
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
     }
 
     public String getCabelo() {

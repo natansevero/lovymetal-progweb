@@ -45,6 +45,7 @@ public class AdicionarUsuario implements CommandIF {
         String descricao = req.getParameter("descricao");
         String status = req.getParameter("status");
         double altura = Double.parseDouble(req.getParameter("altura"));
+        double peso = Double.parseDouble(req.getParameter("peso"));
         String cor_cabelo = req.getParameter("cor_cabelo");
         Part foto_perfil = req.getPart("foto_perfil");
         
@@ -67,7 +68,7 @@ public class AdicionarUsuario implements CommandIF {
             System.out.println(req.getParameter(p.getName()));
         }
                 
-        facade.adicionarUsuario(senha, nome_completo, apelido, data_nasc, cidade, email, profissao, descricao, sexo, status, altura, cor_cabelo, caminho);
+        facade.adicionarUsuario(senha, nome_completo, apelido, data_nasc, cidade, email, profissao, descricao, sexo, status, altura, peso, cor_cabelo, caminho);
             
 //        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("home.jsp");
 //        dispatcher.forward(req, res);

@@ -10,13 +10,14 @@ CREATE TABLE Usuario(
 	descricao VARCHAR (200),
 	sexo VARCHAR(1) NOT NULL,
 	status VARCHAR(30) UNIQUE NOT NULL,
-	altura REAL NOT NULL,
+	altura DOUBLE PRECISION NOT NULL,
+        peso DOUBLE PRECISION NOT NULL,
 	cor_cabelo VARCHAR(20) NOT NULL,
 	foto_perfil VARCHAR(500),
 	PRIMARY KEY(id)
 );
 
-CREATE TABLE solicita_amizade(
+CREATE TABLE Solicita_amizade(
 	solicitador int,
 	solicitante int,
 	status int NOT NULL,
