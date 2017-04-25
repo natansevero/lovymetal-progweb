@@ -47,28 +47,30 @@ public class AdicionarUsuario implements CommandIF {
         double altura = Double.parseDouble(req.getParameter("altura"));
         double peso = Double.parseDouble(req.getParameter("peso"));
         String cor_cabelo = req.getParameter("cor_cabelo");
-        Part foto_perfil = req.getPart("foto_perfil");
-        
+        String foto_perfil = null;
         
         String appPath = req.getServletContext().getRealPath("");
-        String upPath = appPath + "/imagens" + File.separator + apelido;
+        String upPath = appPath + "imagens" + File.separator + apelido;
         System.out.println(upPath);
         File up = new File(upPath);
         if(!up.exists()) up.mkdirs();
         
-        System.out.println(foto_perfil.getSubmittedFileName());
+//        System.out.println(foto_perfil.getSubmittedFileName());
+//        
+//        String caminho = "imagens/" + apelido + "/" + foto_perfil.getSubmittedFileName(); 
         
-        String caminho = "imagens/" + apelido + "/" + foto_perfil.getSubmittedFileName(); 
-        
-        System.out.println(caminho);
+//        System.out.println(caminho);
         
         List<Part> list = (List) req.getParts();
         
         for(Part p : list) {
-            System.out.println(req.getParameter(p.getName()));
+            if(p.getName().equals("foto_perfil")) {
+                foto_perfil = "imagens/"+ apelido + "/" + p.getSubmittedFileName();
+                p.write(upPath + File.separator + p.getSubmittedFileName());      
+            }
         }
                 
-        facade.adicionarUsuario(senha, nome_completo, apelido, data_nasc, cidade, email, profissao, descricao, sexo, status, altura, peso, cor_cabelo, caminho);
+        facade.adicionarUsuario(senha, nome_completo, apelido, data_nasc, cidade, email, profissao, descricao, sexo, status, altura, peso, cor_cabelo, foto_perfil);
             
 //        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("home.jsp");
 //        dispatcher.forward(req, res);
