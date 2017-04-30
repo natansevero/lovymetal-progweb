@@ -9,7 +9,10 @@ import br.edu.ifpb.psd.lovymetal.DAO.interfaces.PostagemDAOinter;
 import br.edu.ifpb.psd.lovymetal.entidades.Postagem;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
@@ -43,6 +46,33 @@ public class PostagemDAO implements PostagemDAOinter{
             conexao.close();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override
+    public List<Postagem> verPostagens(int usuario) throws PersistenceException {
+        String sql = "SELECT A.amigo, P.descricao, P.foto"
+                + "FROM (Amizade A JOIN Postagem P ON A.amigo = P.id_usuario) WHERE A.usuario =" + usuario;
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            
+            ResultSet rs = statement.executeQuery();
+            
+            List<Postagem> postagens = new ArrayList<>();
+            
+            while(rs.next()) {
+                Postagem postagem = new Postagem();
+                postagem.setIDUsuario(rs.getInt(1));
+                postagem.setDescricao(rs.getString(2));
+                postagem.setFoto(rs.getString(3));
+                
+                postagens.add(postagem);
+            }
+            return postagens;
+            
+        } catch(SQLException e) {
+            throw new PersistenceException(e);
         }
     }
 

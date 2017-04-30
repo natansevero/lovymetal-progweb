@@ -6,6 +6,7 @@
 package br.edu.ifpb.psd.lovymetal.DAO.interfaces;
 
 import br.edu.ifpb.psd.lovymetal.entidades.Postagem;
+import java.util.List;
 import javax.persistence.PersistenceException;
 
 /**
@@ -15,5 +16,6 @@ import javax.persistence.PersistenceException;
 public interface PostagemDAOinter {
      /* Interface da classe Galeria */
     public void novaPostagem(Postagem postagem) throws PersistenceException;
+    public List<Postagem> verPostagens(int usuario) throws PersistenceException;
     public void excluirPostagem(int postagem_id, int id_usuario) throws PersistenceException;
 }
