@@ -56,7 +56,7 @@ public class LoginUsuario implements CommandIF {
                 session.setAttribute("senhaUsuario", senha);
                 session.setAttribute("fullUsuario", usuario);
             }
-            res.sendRedirect("home.html");
+            res.sendRedirect("secrets/home.html");
         } else {
             res.sendRedirect("index.html");
         }
