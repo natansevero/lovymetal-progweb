@@ -50,7 +50,7 @@ public class AdicionarUsuario implements CommandIF {
         String foto_perfil = null;
         
         String appPath = req.getServletContext().getRealPath("");
-        String upPath = appPath + "imagens" + File.separator + apelido;
+        String upPath = appPath + "imagens" + File.separator + email;
         System.out.println(upPath);
         File up = new File(upPath);
         if(!up.exists()) up.mkdirs();
@@ -65,7 +65,7 @@ public class AdicionarUsuario implements CommandIF {
         
         for(Part p : list) {
             if(p.getName().equals("foto_perfil")) {
-                foto_perfil = "imagens/"+ apelido + "/" + p.getSubmittedFileName();
+                foto_perfil = "imagens/" + email + "/" + p.getSubmittedFileName();
                 p.write(upPath + File.separator + p.getSubmittedFileName());      
             }
         }
