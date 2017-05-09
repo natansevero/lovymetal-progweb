@@ -18,7 +18,7 @@ public interface UsuarioDAOinter {
     /* Interface da classe Usuario */
     public String cadastra(Usuario usuario) throws PersistenceException;
     public List<Usuario> listar() throws PersistenceException;
-    public String atualiza(Usuario usuario) throws PersistenceException;
+    public boolean atualizar(Usuario usuario) throws PersistenceException;
     public ArrayList pesquisar(String nome) throws PersistenceException;
     public ArrayList pesquisar(String sexo, String cabelo) throws PersistenceException;
     public ArrayList pesquisar(float altura, float peso) throws PersistenceException;
