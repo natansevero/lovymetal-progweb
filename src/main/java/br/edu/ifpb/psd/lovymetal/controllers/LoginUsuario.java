@@ -10,7 +10,9 @@ import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import br.edu.ifpb.psd.lovymetal.facade.FacadeFactory;
 import br.edu.ifpb.psd.lovymetal.facade.FacadeIF;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,12 +53,29 @@ public class LoginUsuario implements CommandIF {
         }
         
         if(autoriza) {
+            Map<String, String> dados_usuario = new HashMap<>();
+            dados_usuario.put("id", ""+usuario.getID());
+            dados_usuario.put("senha", ""+usuario.getSenha());
+            dados_usuario.put("nome_completo", ""+usuario.getNome_completo());
+            dados_usuario.put("apelido", ""+usuario.getApelido());
+            dados_usuario.put("data_nasc", ""+usuario.getDatanasc());
+            dados_usuario.put("cidade", ""+usuario.getCidade());
+            dados_usuario.put("email", ""+usuario.getEmail());
+            dados_usuario.put("profissao", ""+usuario.getProfissao());
+            dados_usuario.put("descricao", ""+usuario.getDescricao());
+            dados_usuario.put("sexo", ""+usuario.getSexo());
+            dados_usuario.put("status", ""+usuario.getStatus());
+            dados_usuario.put("altura", ""+usuario.getAltura());
+            dados_usuario.put("peso", ""+usuario.getPeso());
+            dados_usuario.put("cor_cabelo", ""+usuario.getCabelo());
+            dados_usuario.put("foto_perfil", ""+usuario.getFotoperfil());
+            
             synchronized(session) {
                 session.setAttribute("emailUsuario", email);
                 session.setAttribute("senhaUsuario", senha);
-                session.setAttribute("fullUsuario", usuario);
+                session.setAttribute("fullUsuario", dados_usuario);
             }
-            res.sendRedirect("secrets/home.html");
+            res.sendRedirect("secrets/home.jsp");
         } else {
             res.sendRedirect("index.html");
         }

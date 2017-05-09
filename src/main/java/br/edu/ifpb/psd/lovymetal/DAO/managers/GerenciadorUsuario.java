@@ -45,6 +45,14 @@ public class GerenciadorUsuario {
         System.out.println(cadastra);
     }
     
+    public void atualizaUsuario(String senha, String nome_completo, String apelido, String nasc, String cidade, String email, String profissao,
+            String descricao, String sexo, String status, double altura, double peso, String cor_cabelo, String foto_perfil) {
+        
+        // Instanciar obj do tipo usuario com os novos dados
+        // Chamar Método de autuallizar do Dao de Usuarios passando o obj
+    }
+    
+    
     public List<Usuario> listarUsuarios() {
         return userdao.listar();
     }

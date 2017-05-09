@@ -109,7 +109,7 @@ public class UsuarioDAO implements UsuarioDAOinter{
     
      /* De acordo com a RF_03 dos Requisitos Funcionais */
     @Override
-    public String atualiza(Usuario usuario) throws PersistenceException{
+    public boolean atualizar(Usuario usuario) throws PersistenceException{
         String sql = "UPDATE TABLE Usuario SET senha = ?, nom_completoe = ?, apelido = ?,data_nasc = ?,cidade = ?,"
                 + "email = ?, profissao = ?, descricao = ?, sexo = ?, status = ?, altura = ?, cor_cabelo = ?, foto_perfil = ?"
                 + "WHERE id = " + usuario.getID();
@@ -130,8 +130,11 @@ public class UsuarioDAO implements UsuarioDAOinter{
             statement.setDouble(12, usuario.getPeso());
             statement.setString(13, usuario.getCabelo());
             statement.setString(14, usuario.getFotoperfil());
-            conexao.close();
-            return "Usuário Atualizado!";
+            
+//            conexao.close();
+            
+            return statement.executeUpdate() > 0;
+            
         } catch (SQLException e){
             throw new PersistenceException(e);
         }

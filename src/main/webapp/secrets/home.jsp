@@ -1,3 +1,5 @@
+<%@page contentType="text/html"%>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -6,7 +8,7 @@
 		<meta name="description" content="This is social network html5 template available in themeforest......" />
 		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
 		<meta name="robots" content="index, follow" />
-		<title>PÃ¡gina Inicial | Lovy Metal</title>
+		<title>Página Inicial | Lovy Metal</title>
 
     <!-- Stylesheets
     ================================================= -->
@@ -41,8 +43,8 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-menu">
-              <li class="dropdown"><a href="contact.html">PÃ¡gina Inicial</a></li>
-              <li class="dropdown"><a href="contact.html">Editar Conta</a></li>  
+              <li class="dropdown"><a href="contact.html">Página Inicial</a></li>
+              <li class="dropdown"><a href="edit.jsp">Editar Conta</a></li>  
               <li class="dropdown"><a href="contact.html">Sair</a></li>
             </ul>
               <form class="navbar-form navbar-right hidden-sm" action="#" method="post">
@@ -66,12 +68,12 @@
           ================================================= -->
           <div class="col-md-3 static">
             <div class="profile-card">
-            	<img src="../images/users/user-1.jpg" alt="user" class="profile-photo" />
-            	<h5><a href="timeline.html" class="text-white">Natan Severo</a></h5>
+                <img src="../${sessionScope.fullUsuario.foto_perfil}" alt="user" class="profile-photo" />
+                <h5><a href="timeline.html" class="text-white">${sessionScope.fullUsuario.apelido}</a></h5>
             	<!--<a href="#" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>-->
             </div><!--profile card ends-->
             <ul class="nav-news-feed">
-              <li><i class="icon ion-ios-paper"></i><div><a href="newsfeed.html">SolitaÃ§Ãµes</a></div></li>
+              <li><i class="icon ion-ios-paper"></i><div><a href="newsfeed.html">Solitações</a></div></li>
               <li><i class="icon ion-ios-people-outline"></i><div><a href="newsfeed-friends.html">Amigos</a></div></li>
               <li><i class="icon ion-chatboxes"></i><div><a href="newsfeed-messages.html">Mensagens</a></div></li>
               <li><i class="icon ion-images"></i><div><a href="newsfeed-images.html">Galeria</a></div></li>

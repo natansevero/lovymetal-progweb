@@ -32,6 +32,15 @@ public class Facade implements FacadeIF {
     }
     
     @Override
+    public void atualizarUsuario(String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
+            String descricao, String sexo, String status, double altura, double peso, String cabelo, String fotoperfil) {
+       
+        gerenciadorUsuario = new GerenciadorUsuario();
+        
+        // Chamar Método atualizaUsuario do Gerenciador de usuario
+    }
+    
+    @Override
     public List<Usuario> listarUsuarios() {
         return gerenciadorUsuario.listarUsuarios();
     }
