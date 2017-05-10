@@ -18,7 +18,9 @@ public interface FacadeIF {
     public void adicionarUsuario(String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
             String descricao, String sexo, String status, double altura, double peso, String cabelo, String fotoperfil);
     
-    public void atualizarUsuario(String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
+    public Usuario getByEmail(String email);
+    
+    public boolean atualizarUsuario(int id_usuario, String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
             String descricao, String sexo, String status, double altura, double peso, String cabelo, String fotoperfil);
     
     public List<Usuario> listarUsuarios();

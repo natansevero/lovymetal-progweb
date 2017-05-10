@@ -11,13 +11,13 @@
 
     <!-- Stylesheets
     ================================================= -->
-		<link rel="stylesheet" href="../css/bootstrap.min.css" />
-		<link rel="stylesheet" href="../css/style.css" />
-		<link rel="stylesheet" href="../css/ionicons.min.css" />
-    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/ionicons.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
     
     <!--Favicon-->
-    <link rel="shortcut icon" type="image/png" href="../images/fav.png"/>
+    <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
 	</head>
   <body>
 
@@ -35,7 +35,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index-register.html"><img src="../images/logo1.png" alt="logo" /></a>
+            <a class="navbar-brand" href="index-register.html"><img src="images/logo1.png" alt="logo" /></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -60,23 +60,23 @@
             	<div class="row">
             	
                   <h4 class="grey">Edite sua conta!</h4>
-                  <form class="contact-form" action="#" method="post">
+                  <form class="contact-form" action="controller?command=EditarUsuario" method="post" enctype="multipart/form-data">
                     <div class="col-md-6 col-sm-6">   
                       
                         <div class="form-group">
-                          <input id="nome_completo" type="text" name="nome_completo" class="form-control" placeholder="Nome Completo" required="required" data-error="Name is required.">
+                            <input id="nome_completo" type="text" name="nome_completo" class="form-control" placeholder="Nome Completo" value="${sessionScope.fullUsuario.nome_completo}" required="required" data-error="Name is required.">
                         </div>
 
                         <div class="form-group">
-                          <input id="apelido" type="text" name="apelido" class="form-control" placeholder="Apelido" required="required" data-error="Name is required.">
+                          <input id="apelido" type="text" name="apelido" class="form-control" placeholder="Apelido" required="required" value="${sessionScope.fullUsuario.apelido}" data-error="Name is required.">
                         </div>
 
                         <div class="form-group">
-                          <input id="email" type="email" name="email" class="form-control" placeholder="E-mail" required="required" data-error="Name is required.">
+                          <input id="email" type="email" name="email" class="form-control" placeholder="E-mail" required="required" value="${sessionScope.fullUsuario.email}" data-error="Name is required.">
                         </div>
 
                         <div class="form-group">
-                          <input id="senha" type="password" name="senha" class="form-control" placeholder="Senha" required="required" data-error="Name is required.">
+                          <input id="senha" type="password" name="senha" class="form-control" placeholder="Senha" required="required" value="${sessionScope.fullUsuario.senha}" data-error="Name is required.">
                         </div>
 
                         <div class="form-group">
@@ -93,17 +93,17 @@
 
                         <div class="form-group">
                           <label for="data_nasc">Data de Nascimento: </label>
-                            <input id="data_nasc" class="form-control input-group-lg" type="date" name="data_nasc" required="required" data-error="Name is required."/>
+                            <input id="data_nasc" class="form-control input-group-lg" type="date" name="data_nasc" required="required" value="${sessionScope.fullUsuario.data_nasc}" data-error="Name is required."/>
                         </div>
 
                         <div class="form-group">
-                          <input id="cidade" type="text" name="cidade" class="form-control" placeholder="Cidade" required="required" data-error="Name is required.">
+                          <input id="cidade" type="text" name="cidade" class="form-control" placeholder="Cidade" required="required" value="${sessionScope.fullUsuario.cidade}" data-error="Name is required.">
                         </div>
                        
                     
                      
                         <div class="form-group">
-                          <input id="profissao" type="text" name="profissao" class="form-control" placeholder="Profissão" required="required" data-error="Name is required.">
+                          <input id="profissao" type="text" name="profissao" class="form-control" placeholder="Profissão" required="required" value="${sessionScope.fullUsuario.profissao}" data-error="Name is required.">
                         </div>
                         
                     </div>
@@ -111,7 +111,7 @@
                     <div class="col-md-6 col-sm-6">
                         
                         <div class="form-group">
-                            <textarea name="descricao" class="form-control" rows="5" placeholder="Descrição"></textarea>
+                            <textarea name="descricao" class="form-control" rows="5" placeholder="Descrição">${sessionScope.fullUsuario.descricao}</textarea>
                         </div>
                         
                         <div class="form-group">
@@ -125,16 +125,16 @@
 
 
                         <div class="form-group">
-                            <input id="altura" class="form-control input-group-lg" type="number" name="altura" placeholder="Altura" required="required" data-error="Name is required."/>
+                            <input id="altura" class="form-control input-group-lg" type="number" name="altura" placeholder="Altura" required="required" value="${sessionScope.fullUsuario.altura}" data-error="Name is required."/>
                         </div>
 
 
                         <div class="form-group">
-                            <input id="peso" class="form-control input-group-lg" type="number" name="peso" placeholder="Peso" required="required" data-error="Name is required."/>
+                            <input id="peso" class="form-control input-group-lg" type="number" name="peso" placeholder="Peso" required="required" value="${sessionScope.fullUsuario.peso}" data-error="Name is required."/>
                         </div>
 
                         <div class="form-group">
-                           <input id="cor_cabelo" class="form-control input-group-lg" type="text" name="cor_cabelo" placeholder="Cor do Cabelo" required="required" data-error="Name is required."/> 
+                           <input id="cor_cabelo" class="form-control input-group-lg" type="text" name="cor_cabelo" placeholder="Cor do Cabelo" required="required" value="${sessionScope.fullUsuario.cor_cabelo}" data-error="Name is required."/> 
                         </div>  
 
                         <div class="form-group">
@@ -184,8 +184,8 @@
     <!-- Scripts
     ================================================= -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTMXfmDn0VlqWIyoOxK8997L-amWbUPiQ&callback=initMap"></script>
-    <script src="../js/jquery-3.1.1.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>

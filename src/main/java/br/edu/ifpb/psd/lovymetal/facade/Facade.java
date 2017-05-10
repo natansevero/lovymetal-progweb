@@ -32,12 +32,19 @@ public class Facade implements FacadeIF {
     }
     
     @Override
-    public void atualizarUsuario(String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
+    public Usuario getByEmail(String email) {
+        return gerenciadorUsuario.getByEmail(email);
+    }
+    
+    @Override
+    public boolean atualizarUsuario(int id_usuario, String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
             String descricao, String sexo, String status, double altura, double peso, String cabelo, String fotoperfil) {
        
         gerenciadorUsuario = new GerenciadorUsuario();
         
         // Chamar Método atualizaUsuario do Gerenciador de usuario
+        
+        return gerenciadorUsuario.atualizaUsuario(id_usuario, senha, nome, apelido, nasc, cidade, email, profissao, descricao, sexo, status, altura, peso, cabelo, fotoperfil);
     }
     
     @Override

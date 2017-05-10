@@ -69,6 +69,43 @@ public class UsuarioDAO implements UsuarioDAOinter{
     }
     
     @Override
+    public Usuario getByEmail(String email) throws PersistenceException {
+        String sql = "select * from Usuario where email = ?";
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setString(1, email);
+            
+            ResultSet rs = statement.executeQuery();
+            
+            Usuario usuario = new Usuario();
+            
+            while(rs.next()) {
+                usuario.setID(rs.getInt(1));
+                usuario.setSenha(rs.getString(2));
+                usuario.setNome_completo(rs.getString(3));
+                usuario.setApelido(rs.getString(4));
+                usuario.setDatanasc(rs.getString(5));
+                usuario.setCidade(rs.getString(6));
+                usuario.setEmail(rs.getString(7));
+                usuario.setProfissao(rs.getString(8));
+                usuario.setDescricao(rs.getString(9));
+                usuario.setSexo(rs.getString(10));
+                usuario.setStatus(rs.getString(11));
+                usuario.setAltura(rs.getDouble(12));
+                usuario.setPeso(rs.getDouble(13));
+                usuario.setCabelo(rs.getString(14));
+                usuario.setFotoperfil(rs.getString(15));
+            }
+            
+            return usuario;
+            
+        } catch(SQLException e) {
+            throw new PersistenceException(e);
+        }
+    }
+    
+    @Override
     public List<Usuario> listar() throws PersistenceException {
         String sql = "select * from Usuario";
         
@@ -110,9 +147,8 @@ public class UsuarioDAO implements UsuarioDAOinter{
      /* De acordo com a RF_03 dos Requisitos Funcionais */
     @Override
     public boolean atualizar(Usuario usuario) throws PersistenceException{
-        String sql = "UPDATE TABLE Usuario SET senha = ?, nom_completoe = ?, apelido = ?,data_nasc = ?,cidade = ?,"
-                + "email = ?, profissao = ?, descricao = ?, sexo = ?, status = ?, altura = ?, cor_cabelo = ?, foto_perfil = ?"
-                + "WHERE id = " + usuario.getID();
+        String sql = "UPDATE usuario SET senha = ?, nome_completo = ?, apelido = ?, data_nasc = ?,cidade = ?,"
+                + "email = ?, profissao = ?, descricao = ?, sexo = ?, status = ?, altura = ?, peso = ?, cor_cabelo = ? WHERE id = ?";
         
         try{
             PreparedStatement statement = conexao.prepareStatement(sql);
@@ -129,7 +165,7 @@ public class UsuarioDAO implements UsuarioDAOinter{
             statement.setDouble(11, usuario.getAltura());
             statement.setDouble(12, usuario.getPeso());
             statement.setString(13, usuario.getCabelo());
-            statement.setString(14, usuario.getFotoperfil());
+            statement.setInt(14, usuario.getID());
             
 //            conexao.close();
             

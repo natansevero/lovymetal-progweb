@@ -71,11 +71,9 @@ public class LoginUsuario implements CommandIF {
             dados_usuario.put("foto_perfil", ""+usuario.getFotoperfil());
             
             synchronized(session) {
-                session.setAttribute("emailUsuario", email);
-                session.setAttribute("senhaUsuario", senha);
                 session.setAttribute("fullUsuario", dados_usuario);
             }
-            res.sendRedirect("secrets/home.jsp");
+            res.sendRedirect("home.jsp");
         } else {
             res.sendRedirect("index.html");
         }

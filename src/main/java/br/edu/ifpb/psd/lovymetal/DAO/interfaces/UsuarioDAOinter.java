@@ -17,6 +17,7 @@ import javax.persistence.PersistenceException;
 public interface UsuarioDAOinter {
     /* Interface da classe Usuario */
     public String cadastra(Usuario usuario) throws PersistenceException;
+    public Usuario getByEmail(String email) throws PersistenceException;
     public List<Usuario> listar() throws PersistenceException;
     public boolean atualizar(Usuario usuario) throws PersistenceException;
     public ArrayList pesquisar(String nome) throws PersistenceException;
