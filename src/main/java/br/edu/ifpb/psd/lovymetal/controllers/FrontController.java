@@ -23,7 +23,15 @@ public class FrontController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        
+        this.genericAction(req, res);
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+        this.genericAction(req, res);
+    }
+    
+    private void genericAction(HttpServletRequest req, HttpServletResponse res) {
         RequestDispatcher dispatcher = null;
         
         try {
