@@ -12,6 +12,7 @@ import br.edu.ifpb.psd.lovymetal.entidades.Postagem;
 import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -56,7 +57,7 @@ public class Facade implements FacadeIF {
     }
     
     @Override
-    public List<Usuario> pesquisarUsuario(String apelido) {
+    public List<Map<String, String>> pesquisarUsuario(String apelido) {
         return gerenciadorUsuario.pesquisarUsuario(apelido);
     }
     

@@ -43,16 +43,16 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-menu">
-              <li class="dropdown"><a href="contact.html">Página Inicial</a></li>
-              <li class="dropdown"><a href="edit.jsp">Editar Conta</a></li>  
+              <li class="dropdown"><a href="home.jsp">Página Inicial</a></li>
+              <li class="dropdown"><a href="editar.jsp">Editar Conta</a></li>  
               <li class="dropdown"><a href="controller?command=LogoutUsuario">Sair</a></li>
             </ul>
-              <form class="navbar-form navbar-right hidden-sm" action="#" method="post">
-              <div class="form-group">
-                <i class="icon ion-android-search"></i>
-                <input type="text" class="form-control" placeholder="Pesquisar por amigos">
-              </div>
-              <input class="search-button" type="submit" value="Pesquisar" />    
+              <form class="navbar-form navbar-right hidden-sm" action="controller?command=PesquisarUsuario" method="post">
+                <div class="form-group">
+                  <i class="icon ion-android-search"></i>
+                  <input type="text" class="form-control" name="pesquisar" placeholder="Pesquisar por amigos">
+                </div>
+                <input class="search-button" type="submit" value="Pesquisar" />    
             </form>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container -->
