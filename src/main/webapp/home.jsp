@@ -45,7 +45,7 @@
             <ul class="nav navbar-nav navbar-right main-menu">
               <li class="dropdown"><a href="contact.html">Página Inicial</a></li>
               <li class="dropdown"><a href="edit.jsp">Editar Conta</a></li>  
-              <li class="dropdown"><a href="contact.html">Sair</a></li>
+              <li class="dropdown"><a href="controller?command=LogoutUsuario">Sair</a></li>
             </ul>
               <form class="navbar-form navbar-right hidden-sm" action="#" method="post">
               <div class="form-group">

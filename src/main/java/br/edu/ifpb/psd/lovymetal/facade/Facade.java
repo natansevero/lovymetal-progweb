@@ -52,4 +52,8 @@ public class Facade implements FacadeIF {
         return gerenciadorUsuario.listarUsuarios();
     }
     
+    @Override
+    public List<Usuario> pesquisarUsuario(String apelido) {
+        return gerenciadorUsuario.pesquisarUsuario(apelido);
+    }
 }

@@ -178,20 +178,43 @@ public class UsuarioDAO implements UsuarioDAOinter{
     
     /* De acordo com a RF_12 dos Requisitos Funcionais */
     @Override
-    public ArrayList pesquisar(String nome) throws PersistenceException {
-        ArrayList<Usuario> usuarios = new ArrayList<>();
-        String sql = "SELECT * FROM Usuario WHERE nome LIKE" + "%" + nome + "%";
-        try{
-            Statement statement = conexao.createStatement(
-                ResultSet.CLOSE_CURSORS_AT_COMMIT,
-                ResultSet.TYPE_SCROLL_SENSITIVE);
-            ResultSet resultado = statement.executeQuery(sql);
-            listaUsuarios(resultado, usuarios);
-            conexao.close();
-        } catch (SQLException e){
+    public List<Usuario> pesquisar(String apelido) throws PersistenceException {
+        String sql = "select * from Usuario where apelido = ?";
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setString(1, apelido);
+            
+            ResultSet rs = statement.executeQuery();
+            
+            List<Usuario> usuarios = new ArrayList<>();
+            
+            while(rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setID(rs.getInt(1));
+//                usuario.setSenha(rs.getString(2));
+                usuario.setNome_completo(rs.getString(3));
+                usuario.setApelido(rs.getString(4));
+                usuario.setDatanasc(rs.getString(5));
+                usuario.setCidade(rs.getString(6));
+                usuario.setEmail(rs.getString(7));
+                usuario.setProfissao(rs.getString(8));
+                usuario.setDescricao(rs.getString(9));
+                usuario.setSexo(rs.getString(10));
+                usuario.setStatus(rs.getString(11));
+                usuario.setAltura(rs.getDouble(12));
+                usuario.setPeso(rs.getDouble(13));
+                usuario.setCabelo(rs.getString(14));
+                usuario.setFotoperfil(rs.getString(15));
+                
+                usuarios.add(usuario);
+            }
+            
+            return usuarios;
+            
+        } catch(SQLException e) {
             throw new PersistenceException(e);
         }
-        return usuarios;
     }
     
     @Override

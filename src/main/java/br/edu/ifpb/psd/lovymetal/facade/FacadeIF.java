@@ -24,4 +24,6 @@ public interface FacadeIF {
             String descricao, String sexo, String status, double altura, double peso, String cabelo, String fotoperfil);
     
     public List<Usuario> listarUsuarios();
+    
+    public List<Usuario> pesquisarUsuario(String apelido);
 }
