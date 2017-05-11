@@ -11,6 +11,7 @@ import br.edu.ifpb.psd.lovymetal.DAO.interfaces.UsuarioDAOinter;
 import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.PersistenceException;
 
 /**
@@ -65,7 +66,7 @@ public class GerenciadorUsuario {
         return userdao.listar();
     }
     
-    public List<Usuario> pesquisarUsuario(String apelido) {
+    public List<Map<String, String>> pesquisarUsuario(String apelido) {
         return userdao.pesquisar(apelido);
     }
         

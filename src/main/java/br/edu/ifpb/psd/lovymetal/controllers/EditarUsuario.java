@@ -82,7 +82,7 @@ public class EditarUsuario implements CommandIF {
                    
             res.sendRedirect("home.jsp");
         } else {
-            res.sendRedirect("edit.jsp");
+            res.sendRedirect("editar.jsp");
         }
     }
     

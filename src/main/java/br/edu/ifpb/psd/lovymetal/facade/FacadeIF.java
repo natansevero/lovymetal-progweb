@@ -8,6 +8,7 @@ package br.edu.ifpb.psd.lovymetal.facade;
 
 import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -25,5 +26,5 @@ public interface FacadeIF {
     
     public List<Usuario> listarUsuarios();
     
-    public List<Usuario> pesquisarUsuario(String apelido);
+    public List<Map<String, String>> pesquisarUsuario(String apelido);
 }

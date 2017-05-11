@@ -13,7 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
@@ -178,7 +180,7 @@ public class UsuarioDAO implements UsuarioDAOinter{
     
     /* De acordo com a RF_12 dos Requisitos Funcionais */
     @Override
-    public List<Usuario> pesquisar(String apelido) throws PersistenceException {
+    public List<Map<String, String>> pesquisar(String apelido) throws PersistenceException {
         String sql = "select * from Usuario where apelido = ?";
         
         try {
@@ -187,26 +189,28 @@ public class UsuarioDAO implements UsuarioDAOinter{
             
             ResultSet rs = statement.executeQuery();
             
-            List<Usuario> usuarios = new ArrayList<>();
+            List<Map<String, String>> usuarios = new ArrayList<>();
             
             while(rs.next()) {
-                Usuario usuario = new Usuario();
-                usuario.setID(rs.getInt(1));
-//                usuario.setSenha(rs.getString(2));
-                usuario.setNome_completo(rs.getString(3));
-                usuario.setApelido(rs.getString(4));
-                usuario.setDatanasc(rs.getString(5));
-                usuario.setCidade(rs.getString(6));
-                usuario.setEmail(rs.getString(7));
-                usuario.setProfissao(rs.getString(8));
-                usuario.setDescricao(rs.getString(9));
-                usuario.setSexo(rs.getString(10));
-                usuario.setStatus(rs.getString(11));
-                usuario.setAltura(rs.getDouble(12));
-                usuario.setPeso(rs.getDouble(13));
-                usuario.setCabelo(rs.getString(14));
-                usuario.setFotoperfil(rs.getString(15));
+                // Construindo o Map
+                Map<String, String> usuario = new HashMap<>();
+                usuario.put("id", ""+rs.getInt(1));
+    //            usuario.put("senha", rs.getString(2));
+                usuario.put("nome_completo", rs.getString(3));
+                usuario.put("apelido", rs.getString(4));
+                usuario.put("data_nasc", rs.getString(5));
+                usuario.put("cidade", rs.getString(6));
+                usuario.put("email", rs.getString(7));
+                usuario.put("profissao", rs.getString(8));
+                usuario.put("descricao", rs.getString(9));
+                usuario.put("sexo", rs.getString(10));
+                usuario.put("status", rs.getString(11));
+                usuario.put("altura", ""+rs.getDouble(12));
+                usuario.put("peso", ""+rs.getDouble(13));
+                usuario.put("cor_cabelo", rs.getString(14));
+                usuario.put("foto_perfil", rs.getString(15));
                 
+                // Adicionando Map no List de Usuarios
                 usuarios.add(usuario);
             }
             

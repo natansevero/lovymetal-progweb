@@ -8,6 +8,7 @@ package br.edu.ifpb.psd.lovymetal.DAO.interfaces;
 import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.PersistenceException;
 
 /**
@@ -20,7 +21,7 @@ public interface UsuarioDAOinter {
     public Usuario getByEmail(String email) throws PersistenceException;
     public List<Usuario> listar() throws PersistenceException;
     public boolean atualizar(Usuario usuario) throws PersistenceException;
-    public List<Usuario> pesquisar(String apelido) throws PersistenceException;
+    public List<Map<String, String>> pesquisar(String apelido) throws PersistenceException;
     public ArrayList pesquisar(String sexo, String cabelo) throws PersistenceException;
     public ArrayList pesquisar(float altura, float peso) throws PersistenceException;
     public String exlui(int id) throws PersistenceException;
