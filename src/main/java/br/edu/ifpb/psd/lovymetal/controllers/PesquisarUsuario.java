@@ -6,7 +6,6 @@
 
 package br.edu.ifpb.psd.lovymetal.controllers;
 
-import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import br.edu.ifpb.psd.lovymetal.facade.FacadeFactory;
 import br.edu.ifpb.psd.lovymetal.facade.FacadeIF;
 import java.io.IOException;

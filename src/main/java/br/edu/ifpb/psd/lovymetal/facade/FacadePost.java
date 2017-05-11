@@ -9,12 +9,13 @@ import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorPostagem;
 import br.edu.ifpb.psd.lovymetal.entidades.Postagem;
 import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author Julierme Heinstein
  */
-public class FacedePost implements FacadeIF{
+public class FacadePost implements FacadeIF{
     
     GerenciadorPostagem gerenciadorpostagem;
 
@@ -39,7 +40,7 @@ public class FacedePost implements FacadeIF{
     }
 
     @Override
-    public List<Usuario> pesquisarUsuario(String apelido) {
+    public List<Map<String, String>> pesquisarUsuario(String apelido) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
