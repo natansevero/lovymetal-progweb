@@ -13,17 +13,18 @@ import java.io.Serializable;
  */
 public class Mensagem implements Serializable{
     /* Todos os atributos da tabela Mensagem do banco de dados estão declarados aqui */
-    private int mensagemid;
+    private int mensagem_id;
     private int remetente;
     private int destinatario;
     private String mensagem;
     private int status;
+    // status 1 para lido e 0 para não lido //
     
     public Mensagem(){
     }
     
-    public Mensagem(int mensagemid, int remetente, int destinatario, String mensagem, int status){
-        this.mensagemid = mensagemid;
+    public Mensagem(int mensagem_id, int remetente, int destinatario, String mensagem, int status){
+        this.mensagem_id = mensagem_id;
         this.remetente = remetente;
         this.destinatario = destinatario;
         this.mensagem = mensagem;
@@ -32,10 +33,10 @@ public class Mensagem implements Serializable{
     
     /* get e set de id */
     public int getMensagemID(){
-        return this.mensagemid;
+        return this.mensagem_id;
     }
-    public void setMensagemID(int mensagemid){
-        mensagemid = this.mensagemid;
+    public void setMensagemID(int mensagem_id){
+        mensagem_id = this.mensagem_id;
     }
     
      /* get e set de Remetente */

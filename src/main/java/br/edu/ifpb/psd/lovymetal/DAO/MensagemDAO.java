@@ -36,7 +36,7 @@ public class MensagemDAO implements MensagemDAOinter{
     /* De acordo com a RF_08 dos Requisitos Funcionais */
     @Override
     public String enviar(Mensagem mensagem) throws PersistenceException {
-        String sql = "INSERT INTO Mensagem(mensagemid, remetente, destinatario, mensagem, status)" +
+        String sql = "INSERT INTO Mensagem(mensagem_id, remetente, destinatario, mensagem, status)" +
                 "VALUES (1,2,3,4,5)";
         try{
             PreparedStatement statement = conexao.prepareStatement(sql);

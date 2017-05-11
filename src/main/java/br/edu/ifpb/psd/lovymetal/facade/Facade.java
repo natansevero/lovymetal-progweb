@@ -5,12 +5,15 @@
  */
 package br.edu.ifpb.psd.lovymetal.facade;
 
+import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorGaleria;
+import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorMensagem;
+import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorPassatempos;
 import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorPostagem;
+import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorRelacionamento;
 import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorUsuario;
-import br.edu.ifpb.psd.lovymetal.controllers.FazerPostagem;
+import br.edu.ifpb.psd.lovymetal.entidades.Mensagem;
 import br.edu.ifpb.psd.lovymetal.entidades.Postagem;
 import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
-import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,9 +24,19 @@ import java.util.Map;
 public class Facade implements FacadeIF {
 
     GerenciadorUsuario gerenciadorUsuario;
+    GerenciadorGaleria gerenciadorGaleria;
+    GerenciadorMensagem gerenciadorMensagem;
+    GerenciadorPassatempos gerenciadorPassatempos;
+    GerenciadorPostagem gerenciadorPostagem;
+    GerenciadorRelacionamento gerenciadorRelacionamento;
     
     public Facade() {
         gerenciadorUsuario = new GerenciadorUsuario();
+        gerenciadorGaleria = new GerenciadorGaleria();
+        gerenciadorMensagem = new GerenciadorMensagem();
+        gerenciadorPassatempos = new GerenciadorPassatempos();
+        gerenciadorPostagem = new GerenciadorPostagem();
+        gerenciadorRelacionamento = new GerenciadorRelacionamento();
     }
     
     @Override
@@ -61,19 +74,69 @@ public class Facade implements FacadeIF {
         return gerenciadorUsuario.pesquisarUsuario(apelido);
     }
     
-    /* Métodos implementados na FacadePost */
+    /* Métodos implementados dos Passatempos */
+    @Override
+    public void novoPassatempo(int id_usuario, String passatempo) {
+        gerenciadorPassatempos.novoPassatempo(id_usuario, passatempo);
+    }
+
+    @Override
+    public void removePassatempo(int id_usuario, String passatempo) {
+        gerenciadorPassatempos.removePassatempo(id_usuario, passatempo);
+    }
+    
+    /* Métodos implementados da Postagem */
     @Override
     public List<Postagem> verPostagens(int id_usuario) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return gerenciadorPostagem.verPostagens(id_usuario);
     }
 
     @Override
     public void fazerPostagem(int postagem_id, int id_usuario, String descricao, String foto) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        gerenciadorPostagem.novaPostagem(postagem_id, id_usuario, descricao, foto);
     }
 
     @Override
     public void excluiPostagem(int postagem_id, int id_usuario) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        gerenciadorPostagem.excluiPostagem(postagem_id, id_usuario);
+    }
+    
+    /* Métodos implementados da Galeria */
+    @Override
+    public void novaGaleria(int galeria_id, int id_usuario, String nomegaleria, String foto){
+        gerenciadorGaleria.novaGaleria(galeria_id, id_usuario, nomegaleria, foto);
+    }
+    
+    @Override
+    public void removeGaleria(int galeria_id, int id_usuario){
+        gerenciadorGaleria.removeGaleria(galeria_id, id_usuario);
+    }
+    
+    /* Métodos implementados da Mensagem */
+    @Override
+    public void enviarMensagem(int mensagem_id, int remetente, int destinatario, String mensagem, int status) {
+        gerenciadorMensagem.novaMensagem(mensagem_id, remetente, destinatario, mensagem, status);
+    }
+
+    @Override
+    public List<Mensagem> verificarMensagens(int destinatario) {
+        List mensagens = gerenciadorMensagem.verificarmensagens(destinatario);
+        return mensagens;
+    }
+
+    @Override
+    public void excluirMensagem(int id) {
+        gerenciadorMensagem.removerMensagem(id);
+    }
+    
+    /* Métodos implementados do Relacionamento */
+    @Override
+    public void novaRelacao(int id_usuario, String tipo, int par) {
+        gerenciadorRelacionamento.novaRelacao(id_usuario, tipo, par);
+    }
+
+    @Override
+    public void removeRelacao(int id_usuario, int par) {
+        gerenciadorRelacionamento.removeRelacao(id_usuario, par);
     }
 }
