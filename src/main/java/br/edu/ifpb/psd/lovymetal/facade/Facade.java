@@ -5,7 +5,10 @@
  */
 package br.edu.ifpb.psd.lovymetal.facade;
 
+import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorPostagem;
 import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorUsuario;
+import br.edu.ifpb.psd.lovymetal.controllers.FazerPostagem;
+import br.edu.ifpb.psd.lovymetal.entidades.Postagem;
 import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import java.sql.Date;
 import java.util.List;
@@ -55,5 +58,21 @@ public class Facade implements FacadeIF {
     @Override
     public List<Usuario> pesquisarUsuario(String apelido) {
         return gerenciadorUsuario.pesquisarUsuario(apelido);
+    }
+    
+    /* Métodos implementados na FacadePost */
+    @Override
+    public List<Postagem> verPostagens(int id_usuario) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void fazerPostagem(int postagem_id, int id_usuario, String descricao, String foto) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void excluiPostagem(int postagem_id, int id_usuario) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

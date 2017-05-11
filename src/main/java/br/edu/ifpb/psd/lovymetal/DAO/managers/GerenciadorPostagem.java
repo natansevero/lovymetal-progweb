@@ -9,6 +9,7 @@ import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.PostagemDAOinter;
 import br.edu.ifpb.psd.lovymetal.entidades.Postagem;
+import java.util.List;
 import javax.persistence.PersistenceException;
 
 /**
@@ -16,7 +17,7 @@ import javax.persistence.PersistenceException;
  * @author JuliermeH
  */
 public class GerenciadorPostagem {
-        /* Declarando os respectivos atributos para esta entidade */
+    /* Declarando os respectivos atributos para esta entidade */
     private DAOFactoryInter fabrica = null;
     private PostagemDAOinter postagemdao = null;
     
@@ -36,6 +37,12 @@ public class GerenciadorPostagem {
         postagem.setDescricao(descricao);
         postagem.setFoto(foto);
         postagemdao.novaPostagem(postagem);
+    }
+    
+    /* Método responsável por ver as Postagens dos amigos do Usuario */
+    public List<Postagem> verPostagens(int id_usuario) throws PersistenceException{
+        List postagens = postagemdao.verPostagens(id_usuario);
+        return postagens;
     }
     
     /* Método responsável por remover uma Postagem do BD usando o id da postagem e do usuario */

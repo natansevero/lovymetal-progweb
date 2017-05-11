@@ -274,4 +274,22 @@ public class UsuarioDAO implements UsuarioDAOinter{
         }
         return "Usuário não excluído";
     }
+
+    /* De acordo com a Regra 05 e ao RF_09 de Recomendar Pessoa para um Amigo */
+    @Override
+    public String recomendacao(int id_usuario, int amigo, int recomendado) throws PersistenceException {
+         String sql = "CREATE VIEW Recomendacoes\n" +
+"           AS SELECT U.id AS Usuario, U.Nome_Completo AS Amigo, U.Nome_Completo AS Recomendacao\n" +
+"           FROM Usuario U, Amizade A\n" +
+"           WHERE saoamigos(" + amigo + "," + recomendado + ") = 1";
+        try{
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.execute();
+            conexao.close();
+            return "Usuário recomendado";
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "Usuário não recomendado";
+    }
 }
