@@ -64,6 +64,10 @@ public class GerenciadorUsuario {
     public List<Usuario> listarUsuarios() {
         return userdao.listar();
     }
+    
+    public List<Usuario> pesquisarUsuario(String apelido) {
+        return userdao.pesquisar(apelido);
+    }
         
     /* Método responsável por remover um usuário do BD usando o login */
     public void removeUsuario(int id) throws PersistenceException{
