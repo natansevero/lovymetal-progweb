@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.psd.lovymetal.Filters;
+package br.edu.ifpb.psd.lovymetal.filters;
 
 import java.io.IOException;
 import javax.servlet.Filter;
