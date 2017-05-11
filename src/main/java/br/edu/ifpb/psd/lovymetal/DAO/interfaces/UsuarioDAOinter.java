@@ -24,5 +24,6 @@ public interface UsuarioDAOinter {
     public List<Map<String, String>> pesquisar(String apelido) throws PersistenceException;
     public ArrayList pesquisar(String sexo, String cabelo) throws PersistenceException;
     public ArrayList pesquisar(float altura, float peso) throws PersistenceException;
+    public String recomendacao(int id_usuario, int amigo, int recomendado)throws PersistenceException;
     public String exlui(int id) throws PersistenceException;
 }
