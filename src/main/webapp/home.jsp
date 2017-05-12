@@ -43,9 +43,16 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-menu">
-              <li class="dropdown"><a href="home.jsp">Página Inicial</a></li>
-              <li class="dropdown"><a href="editar.jsp">Editar Conta</a></li>  
-              <li class="dropdown"><a href="controller?command=LogoutUsuario">Sair</a></li>
+              <li class="dropdown"><a href="home.jsp">Página Inicial</a></li>  
+              <!-- Botão de configurações -> Edita Conta e Excluir Conta -->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configurações <span><img src="images/down-arrow.png" alt="" /></span></a>
+                  <ul class="dropdown-menu newsfeed-home">
+                    <li class="dropdown"><a href="editar.jsp">Editar Conta</a></li>
+                    <li class="dropdown"><a href="excluir.jsp">Excluir Conta</a></li>
+                  </ul>
+              </li>
+              <li class="dropdown"><a href="controller?command=LogoutUsuario">Sair</a></li>   
             </ul>
               <form class="navbar-form navbar-right hidden-sm" action="controller?command=PesquisarUsuario" method="post">
                 <div class="form-group">
