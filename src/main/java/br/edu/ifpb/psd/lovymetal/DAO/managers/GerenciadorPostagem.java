@@ -25,7 +25,7 @@ public class GerenciadorPostagem {
     public GerenciadorPostagem(){
         fabrica = DAOFactory.criarFactory();
         try{
-            postagemdao = fabrica.novaPostagem();
+            postagemdao = (PostagemDAOinter) fabrica;
         } catch (PersistenceException e){}
     }
     

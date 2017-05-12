@@ -26,7 +26,6 @@ public class RelacionamentoDAO implements RelacionamentoDAOinter{
     
     /* Estabelecendo conexão com o banco usando as propriedades */
     public RelacionamentoDAO() throws PersistenceException, SQLException, ClassNotFoundException{
-        this.prop = new PropBD();
         this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha());   
     }
     

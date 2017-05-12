@@ -24,7 +24,7 @@ public class GerenciadorRelacionamento {
     public GerenciadorRelacionamento(){
         fabrica = DAOFactory.criarFactory();
         try{
-            relacaodao = fabrica.novoRelacionamento();
+            relacaodao = (RelacionamentoDAOinter) fabrica.novoRelacionamento();
         } catch (PersistenceException e){}
     }
     

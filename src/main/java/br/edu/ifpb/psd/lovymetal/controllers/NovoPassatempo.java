@@ -16,24 +16,20 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Julierme Heinstein
  */
-public class FazerPostagem implements CommandIF{
-    
-    /* Controlador responsável por fazer uma nova postagem */
+public class NovoPassatempo implements CommandIF {
+    /* Controlador responsável por incluir um novo Passatempo */
     private final FacadeIF facade;
     
-    public FazerPostagem(){
+    public NovoPassatempo(){
         facade = FacadeFactory.criarFacadeFactory();
     }
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        int id_postagem = Integer.valueOf(req.getParameter("id_postagem"));
-        int id_usuario = Integer.valueOf(req.getParameter("id_usuario"));
-        String descricao = req.getParameter("descricao");
-        String foto = req.getParameter("foto");
+        int id_usuario = Integer.getInteger(req.getParameter("id_usuario"));
+        String passatempo = req.getParameter("passatempo");
         
-        facade.fazerPostagem(id_postagem, id_usuario, descricao, foto);
+        facade.novoPassatempo(id_usuario, passatempo);
         res.sendRedirect("home.jsp");
     }
-    
 }

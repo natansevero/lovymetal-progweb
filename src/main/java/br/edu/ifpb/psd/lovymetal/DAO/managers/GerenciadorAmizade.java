@@ -24,7 +24,7 @@ public class GerenciadorAmizade {
     public GerenciadorAmizade(){
         fabrica = DAOFactory.criarFactory();
         try{
-            amizadedao = fabrica.novaAmizade();
+            amizadedao = (AmizadeDAOinter) fabrica.novaAmizade();
         } catch (PersistenceException e){}
     }
     
