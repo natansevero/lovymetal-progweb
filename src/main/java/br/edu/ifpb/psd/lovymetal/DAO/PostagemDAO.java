@@ -29,6 +29,7 @@ public class PostagemDAO implements PostagemDAOinter{
     
     /* Estabelecendo conexão com o banco usando as propriedades */
     public PostagemDAO() throws PersistenceException, SQLException, ClassNotFoundException{
+        this.prop = new PropBD();
         this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha()); 
     }
     
