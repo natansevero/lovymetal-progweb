@@ -71,6 +71,8 @@ public class LoginUsuario implements CommandIF {
             dados_usuario.put("foto_perfil", ""+usuario.getFotoperfil());
             
             synchronized(session) {
+                // Verificar esse emailUsuario no Filtro
+                session.setAttribute("emailUsuario", usuario.getEmail());
                 session.setAttribute("fullUsuario", dados_usuario);
             }
             res.sendRedirect("home.jsp");
