@@ -9,7 +9,6 @@ import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.UsuarioDAOinter;
 import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
-import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.PersistenceException;

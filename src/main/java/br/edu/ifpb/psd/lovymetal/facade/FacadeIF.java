@@ -6,6 +6,7 @@
 
 package br.edu.ifpb.psd.lovymetal.facade;
 
+import br.edu.ifpb.psd.lovymetal.entidades.Mensagem;
 import br.edu.ifpb.psd.lovymetal.entidades.Postagem;
 import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import java.util.List;
@@ -29,9 +30,28 @@ public interface FacadeIF {
     
     public List<Map<String, String>> pesquisarUsuario(String apelido);
     
+    public void novoPassatempo(int id_usuario, String passatempo);
+    
+    public void removePassatempo(int id_usuario, String passatempo);
+    
     public void fazerPostagem(int postagem_id,int id_usuario,String descricao,String foto);
     
     public List<Postagem> verPostagens(int id_usuario);
     
     public void excluiPostagem(int postagem_id,int id_usuario);
+    
+    public void novaGaleria(int galeria_id, int id_usuario, String nomegaleria, String foto);
+    
+    public void removeGaleria(int galeria_id, int id_usuario);
+    
+    public void enviarMensagem(int mensagemid, int remetente, int destinatario, String mensagem, int status);
+    
+    public List<Mensagem> verificarMensagens(int destinatario);
+    
+    public void excluirMensagem(int id);
+    
+    public void novaRelacao(int id_usuario, String tipo, int par);
+    
+    public void removeRelacao(int id_usuario, int par);
+    
 }

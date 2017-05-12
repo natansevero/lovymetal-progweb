@@ -9,6 +9,7 @@ import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.MensagemDAOinter;
 import br.edu.ifpb.psd.lovymetal.entidades.Mensagem;
+import java.util.List;
 import javax.persistence.PersistenceException;
 
 /**
@@ -37,6 +38,12 @@ public class GerenciadorMensagem {
         msn.setMensagem(mensagem);
         msn.setStatus(status);
         mensagemdao.enviar(msn);
+    }
+    
+    /* Método responsável por listar as Mensagens do usuário como destinatário */
+    public List<Mensagem> verificarmensagens(int destinatario)throws PersistenceException{
+        List mensagens = mensagemdao.verificarmensagens(destinatario);
+        return mensagens;
     }
     
     /* Método responsável por remover uma Mensagem do BD usando o id da mesma */
