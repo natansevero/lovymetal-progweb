@@ -25,7 +25,7 @@ public class GerenciadorMensagem {
     public GerenciadorMensagem(){
         fabrica = DAOFactory.criarFactory();
         try{
-            mensagemdao = (MensagemDAOinter) fabrica.novaMensagem();
+            mensagemdao = fabrica.novaMensagem();
         } catch (PersistenceException e){}
     }
     

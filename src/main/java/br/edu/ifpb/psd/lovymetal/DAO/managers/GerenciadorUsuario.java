@@ -26,7 +26,7 @@ public class GerenciadorUsuario {
     public GerenciadorUsuario(){
         fabrica = DAOFactory.criarFactory();
         try{
-            userdao = (UsuarioDAOinter) fabrica.criaUsuario();
+            userdao = fabrica.criaUsuario();
         } catch (PersistenceException e){}
     }
     
