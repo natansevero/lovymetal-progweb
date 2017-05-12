@@ -24,7 +24,7 @@ public class GerenciadorSolicitacao {
     public GerenciadorSolicitacao(){
         fabrica = DAOFactory.criarFactory();
         try{
-            solicita_amizadedao = (Solicita_amizadeDAOinter) fabrica.novaSolicitacao();
+            solicita_amizadedao = fabrica.novaSolicitacao();
         } catch (PersistenceException e){}
     }
     
