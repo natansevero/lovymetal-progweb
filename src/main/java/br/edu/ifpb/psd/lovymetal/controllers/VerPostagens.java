@@ -29,7 +29,7 @@ public class VerPostagens implements CommandIF{
     public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         int id_usuario = Integer.valueOf(req.getParameter("id_usuario"));
         
-        facade.verPostagens(id_usuario);
+//        facade.verPostagens(id_usuario);
         res.sendRedirect("home.jsp");
     }
     

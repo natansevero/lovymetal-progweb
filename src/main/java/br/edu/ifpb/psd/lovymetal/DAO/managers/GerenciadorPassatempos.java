@@ -24,7 +24,7 @@ public class GerenciadorPassatempos {
     public GerenciadorPassatempos(){
         fabrica = DAOFactory.criarFactory();
         try{
-            passatemposdao = (PassatemposDAOinter) fabrica.novoPassatempo();
+            passatemposdao = fabrica.novoPassatempo();
         } catch (PersistenceException e){}
     }
     
