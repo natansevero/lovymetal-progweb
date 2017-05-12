@@ -29,7 +29,7 @@ public class ExcluiPostagem implements CommandIF{
         int id_postagem = Integer.valueOf(req.getParameter("id_postagem"));
         int id_usuario = Integer.valueOf(req.getParameter("id_usuario"));
         
-//        facade.excluiPostagem(id_postagem, id_usuario);
+        facade.excluiPostagem(id_postagem, id_usuario);
         res.sendRedirect("home.jsp");
     }
     

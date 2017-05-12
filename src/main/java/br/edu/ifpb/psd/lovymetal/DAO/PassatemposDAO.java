@@ -26,7 +26,6 @@ public class PassatemposDAO implements PassatemposDAOinter{
     
     /* Estabelecendo conexão com o banco usando as propriedades */
     public PassatemposDAO() throws PersistenceException, SQLException, ClassNotFoundException{
-        this.prop = new PropBD();
         this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha());
     }
     
