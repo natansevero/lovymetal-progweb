@@ -215,7 +215,7 @@ public class UsuarioDAO implements UsuarioDAOinter{
         }
     }
     
-    /* De acordo com a RF_12 dos Requisitos Funcionais */
+    /* De acordo com a RF_13 dos Requisitos Funcionais */
     @Override
     public List<Map<String, String>> pesquisar(String apelido) throws PersistenceException {
         String sql = "select * from Usuario where apelido ilike ?";
@@ -317,7 +317,7 @@ public class UsuarioDAO implements UsuarioDAOinter{
         }
     }
 
-    /* De acordo com a Regra 05 e ao RF_09 de Recomendar Pessoa para um Amigo */
+    /* De acordo com a Regra 05 e ao RF_10 de Recomendar Pessoa para um Amigo */
     @Override
     public String recomendacao(int id_usuario, int amigo, int recomendado) throws PersistenceException {
          String sql = "CREATE VIEW Recomendacoes\n" +
