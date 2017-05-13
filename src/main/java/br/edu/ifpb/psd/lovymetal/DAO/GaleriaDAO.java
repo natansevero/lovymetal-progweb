@@ -26,6 +26,7 @@ public class GaleriaDAO implements GaleriaDAOinter{
     
     /* Estabelecendo conexão com o banco usando as propriedades */
     public GaleriaDAO() throws PersistenceException, SQLException, ClassNotFoundException {
+        this.prop = new PropBD();
         this.conexao = ConnFactory.getConnection(prop.getURL(), prop.getUser(), prop.getSenha());    
     }
     

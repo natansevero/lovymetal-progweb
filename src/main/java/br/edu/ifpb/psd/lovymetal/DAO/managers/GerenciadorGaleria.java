@@ -24,7 +24,7 @@ public class GerenciadorGaleria {
     public GerenciadorGaleria(){
         fabrica = DAOFactory.criarFactory();
         try{
-            galeriadao = (GaleriaDAOinter) fabrica.novaGaleria();
+            galeriadao = fabrica.novaGaleria();
         } catch (PersistenceException e){}
     }
     

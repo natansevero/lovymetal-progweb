@@ -73,7 +73,7 @@
                                                 <img src="${usuario.foto_perfil}" alt="user" class="profile-photo-lg" />
                                                 <div class="friend-info">
                                                     <!-- <a href="#" class="pull-right text-green">Adicionar+</a> -->
-                                                    <h5><a href="timeline.html" class="profile-link">${usuario.apelido}</a></h5>
+                                                    <h5><a href="controller?command=AcessarPerfil&id=${usuario.id}" class="profile-link">${usuario.apelido}</a></h5>
                                                     <p>${usuario.cidade}</p>
                                                     <p>${usuario.status}</p>
                                                 </div>

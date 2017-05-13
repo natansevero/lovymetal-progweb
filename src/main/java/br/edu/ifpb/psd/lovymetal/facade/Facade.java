@@ -54,6 +54,11 @@ public class Facade implements FacadeIF {
     }
     
     @Override
+    public Usuario getById(int id) {
+        return gerenciadorUsuario.getById(id);
+    }
+    
+    @Override
     public boolean atualizarUsuario(int id_usuario, String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
             String descricao, String sexo, String status, double altura, double peso, String cabelo, String fotoperfil) {
        
@@ -72,6 +77,11 @@ public class Facade implements FacadeIF {
     @Override
     public List<Map<String, String>> pesquisarUsuario(String apelido) {
         return gerenciadorUsuario.pesquisarUsuario(apelido);
+    }
+    
+    @Override
+    public boolean excluirUsuario(String email, String senha) {
+        return gerenciadorUsuario.removeUsuario(email, senha);
     }
     
     /* Métodos implementados dos Passatempos */

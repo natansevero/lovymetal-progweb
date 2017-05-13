@@ -23,8 +23,11 @@ public interface FacadeIF {
     
     public Usuario getByEmail(String email);
     
+    public Usuario getById(int id);
+    
     public boolean atualizarUsuario(int id_usuario, String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
             String descricao, String sexo, String status, double altura, double peso, String cabelo, String fotoperfil);
+    public boolean excluirUsuario(String email, String senha);
     
     public List<Usuario> listarUsuarios();
     

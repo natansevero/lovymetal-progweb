@@ -26,7 +26,7 @@ public class GerenciadorUsuario {
     public GerenciadorUsuario(){
         fabrica = DAOFactory.criarFactory();
         try{
-            userdao = (UsuarioDAOinter) fabrica.criaUsuario();
+            userdao = fabrica.criaUsuario();
         } catch (PersistenceException e){}
     }
     
@@ -47,6 +47,10 @@ public class GerenciadorUsuario {
     
     public Usuario getByEmail(String email) {
         return userdao.getByEmail(email);
+    }
+    
+    public Usuario getById(int id) {
+        return userdao.getById(id);
     }
     
     public boolean atualizaUsuario(int id_usuario, String senha, String nome_completo, String apelido, String nasc, String cidade, String email, String profissao,
@@ -70,7 +74,7 @@ public class GerenciadorUsuario {
     }
         
     /* Método responsável por remover um usuário do BD usando o login */
-    public void removeUsuario(int id) throws PersistenceException{
-        userdao.exlui(id);
+    public boolean removeUsuario(String email, String senha) throws PersistenceException{
+        return userdao.exlui(email, senha);
     }
 }
