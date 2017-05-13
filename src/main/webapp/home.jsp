@@ -25,7 +25,7 @@
 
     <!-- Header
     ================================================= -->
-    <header id="header-editar">
+    <header id="header">
       <nav class="navbar navbar-default navbar-fixed-top menu">
         <div class="container">
 
