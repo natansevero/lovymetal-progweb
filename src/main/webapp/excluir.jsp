@@ -104,10 +104,10 @@
       </div>
     </footer>
     
-<!--    preloader
+    <!--preloader-->
     <div id="spinner-wrapper">
       <div class="spinner"></div>
-    </div>-->
+    </div>
     
     <!-- Scripts
     ================================================= -->

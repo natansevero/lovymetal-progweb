@@ -1445,10 +1445,10 @@ ul.online-users li span.online-dot{
   ==================================================*/
 
 .timeline-cover{
-  background: url("../../../../../../GitHub/lovymetal-progweb/src/main/webapp/images/covers/1.jpg") no-repeat;
+  background-color: #706969;
   background-position: center;
   background-size: cover;
-  min-height: 360px;
+  min-height: 200px;
   border-radius: 0 0 4px 4px;
   position: relative;
 }
