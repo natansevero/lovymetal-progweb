@@ -16,21 +16,20 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Julierme Heinstein
  */
-public class ExcluiPostagem implements CommandIF{
-    /* Controlador responsável por excluir postagens */
+public class ExcluirGaleria implements CommandIF{
+    /* Controlador responsável por excluir uma Galeria */
     private final FacadeIF facade;
     
-    public ExcluiPostagem(){
+    public ExcluirGaleria(){
         facade = FacadeFactory.criarFacadeFactory();
     }
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        int id_postagem = Integer.valueOf(req.getParameter("id_postagem"));
-        int id_usuario = Integer.valueOf(req.getParameter("id_usuario"));
+        int galeria_id = Integer.getInteger(req.getParameter("galeria_id"));
+        int id_usuario = Integer.getInteger(req.getParameter("id_usuario"));
         
-        facade.excluiPostagem(id_postagem, id_usuario);
+        facade.removeGaleria(galeria_id, id_usuario);
         res.sendRedirect("home.jsp");
     }
-    
 }

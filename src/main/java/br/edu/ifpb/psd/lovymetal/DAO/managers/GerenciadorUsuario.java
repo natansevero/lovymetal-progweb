@@ -49,6 +49,10 @@ public class GerenciadorUsuario {
         return userdao.getByEmail(email);
     }
     
+    public Usuario getById(int id) {
+        return userdao.getById(id);
+    }
+    
     public boolean atualizaUsuario(int id_usuario, String senha, String nome_completo, String apelido, String nasc, String cidade, String email, String profissao,
             String descricao, String sexo, String status, double altura, double peso, String cor_cabelo, String foto_perfil) {
         
@@ -70,7 +74,7 @@ public class GerenciadorUsuario {
     }
         
     /* Método responsável por remover um usuário do BD usando o login */
-    public void removeUsuario(int id) throws PersistenceException{
-        userdao.exlui(id);
+    public boolean removeUsuario(String email, String senha) throws PersistenceException{
+        return userdao.exlui(email, senha);
     }
 }

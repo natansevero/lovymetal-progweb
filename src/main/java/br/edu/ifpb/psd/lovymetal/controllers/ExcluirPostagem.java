@@ -16,20 +16,21 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Julierme Heinstein
  */
-public class ExcluiPassatempo implements CommandIF {
-     /* Controlador responsável por excluir um Passatempo */
+public class ExcluirPostagem implements CommandIF{
+    /* Controlador responsável por excluir postagens */
     private final FacadeIF facade;
     
-    public ExcluiPassatempo(){
+    public ExcluirPostagem(){
         facade = FacadeFactory.criarFacadeFactory();
     }
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        int id_usuario = Integer.getInteger(req.getParameter("id_usuario"));
-        String passatempo = req.getParameter("passatempo");
+        int id_postagem = Integer.valueOf(req.getParameter("id_postagem"));
+        int id_usuario = Integer.valueOf(req.getParameter("id_usuario"));
         
-        facade.removePassatempo(id_usuario, passatempo);
+        facade.excluiPostagem(id_postagem, id_usuario);
         res.sendRedirect("home.jsp");
     }
+    
 }
