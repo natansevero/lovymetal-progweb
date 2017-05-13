@@ -14,4 +14,14 @@
         <url-pattern>/controller</url-pattern>
     </servlet-mapping>
     
+    <filter>
+        <filter-name>UsuarioLogado</filter-name>
+        <filter-class>br.edu.ifpb.psd.lovymetal.filters.UsuarioLogado</filter-class>
+    </filter>
+    <filter-mapping>
+        <url-pattern>/controllers/LoginUsuario</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
 </web-app>
