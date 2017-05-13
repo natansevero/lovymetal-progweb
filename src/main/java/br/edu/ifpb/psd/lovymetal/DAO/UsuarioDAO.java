@@ -108,6 +108,43 @@ public class UsuarioDAO implements UsuarioDAOinter{
     }
     
     @Override
+    public Usuario getById(int id) throws PersistenceException {
+        String sql = "select * from Usuario where id = ?";
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setInt(1, id);
+            
+            ResultSet rs = statement.executeQuery();
+            
+            Usuario usuario = new Usuario();
+            
+            while(rs.next()) {
+                usuario.setID(rs.getInt(1));
+//                usuario.setSenha(rs.getString(2));
+                usuario.setNome_completo(rs.getString(3));
+                usuario.setApelido(rs.getString(4));
+                usuario.setDatanasc(rs.getString(5));
+                usuario.setCidade(rs.getString(6));
+                usuario.setEmail(rs.getString(7));
+                usuario.setProfissao(rs.getString(8));
+                usuario.setDescricao(rs.getString(9));
+                usuario.setSexo(rs.getString(10));
+                usuario.setStatus(rs.getString(11));
+                usuario.setAltura(rs.getDouble(12));
+                usuario.setPeso(rs.getDouble(13));
+                usuario.setCabelo(rs.getString(14));
+                usuario.setFotoperfil(rs.getString(15));
+            }
+            
+            return usuario;
+            
+        } catch(SQLException e) {
+            throw new PersistenceException(e);
+        }
+    }
+    
+    @Override
     public List<Usuario> listar() throws PersistenceException {
         String sql = "select * from Usuario";
         
@@ -181,7 +218,7 @@ public class UsuarioDAO implements UsuarioDAOinter{
     /* De acordo com a RF_12 dos Requisitos Funcionais */
     @Override
     public List<Map<String, String>> pesquisar(String apelido) throws PersistenceException {
-        String sql = "select * from Usuario where apelido = ?";
+        String sql = "select * from Usuario where apelido ilike ?";
         
         try {
             PreparedStatement statement = conexao.prepareStatement(sql);
@@ -266,17 +303,18 @@ public class UsuarioDAO implements UsuarioDAOinter{
     
     /* De acordo com a RF_04 dos Requisitos Funcionais */
     @Override
-    public String exlui(int id) throws PersistenceException {
-        String sql = "DELETE FROM Usuario WHERE id="+ id +" ON CASCADE";
-        try{
+    public boolean exlui(String email, String senha) throws PersistenceException {
+        String sql = "delete from Usuario where email = ? and senha = ?";
+        
+        try {
             PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.execute();
-            conexao.close();
-            return "Usuário excluído";
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            statement.setString(1, email);
+            statement.setString(2, senha);
+            
+            return statement.executeUpdate() > 0;
+        } catch(SQLException e) {
+            throw new PersistenceException(e);
         }
-        return "Usuário não excluído";
     }
 
     /* De acordo com a Regra 05 e ao RF_09 de Recomendar Pessoa para um Amigo */

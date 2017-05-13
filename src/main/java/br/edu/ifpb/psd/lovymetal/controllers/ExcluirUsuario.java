@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package br.edu.ifpb.psd.lovymetal.controllers;
 
 import br.edu.ifpb.psd.lovymetal.facade.FacadeFactory;
@@ -11,25 +12,33 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Julierme Heinstein
+ * @author natan
  */
-public class ExcluiGaleria implements CommandIF{
-    /* Controlador responsável por excluir uma Galeria */
+public class ExcluirUsuario implements CommandIF {
+    
     private final FacadeIF facade;
     
-    public ExcluiGaleria(){
+    public ExcluirUsuario() {
         facade = FacadeFactory.criarFacadeFactory();
     }
-
+    
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        int galeria_id = Integer.getInteger(req.getParameter("galeria_id"));
-        int id_usuario = Integer.getInteger(req.getParameter("id_usuario"));
+        String email = req.getParameter("email");
+        String senha = req.getParameter("senha");
         
-        facade.removeGaleria(galeria_id, id_usuario);
-        res.sendRedirect("home.jsp");
+        HttpSession session = req.getSession();
+        
+        if(facade.excluirUsuario(email, senha)) {
+            session.invalidate();
+            res.sendRedirect("index.html");
+        } else {
+            res.sendRedirect("excluir.jsp");
+        }
     }
+    
 }
