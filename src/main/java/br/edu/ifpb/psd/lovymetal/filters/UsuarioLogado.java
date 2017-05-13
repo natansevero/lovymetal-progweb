@@ -6,6 +6,7 @@
 package br.edu.ifpb.psd.lovymetal.filters;
 
 import br.edu.ifpb.psd.lovymetal.controllers.LoginUsuario;
+import com.sun.org.apache.regexp.internal.recompile;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,10 +16,12 @@ import java.util.logging.Logger;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 /**
  *
@@ -31,7 +34,7 @@ public class UsuarioLogado implements Filter{
    private PrintWriter out;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig config) throws ServletException {
         this.config = config;
         try{
             out = new PrintWriter(new File("Filterlog.txt"));
@@ -44,12 +47,12 @@ public class UsuarioLogado implements Filter{
     @SuppressWarnings("empty-statement")
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession();
                 
         if(session.getAttribute("emailUsuario") == null){
             out.println("Usuário não logado");
-            LoginUsuario login = new LoginUsuario(); 
-            session = login.execute(req, res);
+            response.sendRedirect("index.html");
         } else{
             String user = (String) session.getAttribute("emailUsuario");
             out.println("Usuario "+user+" logado");
