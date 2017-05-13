@@ -52,7 +52,7 @@ body{
 	font-family: 'Lato', sans-serif;
   line-height: 26px;
 	color: #6d6e71;
-	font-size: 12px;
+	font-size: 13px;
 }
 
 
@@ -143,7 +143,7 @@ section .wrapper{
 }
 
 #page-contents{
-  padding: 30px 0 50px;
+  padding: 20px 0 0 0;
 }
 
 .btn-primary{
@@ -277,6 +277,10 @@ textarea{
   min-height: 50px;
 }
 
+#header-editar{
+  min-height: 0px !important;
+}
+
 .menu{
   background: #231F20;
   border: none;
@@ -307,8 +311,15 @@ textarea{
   color: #fff;
   height: 26px;
   border-radius: 13px;
-  font-size: 12px;
+  font-size: 15px !important;
   padding-left: 30px;
+}
+
+.form-group i.search{
+  background-image: url(../images/icons/search_red.png);
+  background-size: 16px;
+  background-repeat: no-repeat !important;
+  padding-left: 20px;
 }
 
 .menu ul.main-menu li.dropdown a{
@@ -926,7 +937,7 @@ textarea{
 /* My stylesheet */
 
 .search-button {
-    border: 2px solid #9e0b0f;
+    border: 1px solid #9e0b0f;
     border-radius: 10px;
     background-color: #9e0b0f;
     color: white;
@@ -988,20 +999,36 @@ ul.nav-news-feed li div::after{
 ul.nav-news-feed li a{color: #6d6e71;}
 
 ul.nav-news-feed li i{
-  font-size: 18px;
-  margin-right: 15px;
+  font-size: 19px;
+  margin-right: 5px;
   float: left;
 }
 
-ul.nav-news-feed i.ion-ios-paper{color: #8dc63f;}
+ul.nav-news-feed i.ion-ios-paper{
+	color: #8dc63f;
+	background-image: url(../images/icons/add-contacts_black.png);
+	background-size: 20px;
+}
 
 ul.nav-news-feed i.ion-ios-people{color: #662d91;}
 
-ul.nav-news-feed i.ion-ios-people-outline{color: #ee2a7b;}
+ul.nav-news-feed i.ion-ios-people-outline{
+	color: #ee2a7b;
+	background-image: url(../images/icons/friend-request_black.png);
+	background-size: 20px;
+}
 
-ul.nav-news-feed i.ion-chatboxes{color: #f7941e;}
+ul.nav-news-feed i.ion-chatboxes{
+	color: #f7941e;
+	background-image: url(../images/icons/messenger_black.png);
+	background-size: 20px;
+}
 
-ul.nav-news-feed i.ion-images{color: #1c75bc;}
+ul.nav-news-feed i.ion-images{
+	color: #1c75bc;
+	background-image: url(../images/icons/gallery_black.png);
+	background-size: 20px;
+}
 
 ul.nav-news-feed i.ion-ios-videocam{color: #9e1f63;}
 

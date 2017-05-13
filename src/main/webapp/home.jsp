@@ -25,7 +25,7 @@
 
     <!-- Header
     ================================================= -->
-		<header id="header">
+    <header id="header-editar">
       <nav class="navbar navbar-default navbar-fixed-top menu">
         <div class="container">
 
@@ -56,7 +56,7 @@
             </ul>
               <form class="navbar-form navbar-right hidden-sm" action="controller?command=PesquisarUsuario" method="post">
                 <div class="form-group">
-                  <i class="icon ion-android-search"></i>
+                  <i class="search"></i>
                   <input type="text" class="form-control" name="pesquisar" placeholder="Pesquisar por amigos">
                 </div>
                 <input class="search-button" type="submit" value="Pesquisar" />    
