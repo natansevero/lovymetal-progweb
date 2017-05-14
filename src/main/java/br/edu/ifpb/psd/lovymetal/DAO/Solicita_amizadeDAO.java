@@ -81,19 +81,6 @@ public class Solicita_amizadeDAO implements Solicita_amizadeDAOinter {
         }
     }
     
-    @Override
-    public void excluisolicitacao(int solicitador,int solicitante) throws PersistenceException{
-        String sql = "DELETE FROM solicita_amizade WHERE solicitador="+ solicitador +
-                "AND solicitante=" + solicitante;
-        try{
-            PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.execute();
-            conexao.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
      /* De acordo com a RF_06 dos Requisitos Funcionais */
     @Override
     public List<Map<String, String>> listaSolicitacoes(int id_usuario, int status) throws PersistenceException {
@@ -129,4 +116,36 @@ public class Solicita_amizadeDAO implements Solicita_amizadeDAOinter {
             throw new PersistenceException(e);
         }
     }
+    
+    @Override
+    public boolean aceita(Solicita_amizade solicitacao) throws PersistenceException {
+        String sql = "update solicita_amizade set status = ? where solicitador = ? and solicitante = ?";
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setInt(1, solicitacao.getStatus());
+            statement.setInt(2, solicitacao.getSolicitador());
+            statement.setInt(3, solicitacao.getSolicitante());
+            
+            return statement.executeUpdate() > 0;
+        } catch(SQLException ex) {
+            throw new PersistenceException(ex);
+        }
+    }
+    
+    @Override
+    public boolean rejeita(Solicita_amizade solicitacao) throws PersistenceException {
+        String sql = "delete from solicita_amizade where solicitador = ? and solicitante = ?";
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setInt(1, solicitacao.getSolicitador());
+            statement.setInt(2, solicitacao.getSolicitante());
+            
+            return statement.executeUpdate() > 0;
+        } catch(SQLException ex) {
+            throw new PersistenceException(ex);
+        }
+    }
+    
 }

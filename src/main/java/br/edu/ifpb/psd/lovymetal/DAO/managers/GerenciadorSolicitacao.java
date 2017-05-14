@@ -54,8 +54,18 @@ public class GerenciadorSolicitacao {
         return solicita_amizadedao.listaSolicitacoes(id_usuario, this.PENDENTE);
     }
     
-    /* Método responsável por remover a Solicitacao do BD usando o id do solicitador e do solicitante */
-    public void excluiSolicitacao(int solicitador, int solicitante) throws PersistenceException{
-        solicita_amizadedao.excluisolicitacao(solicitador, solicitante);
+    public boolean aceitaSolicitacao(int solicitador, int solicitante) throws PersistenceException {
+        Solicita_amizade solicitacao = new Solicita_amizade();
+        solicitacao.setSolicitador(solicitador);
+        solicitacao.setSolicitante(solicitante);
+        solicitacao.setStatus(this.ACEITA);
+        return solicita_amizadedao.aceita(solicitacao);
+    }
+    
+    public boolean rejeitaSolicitacao(int solicitador, int solicitante) throws PersistenceException {
+        Solicita_amizade solicitacao = new Solicita_amizade();
+        solicitacao.setSolicitador(solicitador);
+        solicitacao.setSolicitante(solicitante);
+        return solicita_amizadedao.rejeita(solicitacao);
     }
 }
