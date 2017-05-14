@@ -159,6 +159,11 @@ public class Facade implements FacadeIF {
         List mensagens = gerenciadorMensagem.verificarmensagens(destinatario);
         return mensagens;
     }
+    
+    public List<Mensagem> lerMensagens(int destinatario, int remetente) {
+        List mensagens = gerenciadorMensagem.lermensagens(destinatario, remetente);
+        return mensagens;
+    }
 
     @Override
     public void excluirMensagem(int id) {

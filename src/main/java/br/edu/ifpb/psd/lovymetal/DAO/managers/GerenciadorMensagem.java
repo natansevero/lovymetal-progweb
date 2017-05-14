@@ -46,6 +46,12 @@ public class GerenciadorMensagem {
         return mensagens;
     }
     
+    /* Método responsável por ler as Mensagens de um Remetente específico */
+    public List<Mensagem> lermensagens(int destinatario,int remetente)throws PersistenceException{
+        List mensagens = mensagemdao.lermensagens(destinatario, remetente);
+        return mensagens;
+    }
+    
     /* Método responsável por remover uma Mensagem do BD usando o id da mesma */
     public void removerMensagem(int id) throws PersistenceException{
         mensagemdao.excluir(id);

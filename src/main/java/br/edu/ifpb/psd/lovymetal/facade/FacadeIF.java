@@ -67,6 +67,8 @@ public interface FacadeIF {
     
     public List<Mensagem> verificarMensagens(int destinatario);
     
+    public List<Mensagem> lerMensagens(int destinatario, int remetente);
+    
     public void excluirMensagem(int id);
     
     public void novaRelacao(int id_usuario, String tipo, int par);
