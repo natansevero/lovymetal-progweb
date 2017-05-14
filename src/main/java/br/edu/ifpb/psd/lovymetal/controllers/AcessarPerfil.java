@@ -16,6 +16,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,6 +33,9 @@ public class AcessarPerfil implements CommandIF {
     
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+        HttpSession session = req.getSession();
+        int id_user_session = (int) session.getAttribute("idUsuario");
+        
         String id_usuario = req.getParameter("id");
         
         if(id_usuario != null) {
@@ -52,6 +56,9 @@ public class AcessarPerfil implements CommandIF {
             dados_usuario.put("peso", ""+usuario.getPeso());
             dados_usuario.put("cor_cabelo", ""+usuario.getCabelo());
             dados_usuario.put("foto_perfil", ""+usuario.getFotoperfil());
+            
+            // Status da solicitação para fazer UX com o botão de solicitar
+            req.setAttribute("statusSolicitacao", facade.verificarSolicitacao(id_user_session, Integer.parseInt(id_usuario)));
             
             req.setAttribute("acessoPerfil", dados_usuario);
             RequestDispatcher dispatcher = req.getRequestDispatcher("acessar_perfil.jsp");
