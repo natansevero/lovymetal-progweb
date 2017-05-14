@@ -84,7 +84,17 @@
                   <li><a href="timeline-friends.html">Enviar Mensagem</a></li>
                 </ul>
                 <ul class="follow-me list-inline">
-                  <li><button class="btn-primary">Enviar Solicitação</button></li>
+                    <c:choose>
+                        <c:when test="${requestScope.statusSolicitacao eq 1}">
+                            <li><span class="btn-primary">Solicitação Enviada</span></li>
+                        </c:when>
+                        <c:when test="${requestScope.statusSolicitacao eq 2}">
+                            <li><span class="btn-primary">Amigos</span></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a class="btn-primary" href="controller?command=SolicitarAmizade&id_solicitante=${requestScope.acessoPerfil.id}">Enviar Solicitação</a></li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
               </div>
             </div>
@@ -104,7 +114,17 @@
                 <li><a href="timeline-album.html">Galeria</a></li>
                 <li><a href="timeline-friends.html">Enviar Mensagem</a></li>
               </ul>
-              <button class="btn-primary">Enviar Solicitação</button>
+              <c:choose>
+                        <c:when test="${requestScope.statusSolicitacao eq 1}">
+                           <span class="btn-primary">Solicitação Enviada</span>
+                        </c:when>
+                        <c:when test="${requestScope.statusSolicitacao eq 2}">
+                            <span class="btn-primary">Amigos</span>
+                        </c:when>
+                        <c:otherwise>
+                            <a class="btn-primary" href="controller?command=SolicitarAmizade&id_solicitante=${requestScope.acessoPerfil.id}">Enviar Solicitação</a>
+                        </c:otherwise>
+              </c:choose>
             </div>
           </div><!--Timeline Menu for Small Screens End-->
         </div>
@@ -133,7 +153,7 @@
                         <c:otherwise>Outro</c:otherwise>
                     </c:choose>   
                   </div>
-                  <div class="col-md-4 col-sm-4">
+                  <div class="col-md-7 col-sm-7">
                     <b>Altura: </b> ${requestScope.acessoPerfil.altura} <br>  
                     <b>Peso: </b> ${requestScope.acessoPerfil.peso} <br>  
                     <b>Cor do Cabelo: </b> ${requestScope.acessoPerfil.cor_cabelo} <br>   

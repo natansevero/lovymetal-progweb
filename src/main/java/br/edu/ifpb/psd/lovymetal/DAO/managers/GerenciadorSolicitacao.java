@@ -20,6 +20,10 @@ public class GerenciadorSolicitacao {
     private DAOFactoryInter fabrica = null;
     private Solicita_amizadeDAOinter solicita_amizadedao = null;
     
+    private final int PENDENTE = 1;
+    private final int ACEITA = 2;
+    private final int REJEITADA = 3;
+    
     /* Construtor responsável por criar uma nova Amizade */
     public GerenciadorSolicitacao(){
         fabrica = DAOFactory.criarFactory();
@@ -29,12 +33,19 @@ public class GerenciadorSolicitacao {
     }
     
     /* Método responsável por adicionar uma nova Solicitação e fazer a persistência no BD */
-    public void novaSolicitacao(int solicitador,int solicitante, int status) throws PersistenceException{
+    public boolean novaSolicitacao(int solicitador, int solicitante) throws PersistenceException{
         Solicita_amizade solicitacao = new Solicita_amizade();
         solicitacao.setSolicitador(solicitador);
         solicitacao.setSolicitante(solicitante);
-        solicitacao.setStatus(status);
-        solicita_amizadedao.solicita(solicitacao);
+        solicitacao.setStatus(this.PENDENTE);
+        return solicita_amizadedao.solicita(solicitacao);
+    }
+    
+    public int verificaSolicitacao(int solicitador, int solicitante) throws PersistenceException {
+        Solicita_amizade solicitacao = new Solicita_amizade();
+        solicitacao.setSolicitador(solicitador);
+        solicitacao.setSolicitante(solicitante);
+        return solicita_amizadedao.verifica(solicitacao);
     }
     
     /* Método responsável por remover a Solicitacao do BD usando o id do solicitador e do solicitante */

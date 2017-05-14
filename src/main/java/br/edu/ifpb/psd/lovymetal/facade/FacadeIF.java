@@ -18,6 +18,8 @@ import java.util.Map;
  * @author Natan Severo
  */
 public interface FacadeIF {
+    
+//  Usuário ===================  
     public void adicionarUsuario(String senha, String nome, String apelido, String nasc, String cidade, String email, String profissao,
             String descricao, String sexo, String status, double altura, double peso, String cabelo, String fotoperfil);
     
@@ -32,6 +34,15 @@ public interface FacadeIF {
     public List<Usuario> listarUsuarios();
     
     public List<Map<String, String>> pesquisarUsuario(String apelido);
+    
+//  Amizade (Solicitar, aceitar, rejeitar, listar) =====================
+    public boolean solicitarAmizade(int id_solicitador, int id_solicitante);
+    
+    /* 
+        Método para verficar o status de solicitação entre dois usuários. Se já foi aceita ou ainda está pendente
+        Este método servirá para UX do botão de solicitar amizade no perfil do usuário
+    */
+    public int verificarSolicitacao(int id_solicitador, int id_solicitante);
     
     public void novoPassatempo(int id_usuario, String passatempo);
     
