@@ -1,5 +1,5 @@
 <%@page contentType="text/html"%>
-
+<!--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>-->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,7 +8,7 @@
 		<meta name="description" content="This is social network html5 template available in themeforest......" />
 		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
 		<meta name="robots" content="index, follow" />
-		<title>Página Inicial | Lovy Metal</title>
+		<title>Pï¿½gina Inicial | Lovy Metal</title>
 
     <!-- Stylesheets
     ================================================= -->
@@ -43,10 +43,10 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-menu">
-              <li class="dropdown"><a href="home.jsp">Página Inicial</a></li>  
-              <!-- Botão de configurações -> Edita Conta e Excluir Conta -->
+              <li class="dropdown"><a href="home.jsp">Pï¿½gina Inicial</a></li>  
+              <!-- Botï¿½o de configuraï¿½ï¿½es -> Edita Conta e Excluir Conta -->
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configurações <span><img src="images/down-arrow.png" alt="" /></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuraï¿½ï¿½es <span><img src="images/down-arrow.png" alt="" /></span></a>
                   <ul class="dropdown-menu newsfeed-home">
                     <li class="dropdown"><a href="editar.jsp">Editar Conta</a></li>
                     <li class="dropdown"><a href="excluir.jsp">Excluir Conta</a></li>
@@ -80,7 +80,7 @@
             	<!--<a href="#" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>-->
             </div><!--profile card ends-->
             <ul class="nav-news-feed">
-              <li><i class="icon ion-ios-paper"></i><div><a href="controller?command=ListarSolicitacao">Solicitações</a></div></li>
+              <li><i class="icon ion-ios-paper"></i><div><a href="controller?command=ListarSolicitacao">Solicitaï¿½ï¿½es</a></div></li>
               <li><i class="icon ion-ios-people-outline"></i><div><a href="newsfeed-friends.html">Amigos</a></div></li>
               <li><i class="icon ion-chatboxes"></i><div><a href="newsfeed-messages.html">Mensagens</a></div></li>
               <li><i class="icon ion-images"></i><div><a href="newsfeed-images.html">Galeria</a></div></li>
@@ -92,48 +92,37 @@
             ================================================= -->
             <div class="create-post">
                <div class="row">
-                   <form name="formPostarFoto" enctype="multipart/form-data" method="post" action="#">
-                        <div class="col-md-7 col-sm-7">
-                            <div class="form-group">
-                            <img src="images/users/user-1.jpg" alt="" class="profile-photo-md" />
-                            <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Escreva algo sobre a foto"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-sm-5">
-                            <div class="tools">
-                                <input type="file" class="form-control"> 
-                            </div>
-                        </div>
-                       <input type="submit" class="btn btn-primary pull-right" value="Postar"/>
-                   </form>        
+                   <h1 style="color: #9e0b0f">
+                       SolicitaÃ§Ãµes de Amizade
+                   </h1>
+                   <br>
                </div>
             </div><!-- Post Create Box End-->
 
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                 <!-- Foto perfil do usuario --> 
-                <img src="images/users/user-5.jpg" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Nome de um amigo</a></h5>
+             <div class="nearby-user">
+                <div class="row">
+<!--                  <div class="col-md-2 col-sm-2">
+                    <img src="images/users/user-15.jpg" alt="user" class="profile-photo-lg" />
+                  </div>-->
+                  <div class="col-md-6 col-sm-6">
+                    <h5><a href="#" class="profile-link">Sophia Page</a></h5>
+                    <p class="text-muted">500m away</p>
                   </div>
-                  <div class="line-divider"></div>
-                  <div class="post-text">
-                    <p>A descrição do posr é essa</p>
+                  <div class="col-md-2 col-sm-2">
+                    <a class="btn btn-primary pull-right" href="">Aceitar SolicitaÃ§Ã£o</a>
+                  </div> 
+                 <div class="col-md-offset-2 col-md-2 col-sm-offset-2 col-sm-2">
+                     <a class="btn btn-primary pull-right color-button-rejeitar" href="">Rejeitar SolicitaÃ§Ã£o</a>
                   </div>
-                  <div class="line-divider"></div>
                 </div>
-              </div>  
+                <div class="line-divider"></div>
+              </div>
+
                 
-              <!-- Image Post -->  
-              <img src="images/post-images/1.jpg" alt="post-image" class="img-responsive post-image" />
-              
-            </div>
-
-           
-
+<!--                <c:forEach var="solicitacao" items="${requestScope.listaSolicitacoes}">
+            <p> ${solicitacao.id_solicitador} </p>
+            <p> ${solicitacao.status} </p>
+        </c:forEach>-->
           
             </div>
     	</div>

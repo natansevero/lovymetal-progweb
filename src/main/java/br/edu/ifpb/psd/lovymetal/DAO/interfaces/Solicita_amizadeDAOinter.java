@@ -7,6 +7,7 @@ package br.edu.ifpb.psd.lovymetal.DAO.interfaces;
 
 import br.edu.ifpb.psd.lovymetal.entidades.Solicita_amizade;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.PersistenceException;
 
 /**
@@ -17,6 +18,7 @@ public interface Solicita_amizadeDAOinter {
     /* Interface da classe Solicita_amizade */
     public boolean solicita(Solicita_amizade solicitacao) throws PersistenceException;
     public int verifica(Solicita_amizade solicitacao) throws PersistenceException;
-    public List<Solicita_amizade> verificasolicitacoes(int solicitante) throws PersistenceException;
+//    public List<Solicita_amizade> verificasolicitacoes(int solicitante) throws PersistenceException;
+    public List<Map<String, Integer>> listaSolicitacoes(int id_usuario, int status) throws PersistenceException;
     public void excluisolicitacao(int solicitador,int solicitante) throws PersistenceException;
 }
