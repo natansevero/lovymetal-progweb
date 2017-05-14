@@ -21,7 +21,7 @@ public class Amizade implements Serializable{
     }
     
     /* Contrutor de Amizade que recebe todos os atributos */
-    public Amizade(int usuario,int amigo){
+    public Amizade(int usuario, int amigo){
         this.usuario = usuario;
         this.amigo = amigo;
     }
@@ -31,7 +31,7 @@ public class Amizade implements Serializable{
         return this.usuario;
     }
     public void setUsuario(int usuario){
-        usuario = this.usuario;
+        this.usuario = usuario;
     }
     
     /* get e set de Amigo */
@@ -39,6 +39,6 @@ public class Amizade implements Serializable{
         return this.amigo;
     }
     public void setAmigo(int amigo){
-        amigo = this.amigo;
+        this.amigo = amigo;
     }
 }

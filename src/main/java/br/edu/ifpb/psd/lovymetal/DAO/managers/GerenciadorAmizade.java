@@ -29,11 +29,11 @@ public class GerenciadorAmizade {
     }
     
     /* Método responsável por adicionar uma nova Amizade e fazer a persistência no BD */
-    public void novaAmizade(int usuario,int amigo) throws PersistenceException{
+    public boolean novaAmizade(int usuario,int amigo) throws PersistenceException{
         Amizade amizade = new Amizade();
         amizade.setUsuario(usuario);
         amizade.setAmigo(amigo);
-        amizadedao.adiciona(amizade);
+        return amizadedao.adiciona(amizade);
     }
     
     /* Método responsável por remover a Amizade do BD usando o id do usuario e do amigo */
