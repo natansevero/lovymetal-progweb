@@ -9,6 +9,8 @@ import br.edu.ifpb.psd.lovymetal.DAO.DAOFactory;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.DAOFactoryInter;
 import br.edu.ifpb.psd.lovymetal.DAO.interfaces.Solicita_amizadeDAOinter;
 import br.edu.ifpb.psd.lovymetal.entidades.Solicita_amizade;
+import java.util.List;
+import java.util.Map;
 import javax.persistence.PersistenceException;
 
 /**
@@ -22,7 +24,7 @@ public class GerenciadorSolicitacao {
     
     private final int PENDENTE = 1;
     private final int ACEITA = 2;
-    private final int REJEITADA = 3;
+//    private final int REJEITADA = 3;
     
     /* Construtor responsável por criar uma nova Amizade */
     public GerenciadorSolicitacao(){
@@ -46,6 +48,10 @@ public class GerenciadorSolicitacao {
         solicitacao.setSolicitador(solicitador);
         solicitacao.setSolicitante(solicitante);
         return solicita_amizadedao.verifica(solicitacao);
+    }
+    
+    public List<Map<String, Integer>> listaSolicitacao(int id_usuario) throws PersistenceException {
+        return solicita_amizadedao.listaSolicitacoes(id_usuario, this.PENDENTE);
     }
     
     /* Método responsável por remover a Solicitacao do BD usando o id do solicitador e do solicitante */

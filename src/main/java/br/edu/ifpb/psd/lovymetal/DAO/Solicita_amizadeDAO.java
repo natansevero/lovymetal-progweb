@@ -13,7 +13,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
@@ -94,22 +96,25 @@ public class Solicita_amizadeDAO implements Solicita_amizadeDAOinter {
     
      /* De acordo com a RF_06 dos Requisitos Funcionais */
     @Override
-    public List<Solicita_amizade> verificasolicitacoes(int solicitante) throws PersistenceException {
-        String sql = "select * from solicita_amizade where solicitante=" + solicitante;
+    public List<Map<String, Integer>> listaSolicitacoes(int id_usuario, int status) throws PersistenceException {
+        String sql = "select * from solicita_amizade where solicitante = ? and status = ?";
         
         try {
             PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setInt(1, id_usuario);
+            statement.setInt(2, status);
             
             ResultSet rs = statement.executeQuery();
             
-            List<Solicita_amizade> solicitacoes = new ArrayList<>();
+            List<Map<String, Integer>> solicitacoes = new ArrayList<>();
             
             while(rs.next()) {
-                Solicita_amizade solicitacao = new Solicita_amizade();
-                solicitacao.setSolicitador(rs.getInt(1));
-                solicitacao.setStatus(rs.getInt(3));
+                Map<String, Integer> dados_solicitacoes = new HashMap<>();
+                dados_solicitacoes.put("id_solicitador", rs.getInt(1));
+                dados_solicitacoes.put("id_solicitante", rs.getInt(2));
+                dados_solicitacoes.put("status", rs.getInt(3));
                 
-                solicitacoes.add(solicitacao);
+                solicitacoes.add(dados_solicitacoes);
             }
             
             return solicitacoes;

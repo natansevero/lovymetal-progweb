@@ -102,6 +102,14 @@ public class Facade implements FacadeIF {
         return gerenciadorSolicitacao.verificaSolicitacao(id_solicitador, id_solicitante);
     }
     
+    /*
+        Lista as solicitações que um usuário recebeu
+    */
+    @Override
+    public List<Map<String, Integer>> listarSolicitacao(int id_usuario) {
+        return gerenciadorSolicitacao.listaSolicitacao(id_usuario);
+    } 
+    
     /* Métodos implementados dos Passatempos */
     @Override
     public void novoPassatempo(int id_usuario, String passatempo) {
