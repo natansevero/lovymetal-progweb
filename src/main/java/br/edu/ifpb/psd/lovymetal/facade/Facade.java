@@ -10,6 +10,7 @@ import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorMensagem;
 import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorPassatempos;
 import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorPostagem;
 import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorRelacionamento;
+import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorSolicitacao;
 import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorUsuario;
 import br.edu.ifpb.psd.lovymetal.entidades.Mensagem;
 import br.edu.ifpb.psd.lovymetal.entidades.Postagem;
@@ -29,6 +30,7 @@ public class Facade implements FacadeIF {
     GerenciadorPassatempos gerenciadorPassatempos;
     GerenciadorPostagem gerenciadorPostagem;
     GerenciadorRelacionamento gerenciadorRelacionamento;
+    GerenciadorSolicitacao gerenciadorSolicitacao; 
     
     public Facade() {
         gerenciadorUsuario = new GerenciadorUsuario();
@@ -37,6 +39,7 @@ public class Facade implements FacadeIF {
         gerenciadorPassatempos = new GerenciadorPassatempos();
         gerenciadorPostagem = new GerenciadorPostagem();
         gerenciadorRelacionamento = new GerenciadorRelacionamento();
+        gerenciadorSolicitacao = new GerenciadorSolicitacao();
     }
     
     @Override
@@ -82,6 +85,21 @@ public class Facade implements FacadeIF {
     @Override
     public boolean excluirUsuario(String email, String senha) {
         return gerenciadorUsuario.removeUsuario(email, senha);
+    }
+    
+    /* Metodos implementados de Amizade e Solicitações */
+    @Override
+    public boolean solicitarAmizade(int id_solicitador, int id_solicitante){
+        return gerenciadorSolicitacao.novaSolicitacao(id_solicitador, id_solicitante);
+    }
+    
+    /* 
+        Método para verficar o status de solicitação entre dois usuários. Se já foi aceita ou ainda está pendente
+        Este método servirá para UX do botão de solicitar amizade no perfil do usuário
+    */
+    @Override
+    public int verificarSolicitacao(int id_solicitador, int id_solicitante) {
+        return gerenciadorSolicitacao.verificaSolicitacao(id_solicitador, id_solicitante);
     }
     
     /* Métodos implementados dos Passatempos */

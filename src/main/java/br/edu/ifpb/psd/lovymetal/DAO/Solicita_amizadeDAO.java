@@ -36,20 +36,47 @@ public class Solicita_amizadeDAO implements Solicita_amizadeDAOinter {
     /* Implementação da interface Solicita_amizadeDAOinter */
     /* De acordo com a RF_07 dos Requisitos Funcionais */
     @Override
-    public String solicita(Solicita_amizade solicitacao) throws PersistenceException{
+    public boolean solicita(Solicita_amizade solicitacao) throws PersistenceException{
         String sql = "INSERT INTO solicita_amizade(solicitador,solicitante,status)" +
-                "VALUES (1,2,3)";
+                "VALUES (?,?,?)";
         try{
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.setInt(1,solicitacao.getSolicitador());
             statement.setInt(2,solicitacao.getSolicitante());
             statement.setInt(3,solicitacao.getStatus());
-            conexao.close();
-            return "Solicitação enviada";
+            
+            return statement.executeUpdate() > 0;
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new PersistenceException(ex);
         }
-        return "Solicitação não enviada";
+    }
+    
+    @Override
+    public int verifica(Solicita_amizade solicitacao) throws PersistenceException {
+        String sql = "select status from solicita_amizade where solicitador = ? and solicitante = ?";
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setInt(1,solicitacao.getSolicitador());
+            statement.setInt(2,solicitacao.getSolicitante());
+            
+            ResultSet rs = statement.executeQuery();
+            
+            int status = -1;
+            while(rs.next()) {
+                status = rs.getInt(1);
+                System.out.println("Status no DAO: " + status);
+            }
+            
+            /* 
+                Se retornar -1, é pq não existe solicitação
+                Se retornar 1, pq tá pendente
+                Se retornar 2, pq tá aeita e é amigo
+            */
+            return status;
+        } catch (SQLException ex) {
+            throw new PersistenceException(ex);
+        }
     }
     
     @Override
