@@ -49,6 +49,15 @@ public interface FacadeIF {
     */
     public List<Map<String, String>> listarSolicitacao(int id_usuario);
     
+    /* Método para aceitar uma solicitação, passando o id de quem mandou a solicitação e o id de quem recebe a solicitação */
+    public boolean aceitarSolicitacao(int id_solicitador, int id_solicitante);
+    
+    /* Método para rejeitar uma solicitação, passando o id de quem mandou a solicitação e o id de quem recebe a solicitação */
+    public boolean rejeitarSolicitacao(int id_solicitador, int id_solicitante);
+    
+    /* Metodos para Amizade ================ */
+    public boolean novaAmizade(int usuario, int amigo);
+    
     public void novoPassatempo(int id_usuario, String passatempo);
     
     public void removePassatempo(int id_usuario, String passatempo);

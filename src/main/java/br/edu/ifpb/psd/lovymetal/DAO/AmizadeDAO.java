@@ -32,19 +32,20 @@ public class AmizadeDAO implements AmizadeDAOinter{
     /* Implementação da interface AmizadeDAOinter de acordo com a Regra 01*/
     /* De acordo com a RF_05 dos Requisitos Funcionais */
     @Override
-    public String adiciona(Amizade amizade) throws PersistenceException {
+    public boolean adiciona(Amizade amizade) throws PersistenceException {
         String sql = "INSERT INTO Amizade(usuario,amigo)" +
-                "VALUES (1,2)";
+                "VALUES (?,?)";
+        
         try{
             PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.setInt(1,amizade.getUsuario());
-            statement.setInt(2,amizade.getAmigo());
-            conexao.close();
-            return "Amigo adicionado";
+            statement.setInt(1, amizade.getUsuario());
+            statement.setInt(2, amizade.getAmigo());
+            
+            return statement.executeUpdate() > 0;
+            
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new PersistenceException(ex);
         }
-        return "Amigo não adicionado";
     }
     
     @Override

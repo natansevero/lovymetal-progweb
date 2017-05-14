@@ -110,10 +110,10 @@
                         <p class="text-muted">${solicitacao.apelido}</p>
                       </div>
                       <div class="col-md-2 col-sm-2">
-                        <a class="btn btn-primary pull-right" href="">Aceitar Solicitação</a>
+                        <a class="btn btn-primary pull-right" href="controller?command=AceitarSolicitacao&id_solicitador=${solicitacao.id_solicitador}">Aceitar Solicitação</a>
                       </div> 
                      <div class="col-md-offset-2 col-md-2 col-sm-offset-2 col-sm-2">
-                         <a class="btn btn-primary pull-right color-button-rejeitar" href="">Rejeitar Solicitação</a>
+                         <a class="btn btn-primary pull-right color-button-rejeitar" href="controller?command=RejeitarSolicitacao&id_solicitador=${solicitacao.id_solicitador}">Rejeitar Solicitação</a>
                       </div>
                     </div>
                     <div class="line-divider"></div>

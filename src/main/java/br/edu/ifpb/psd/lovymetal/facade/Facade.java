@@ -5,6 +5,7 @@
  */
 package br.edu.ifpb.psd.lovymetal.facade;
 
+import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorAmizade;
 import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorGaleria;
 import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorMensagem;
 import br.edu.ifpb.psd.lovymetal.DAO.managers.GerenciadorPassatempos;
@@ -30,6 +31,7 @@ public class Facade implements FacadeIF {
     GerenciadorPassatempos gerenciadorPassatempos;
     GerenciadorPostagem gerenciadorPostagem;
     GerenciadorRelacionamento gerenciadorRelacionamento;
+    GerenciadorAmizade gerenciadorAmizade;
     GerenciadorSolicitacao gerenciadorSolicitacao; 
     
     public Facade() {
@@ -39,6 +41,7 @@ public class Facade implements FacadeIF {
         gerenciadorPassatempos = new GerenciadorPassatempos();
         gerenciadorPostagem = new GerenciadorPostagem();
         gerenciadorRelacionamento = new GerenciadorRelacionamento();
+        gerenciadorAmizade = new GerenciadorAmizade();
         gerenciadorSolicitacao = new GerenciadorSolicitacao();
     }
     
@@ -108,7 +111,25 @@ public class Facade implements FacadeIF {
     @Override
     public List<Map<String, String>> listarSolicitacao(int id_usuario) {
         return gerenciadorSolicitacao.listaSolicitacao(id_usuario);
-    } 
+    }
+    
+    /* Método para aceitar uma solicitação, passando o id de quem mandou a solicitação e o id de quem recebe a solicitação */
+    @Override
+    public boolean aceitarSolicitacao(int id_solicitador, int id_solicitante) {
+        return gerenciadorSolicitacao.aceitaSolicitacao(id_solicitador, id_solicitante);
+    }
+    
+    /* Método para aceitar uma solicitação, passando o id de quem mandou a solicitação e o id de quem recebe a solicitação */
+    @Override
+    public boolean rejeitarSolicitacao(int id_solicitador, int id_solicitante) {
+        return gerenciadorSolicitacao.rejeitaSolicitacao(id_solicitador, id_solicitante);
+    }
+    
+    @Override
+    public boolean novaAmizade(int usuario, int amizade) {
+        System.out.println(usuario + " " + amizade);
+        return gerenciadorAmizade.novaAmizade(usuario, amizade);
+    }
     
     /* Métodos implementados dos Passatempos */
     @Override
