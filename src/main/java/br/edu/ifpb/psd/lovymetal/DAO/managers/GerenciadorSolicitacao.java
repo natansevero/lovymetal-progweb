@@ -50,7 +50,7 @@ public class GerenciadorSolicitacao {
         return solicita_amizadedao.verifica(solicitacao);
     }
     
-    public List<Map<String, Integer>> listaSolicitacao(int id_usuario) throws PersistenceException {
+    public List<Map<String, String>> listaSolicitacao(int id_usuario) throws PersistenceException {
         return solicita_amizadedao.listaSolicitacoes(id_usuario, this.PENDENTE);
     }
     

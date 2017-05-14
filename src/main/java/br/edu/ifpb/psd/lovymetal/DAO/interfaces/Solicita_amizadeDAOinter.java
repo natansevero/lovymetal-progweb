@@ -19,6 +19,6 @@ public interface Solicita_amizadeDAOinter {
     public boolean solicita(Solicita_amizade solicitacao) throws PersistenceException;
     public int verifica(Solicita_amizade solicitacao) throws PersistenceException;
 //    public List<Solicita_amizade> verificasolicitacoes(int solicitante) throws PersistenceException;
-    public List<Map<String, Integer>> listaSolicitacoes(int id_usuario, int status) throws PersistenceException;
+    public List<Map<String, String>> listaSolicitacoes(int id_usuario, int status) throws PersistenceException;
     public void excluisolicitacao(int solicitador,int solicitante) throws PersistenceException;
 }

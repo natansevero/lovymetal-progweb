@@ -96,8 +96,10 @@ public class Solicita_amizadeDAO implements Solicita_amizadeDAOinter {
     
      /* De acordo com a RF_06 dos Requisitos Funcionais */
     @Override
-    public List<Map<String, Integer>> listaSolicitacoes(int id_usuario, int status) throws PersistenceException {
-        String sql = "select * from solicita_amizade where solicitante = ? and status = ?";
+    public List<Map<String, String>> listaSolicitacoes(int id_usuario, int status) throws PersistenceException {
+        String sql = "select u.id, u.nome_completo, u.apelido, u.foto_perfil, sa.solicitador, sa.solicitante, sa.status from "
+                   + "usuario u, solicita_amizade sa "
+                   + "where u.id = sa.solicitador and sa.solicitante = ? and sa.status = ?";
         
         try {
             PreparedStatement statement = conexao.prepareStatement(sql);
@@ -106,13 +108,17 @@ public class Solicita_amizadeDAO implements Solicita_amizadeDAOinter {
             
             ResultSet rs = statement.executeQuery();
             
-            List<Map<String, Integer>> solicitacoes = new ArrayList<>();
+            List<Map<String, String>> solicitacoes = new ArrayList<>();
             
             while(rs.next()) {
-                Map<String, Integer> dados_solicitacoes = new HashMap<>();
-                dados_solicitacoes.put("id_solicitador", rs.getInt(1));
-                dados_solicitacoes.put("id_solicitante", rs.getInt(2));
-                dados_solicitacoes.put("status", rs.getInt(3));
+                Map<String, String> dados_solicitacoes = new HashMap<>();
+                dados_solicitacoes.put("id_usuario", ""+rs.getInt(1));
+                dados_solicitacoes.put("nome_completo", rs.getString(2));
+                dados_solicitacoes.put("apelido", rs.getString(3));
+                dados_solicitacoes.put("foto_perfil", rs.getString(4));
+                dados_solicitacoes.put("id_solicitador", ""+rs.getInt(5));
+                dados_solicitacoes.put("id_solicitante", ""+rs.getInt(6));
+                dados_solicitacoes.put("status", ""+rs.getInt(7));
                 
                 solicitacoes.add(dados_solicitacoes);
             }

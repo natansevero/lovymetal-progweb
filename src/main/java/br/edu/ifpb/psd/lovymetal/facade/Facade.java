@@ -106,7 +106,7 @@ public class Facade implements FacadeIF {
         Lista as solicitações que um usuário recebeu
     */
     @Override
-    public List<Map<String, Integer>> listarSolicitacao(int id_usuario) {
+    public List<Map<String, String>> listarSolicitacao(int id_usuario) {
         return gerenciadorSolicitacao.listaSolicitacao(id_usuario);
     } 
     
