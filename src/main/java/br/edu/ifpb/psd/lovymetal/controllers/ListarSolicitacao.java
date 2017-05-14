@@ -34,9 +34,8 @@ public class ListarSolicitacao implements CommandIF {
         HttpSession session = req.getSession();
         int id_usuario = (int) session.getAttribute("idUsuario");
         
-        List<Map<String, Integer>> lista_solicitacoes = facade.listarSolicitacao(id_usuario);
-        
-        // Mostrar dados dos usuários como foto, nome e apelido
+        // Map com dados de cada usuário que fez solicitação        
+        List<Map<String, String>> lista_solicitacoes = facade.listarSolicitacao(id_usuario);
         
         req.setAttribute("listaSolicitacoes", lista_solicitacoes);
         

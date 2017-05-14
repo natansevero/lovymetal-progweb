@@ -47,7 +47,7 @@ public interface FacadeIF {
     /*
         Método para listar as Solicitações que um usuário recebeu
     */
-    public List<Map<String, Integer>> listarSolicitacao(int id_usuario);
+    public List<Map<String, String>> listarSolicitacao(int id_usuario);
     
     public void novoPassatempo(int id_usuario, String passatempo);
     
