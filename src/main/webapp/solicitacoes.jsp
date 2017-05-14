@@ -1,5 +1,5 @@
 <%@page contentType="text/html"%>
-<!--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>-->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,7 +8,7 @@
 		<meta name="description" content="This is social network html5 template available in themeforest......" />
 		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
 		<meta name="robots" content="index, follow" />
-		<title>Pï¿½gina Inicial | Lovy Metal</title>
+		<title>Solicitações | Lovy Metal</title>
 
     <!-- Stylesheets
     ================================================= -->
@@ -43,10 +43,10 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-menu">
-              <li class="dropdown"><a href="home.jsp">Pï¿½gina Inicial</a></li>  
+              <li class="dropdown"><a href="home.jsp">Página Inicial</a></li>  
               <!-- Botï¿½o de configuraï¿½ï¿½es -> Edita Conta e Excluir Conta -->
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuraï¿½ï¿½es <span><img src="images/down-arrow.png" alt="" /></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configurações <span><img src="images/down-arrow.png" alt="" /></span></a>
                   <ul class="dropdown-menu newsfeed-home">
                     <li class="dropdown"><a href="editar.jsp">Editar Conta</a></li>
                     <li class="dropdown"><a href="excluir.jsp">Excluir Conta</a></li>
@@ -93,36 +93,32 @@
             <div class="create-post">
                <div class="row">
                    <h1 style="color: #9e0b0f">
-                       SolicitaÃ§Ãµes de Amizade
+                       Solicitações de Amizade
                    </h1>
                    <br>
                </div>
             </div><!-- Post Create Box End-->
-
-             <div class="nearby-user">
-                <div class="row">
-<!--                  <div class="col-md-2 col-sm-2">
-                    <img src="images/users/user-15.jpg" alt="user" class="profile-photo-lg" />
-                  </div>-->
-                  <div class="col-md-6 col-sm-6">
-                    <h5><a href="#" class="profile-link">Sophia Page</a></h5>
-                    <p class="text-muted">500m away</p>
-                  </div>
-                  <div class="col-md-2 col-sm-2">
-                    <a class="btn btn-primary pull-right" href="">Aceitar SolicitaÃ§Ã£o</a>
-                  </div> 
-                 <div class="col-md-offset-2 col-md-2 col-sm-offset-2 col-sm-2">
-                     <a class="btn btn-primary pull-right color-button-rejeitar" href="">Rejeitar SolicitaÃ§Ã£o</a>
-                  </div>
+              
+               <c:forEach var="solicitacao" items="${requestScope.listaSolicitacoes}">
+                  <div class="nearby-user">
+                    <div class="row">
+                      <div class="col-md-2 col-sm-2">
+                        <img src="${solicitacao.foto_perfil}" alt="user" class="profile-photo-lg" />
+                      </div>
+                      <div class="col-md-4 col-sm-4">
+                        <h5><a href="controller?command=AcessarPerfil&id=${solicitacao.id_usuario}" class="profile-link">${solicitacao.nome_completo}</a></h5>
+                        <p class="text-muted">${solicitacao.apelido}</p>
+                      </div>
+                      <div class="col-md-2 col-sm-2">
+                        <a class="btn btn-primary pull-right" href="">Aceitar Solicitação</a>
+                      </div> 
+                     <div class="col-md-offset-2 col-md-2 col-sm-offset-2 col-sm-2">
+                         <a class="btn btn-primary pull-right color-button-rejeitar" href="">Rejeitar Solicitação</a>
+                      </div>
+                    </div>
+                    <div class="line-divider"></div>
                 </div>
-                <div class="line-divider"></div>
-              </div>
-
-                
-<!--                <c:forEach var="solicitacao" items="${requestScope.listaSolicitacoes}">
-            <p> ${solicitacao.id_solicitador} </p>
-            <p> ${solicitacao.status} </p>
-        </c:forEach>-->
+               </c:forEach>
           
             </div>
     	</div>
