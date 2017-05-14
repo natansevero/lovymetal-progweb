@@ -121,7 +121,7 @@
                   </div>
                   <div class="line-divider"></div>
                   <div class="post-text">
-                    <p>A descrição do posr é essa</p>
+                    <p>A descrição do post é essa</p>
                   </div>
                   <div class="line-divider"></div>
                 </div>
@@ -132,9 +132,6 @@
               
             </div>
 
-           
-
-          
             </div>
     	</div>
     </div>

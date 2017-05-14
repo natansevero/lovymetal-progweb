@@ -17,5 +17,6 @@ public interface MensagemDAOinter {
     /* Interface da classe Mensagem */
     public String enviar(Mensagem mensagem) throws PersistenceException;
     public List<Mensagem> verificarmensagens(int destinatario) throws PersistenceException;
+    public List<Mensagem> lermensagens(int destinatario, int remetente) throws PersistenceException;
     public String excluir(int id) throws PersistenceException;
 }

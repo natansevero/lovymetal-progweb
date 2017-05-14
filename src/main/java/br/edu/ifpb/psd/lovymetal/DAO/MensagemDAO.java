@@ -82,6 +82,37 @@ public class MensagemDAO implements MensagemDAOinter{
             throw new PersistenceException(e);
         }
     }
+    
+    @Override
+    public List<Mensagem> lermensagens(int destinatario, int remetente) throws PersistenceException{
+        String sql = "select * from Mensagem where destinatario=" + destinatario + " and remetente=" + remetente;
+        String read = "alter table Mensagem where destinatario=" + destinatario + " and remetente=" + remetente
+                + " set status = 1 order by mensagem_id";
+        
+        try {
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            
+            ResultSet rs = statement.executeQuery();
+            
+            List<Mensagem> mensagens = new ArrayList<>();
+            
+            while(rs.next()) {
+                Mensagem mensagem = new Mensagem();
+                mensagem.setMensagemID(rs.getInt(1));
+                mensagem.setRemetente(rs.getInt(2));
+                mensagem.setMensagem(rs.getString(4));
+                mensagem.setStatus(rs.getInt(5));
+                
+                mensagens.add(mensagem);
+            }
+            
+            statement.execute(read);
+            return mensagens;
+            
+        } catch(SQLException e) {
+            throw new PersistenceException(e);
+        }
+    }
 
     @Override
     public String excluir(int id) throws PersistenceException {
