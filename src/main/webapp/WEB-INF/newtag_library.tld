@@ -10,6 +10,24 @@
       <body-content>empty</body-content>
   </tag>
   
+  <tag>
+      <name>mostrarPostegns</name>
+      <tag-class>br.edu.ifpb.psd.lovymetal.tags.MostrarPostagens</tag-class>
+      <body-content>empty</body-content>
+  </tag>
+  
+    <tag>
+      <name>listarMensagens</name>
+      <tag-class>br.edu.ifpb.psd.lovymetal.tags.ListarMensagens</tag-class>
+      <body-content>empty</body-content>
+  </tag>
+  
+    <tag>
+      <name>verMensagens</name>
+      <tag-class>br.edu.ifpb.psd.lovymetal.tags.MensagensRemetente</tag-class>
+      <body-content>empty</body-content>
+  </tag>
+  
   <!-- A validator verifies that the tags are used correctly at JSP
           translation time. Validator entries look like this: 
        <validator>
