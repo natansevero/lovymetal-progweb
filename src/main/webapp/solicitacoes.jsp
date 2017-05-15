@@ -37,7 +37,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index-register.html"><img src="images/logo1.png" alt="logo" /></a>
+            <img class="navbar-brand" src="images/logo1.png" alt="logo" />
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -80,9 +80,9 @@
             	<!--<a href="#" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>-->
             </div><!--profile card ends-->
             <ul class="nav-news-feed">
-              <li><i class="icon ion-ios-paper"></i><div><a href="controller?command=ListarSolicitacao">Solicitaï¿½ï¿½es</a></div></li>
+              <li><i class="icon ion-ios-paper"></i><div><a href="controller?command=ListarSolicitacao">Solicitações</a></div></li>
               <li><i class="icon ion-ios-people-outline"></i><div><a href="newsfeed-friends.html">Amigos</a></div></li>
-              <li><i class="icon ion-chatboxes"></i><div><a href="newsfeed-messages.html">Mensagens</a></div></li>
+              <li><i class="icon ion-chatboxes"></i><div><a href="messages.jsp">Mensagens</a></div></li>
               <li><i class="icon ion-images"></i><div><a href="newsfeed-images.html">Galeria</a></div></li>
             </ul><!--news-feed links ends-->
           </div>
@@ -129,9 +129,9 @@
     <footer id="footer">
       
       <div class="copyright">
-        <p>Lovy Metal Â© 2017. Todos os direitos reservados</p>
+        <p>©Lovy Metal 2017. Todos os direitos reservados</p>
       </div>
-		</footer>
+    </footer>
     
     <!--preloader-->
     <div id="spinner-wrapper">

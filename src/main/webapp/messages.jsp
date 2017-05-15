@@ -38,7 +38,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index-register.html"><img src="images/logo1.png" alt="logo" /></a>
+            <img class="navbar-brand" src="images/logo1.png" alt="logo" />
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -218,9 +218,9 @@
     <footer id="footer">
       
       <div class="copyright">
-        <p>Lovy Metal Â© 2017. Todos os direitos reservados</p>
+        <p>©Lovy Metal 2017. Todos os direitos reservados</p>
       </div>
-		</footer>
+    </footer>
     
     <!--preloader-->
     <div id="spinner-wrapper">
