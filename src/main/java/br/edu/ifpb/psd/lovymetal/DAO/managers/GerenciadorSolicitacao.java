@@ -68,4 +68,8 @@ public class GerenciadorSolicitacao {
         solicitacao.setSolicitante(solicitante);
         return solicita_amizadedao.rejeita(solicitacao);
     }
+    
+    public int contaSolicitacoes(int id_usuario) {
+        return solicita_amizadedao.conta(id_usuario, this.PENDENTE);
+    }
 }

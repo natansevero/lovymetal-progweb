@@ -187,7 +187,7 @@ public class UsuarioDAO implements UsuarioDAOinter{
     @Override
     public boolean atualizar(Usuario usuario) throws PersistenceException{
         String sql = "UPDATE usuario SET senha = ?, nome_completo = ?, apelido = ?, data_nasc = ?,cidade = ?,"
-                + "email = ?, profissao = ?, descricao = ?, sexo = ?, status = ?, altura = ?, peso = ?, cor_cabelo = ? WHERE id = ?";
+                + "email = ?, profissao = ?, descricao = ?, sexo = ?, status = ?, altura = ?, peso = ?, cor_cabelo = ?, foto_perfil = ? WHERE id = ?";
         
         try{
             PreparedStatement statement = conexao.prepareStatement(sql);
@@ -204,7 +204,8 @@ public class UsuarioDAO implements UsuarioDAOinter{
             statement.setDouble(11, usuario.getAltura());
             statement.setDouble(12, usuario.getPeso());
             statement.setString(13, usuario.getCabelo());
-            statement.setInt(14, usuario.getID());
+            statement.setString(14, usuario.getFotoperfil());
+            statement.setInt(15, usuario.getID());
             
 //            conexao.close();
             
