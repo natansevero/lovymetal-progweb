@@ -149,13 +149,13 @@ public class Facade implements FacadeIF {
     
     /* Métodos implementados da Postagem */
     @Override
-    public List<Postagem> verPostagens(int id_usuario) {
-        return gerenciadorPostagem.verPostagens(id_usuario);
+    public List<String> listarPostagens(int id_usuario) {
+        return gerenciadorPostagem.listarPostagens(id_usuario);
     }
 
     @Override
-    public void fazerPostagem(int postagem_id, int id_usuario, String descricao, String foto) {
-        gerenciadorPostagem.novaPostagem(postagem_id, id_usuario, descricao, foto);
+    public boolean postarFoto(int id_usuario, String descricao, String foto) {
+        return gerenciadorPostagem.novaPostagem(id_usuario, descricao, foto);
     }
 
     @Override

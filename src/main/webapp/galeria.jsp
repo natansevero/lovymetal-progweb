@@ -1,5 +1,5 @@
 <%@page contentType="text/html"%>
-<%@taglib prefix="mytags" uri="MyTags"%> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,12 +8,12 @@
 		<meta name="description" content="This is social network html5 template available in themeforest......" />
 		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
 		<meta name="robots" content="index, follow" />
-		<title>Página Inicial | Lovy Metal</title>
+		<title>Solicitações | Lovy Metal</title>
 
     <!-- Stylesheets
     ================================================= -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/ionicons.min.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link href="css/emoji.css" rel="stylesheet">
@@ -21,8 +21,8 @@
     <!--Favicon-->
     <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
 	</head>
-        
-    <body>
+  <body>
+
     <!-- Header
     ================================================= -->
     <header id="header">
@@ -37,14 +37,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-              <img class="navbar-brand" src="images/logo1.png" alt="logo" />
+            <img class="navbar-brand" src="images/logo1.png" alt="logo" />
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-menu">
               <li class="dropdown"><a href="home.jsp">Página Inicial</a></li>  
-              <!-- Botão de configurações -> Edita Conta e Excluir Conta -->
+              <!-- Botï¿½o de configuraï¿½ï¿½es -> Edita Conta e Excluir Conta -->
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configurações <span><img src="images/down-arrow.png" alt="" /></span></a>
                   <ul class="dropdown-menu newsfeed-home">
@@ -80,18 +80,10 @@
             	<!--<a href="#" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>-->
             </div><!--profile card ends-->
             <ul class="nav-news-feed">
-              <li>
-                  <i class="icon ion-ios-paper"></i>
-                  <div>
-                      <a href="controller?command=ListarSolicitacao">Solicitações</a>
-                      <!-- Tag Costumizada -->
-                      <mytags:quantSolicitacoes />
-                      <span class="badge">${quantSolicitacoes}</span>
-                  </div>
-              </li>
+              <li><i class="icon ion-ios-paper"></i><div><a href="controller?command=ListarSolicitacao">Solicitações</a></div></li>
               <li><i class="icon ion-ios-people-outline"></i><div><a href="newsfeed-friends.html">Amigos</a></div></li>
               <li><i class="icon ion-chatboxes"></i><div><a href="messages.jsp">Mensagens</a></div></li>
-              <li><i class="icon ion-images"></i><div><a href="controller?command=ListarFotos">Galeria</a></div></li>
+              <li><i class="icon ion-images"></i><div><a href="newsfeed-images.html">Galeria</a></div></li>
             </ul><!--news-feed links ends-->
           </div>
           
@@ -100,47 +92,25 @@
             ================================================= -->
             <div class="create-post">
                <div class="row">
-                   <form name="formPostarFoto" action="controller?command=PostarFoto" method="post" enctype="multipart/form-data">
-                        <div class="col-md-7 col-sm-7">
-                            <div class="form-group">
-                            <img src="${sessionScope.fullUsuario.foto_perfil}" alt="" class="profile-photo-md" />
-                            <textarea name="texts" id="exampleTextarea" name="descricao" cols="30" rows="1" class="form-control" placeholder="Escreva algo sobre a foto"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-sm-5">
-                            <div class="tools">
-                                <input type="file" name="foto" class="form-control"> 
-                            </div>
-                        </div>
-                       <input type="submit" class="btn btn-primary pull-right" value="Postar"/>
-                   </form>        
+                   <h1 style="color: #9e0b0f">
+                       Minha Galeria
+                   </h1>
+                   <br>
                </div>
             </div><!-- Post Create Box End-->
+              
+            <c:forEach var="foto" items="${requestScope.listaGaleria}">
+                <div class="post-content">
+                  <div class="post-container">
+                    
+                  </div>  
 
-            <!-- Post Content
-            ================================================= -->
-            <c:forEach var="usuario" items="${requestScope.MostrarPostagens}">
-            <div class="post-content">
-              <div class="post-container">
-                 <!-- Foto perfil do usuario --> 
-                <img src="${sessionScope.usuario.foto_perfil}" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">${sessionScope.usuario.apelido}</a></h5>
-                  </div>
-                  <div class="line-divider"></div>
-                  <div class="post-text">
-                    <p>${sessionScope.usuario.descricao}</p>
-                  </div>
+                  <!-- Image Post -->  
+                  <img src="${foto}" alt="post-image" style="height: 400px" class="img-responsive post-image" />
                   <div class="line-divider"></div>
                 </div>
-              </div>  
-                
-              <!-- Image Post -->  
-              <img src="${sessionScope.usuario.foto}" alt="post-image" class="img-responsive post-image" />
-            </div>
-            </c:foreach>
-
+            </c:forEach>
+          
             </div>
     	</div>
     </div>

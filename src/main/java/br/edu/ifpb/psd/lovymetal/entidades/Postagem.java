@@ -33,7 +33,7 @@ public class Postagem {
         return this.postagem_id;
     }
     public void setPostagemID(int postagem_id){
-        postagem_id = this.postagem_id;
+        this.postagem_id = postagem_id;
     }
     
     /* get e set de ID_Usuario */
@@ -41,7 +41,7 @@ public class Postagem {
         return this.id_usuario;
     }
     public void setIDUsuario(int id_usuario){
-        id_usuario = this.id_usuario;
+        this.id_usuario = id_usuario;
     }
     
     /* get e set de Descricao */
@@ -49,7 +49,7 @@ public class Postagem {
         return this.descricao;
     }
     public void setDescricao(String descricao){
-        descricao = this.descricao;
+        this.descricao = descricao;
     }
     
     /* get e set de Foto */
@@ -57,6 +57,6 @@ public class Postagem {
         return this.foto;
     }
     public void setFoto(String foto){
-        foto = this.foto;
+        this.foto = foto;
     }
 }

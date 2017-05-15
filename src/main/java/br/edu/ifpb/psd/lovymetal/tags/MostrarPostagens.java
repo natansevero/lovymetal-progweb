@@ -29,7 +29,7 @@ public class MostrarPostagens extends SimpleTagSupport{
         id_usuario = (int) this.getJspContext().getAttribute("idUsuario");
         FacadeIF facade = null;
         try {
-            postagens = facade.verPostagens(id_usuario);
+//            postagens = facade.verPostagens(id_usuario);
         } catch (NullPointerException e){
         }
         return postagens;
