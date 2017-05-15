@@ -1,5 +1,5 @@
 <%@page contentType="text/html"%>
-
+<%@taglib prefix="mytags" uri="MyTags"%> 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -101,7 +101,10 @@
                   <!-- Contact List in Left-->
                   <ul class="nav nav-tabs contact-list scrollbar-wrapper scrollbar-outer">
                       <li class="active">
-                      <c:forEach var="usuario" items="${requestScope.ListarMensagens}">
+                      <!-- Tag Costumizada -->
+                      <mytags:listarMensagens />
+                      <span class="badge">${listarMensagens} span>
+                      <c:forEach var="usuario" items="${requestScope.listarMensagens}">
                       <a href="#contact-1" data-toggle="tab">
                         <div class="contact">
                         	<img src="${sessionScope.usuario.foto_perfil}" alt="" class="profile-photo-sm pull-left"/>
@@ -124,8 +127,11 @@
                       <div class="tab-pane active" id="contact-1">
                       <div class="chat-body">
                       	<ul class="chat-message">
+                            <!-- Tag Costumizada -->
+                            <mytags:verMensagens />
+                            <span class="badge" ${verMensagens} span>
                             <!-- Mostra mensagens de um remetente com o destinatário o próprio usuário -->
-                            <c:forEach var="usuario" items="${requestScope.MensagensRemetente}">
+                            <c:forEach var="usuario" items="${requestScope.verMensagens}">
                       		<li class="left">
                       			<img src="${sessionScope.usuario.foto_perfil}" alt="" class="profile-photo-sm pull-left" />
                       			<div class="chat-item">
@@ -137,14 +143,14 @@
                       		</li>
                             </c:foreach>
                         <!-- Mostra mensagens com o remetente o próprio usuário e um destinatário -->
-                        <c:forEach var="usuario" items="${requestScope.MensagensRemetente}">
+                        <c:forEach var="fullUusuario" items="${requestScope.MensagensRemetente}">
                         <li class="right">
-                      			<img src="${sessionScope.fullUsuario.foto_perfil}" alt="" class="profile-photo-sm pull-right" />
+                      			<img src="${sessionScope.fullUusuario.foto_perfil}" alt="" class="profile-photo-sm pull-right" />
                       			<div class="chat-item">
                               <div class="chat-item-header">
-                              	<h5>${sessionScope.fullUsuario.apelido}</h5>
+                              	<h5>${sessionScope.fullUusuario.apelido}</h5>
                               </div>
-                              <p>${sessionScope.fullUsuario.mensagem}</p>
+                              <p>${sessionScope.fullUusuario.mensagem}</p>
                             </div>
                         </li>
                         </c:foreach>
@@ -155,7 +161,7 @@
 
                   <div class="send-message">
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Type your message">
+                      <input type="text" class="form-control" placeholder="Digite sua mensagem">
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button">Send</button>
                       </span>

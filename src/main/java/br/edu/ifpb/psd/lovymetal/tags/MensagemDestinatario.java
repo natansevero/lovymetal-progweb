@@ -5,7 +5,6 @@
  */
 package br.edu.ifpb.psd.lovymetal.tags;
 
-import br.edu.ifpb.psd.lovymetal.entidades.Mensagem;
 import br.edu.ifpb.psd.lovymetal.facade.FacadeIF;
 import java.io.IOException;
 import java.util.List;
@@ -17,16 +16,18 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
  *
  * @author Julierme Heinstein
  */
-public class ListarMensagens extends SimpleTagSupport{
-    private int id_usuario;
+public class MensagemDestinatario extends SimpleTagSupport{
+    private int destinatario;
+    private int remetente;
     private List<Map<String, String>> mensagens;
     private String mensagem;
     
     public List<Map<String, String>> Mensagens() {
-        id_usuario = (int) this.getJspContext().getAttribute("id_usuario");
+        destinatario = (int) this.getJspContext().getAttribute("id_pessoa");
+        remetente = (int) this.getJspContext().getAttribute("id_usuario");
         FacadeIF facade = null;
         try {
-            mensagens = facade.verificarMensagens(id_usuario);
+            mensagens = facade.lerMensagens(destinatario, remetente);
         } catch (NullPointerException e){
         }
         return mensagens;
@@ -35,9 +36,5 @@ public class ListarMensagens extends SimpleTagSupport{
     @Override
     public void doTag() throws JspException, IOException{
         this.getJspContext().setAttribute(mensagem, Mensagens());
-        int len = mensagens.size();
-        if(len == 0){
-            mensagem = "Não há mensagens ainda";
-        }
     }
 }

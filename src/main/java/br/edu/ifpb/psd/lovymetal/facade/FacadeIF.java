@@ -66,7 +66,7 @@ public interface FacadeIF {
     public void removePassatempo(int id_usuario, String passatempo);
     
     public boolean postarFoto(int id_usuario, String descricao, String foto);
-    
+        
     public List<String> listarPostagens(int id_usuario);
     
     public void excluiPostagem(int postagem_id,int id_usuario);
@@ -77,9 +77,9 @@ public interface FacadeIF {
     
     public void enviarMensagem(int mensagemid, int remetente, int destinatario, String mensagem, int status);
     
-    public List<Mensagem> verificarMensagens(int destinatario);
+    public List<Map<String, String>> verificarMensagens(int destinatario);
     
-    public List<Mensagem> lerMensagens(int destinatario, int remetente);
+    public List<Map<String, String>> lerMensagens(int destinatario, int remetente);
     
     public void excluirMensagem(int id);
     
