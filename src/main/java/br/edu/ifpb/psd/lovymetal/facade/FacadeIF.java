@@ -55,6 +55,9 @@ public interface FacadeIF {
     /* Método para rejeitar uma solicitação, passando o id de quem mandou a solicitação e o id de quem recebe a solicitação */
     public boolean rejeitarSolicitacao(int id_solicitador, int id_solicitante);
     
+    /* Método para contar a quandidade de solicitações que o user possui */
+    public int contarSolicitacoes(int id_usuario);
+    
     /* Metodos para Amizade ================ */
     public boolean novaAmizade(int usuario, int amigo);
     

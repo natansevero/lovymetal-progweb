@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
 
 /**
@@ -143,6 +141,29 @@ public class Solicita_amizadeDAO implements Solicita_amizadeDAOinter {
             statement.setInt(2, solicitacao.getSolicitante());
             
             return statement.executeUpdate() > 0;
+        } catch(SQLException ex) {
+            throw new PersistenceException(ex);
+        }
+    }
+    
+    @Override
+    public int conta(int id_usuario, int status) throws PersistenceException {
+        String sql = "select count(*) from solicita_amizade where solicitante = ? and status = ?";
+        
+        try {
+            PreparedStatement statetament = conexao.prepareStatement(sql);
+            statetament.setInt(1, id_usuario);
+            statetament.setInt(2, status);
+
+            ResultSet rs = statetament.executeQuery();
+            
+            int result = 0;
+            while(rs.next()) {
+                result = rs.getInt(1);
+            }
+            
+            return result;
+            
         } catch(SQLException ex) {
             throw new PersistenceException(ex);
         }

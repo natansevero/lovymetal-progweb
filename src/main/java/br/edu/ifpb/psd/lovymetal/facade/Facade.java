@@ -126,6 +126,11 @@ public class Facade implements FacadeIF {
     }
     
     @Override
+    public int contarSolicitacoes(int id_usuario){
+        return gerenciadorSolicitacao.contaSolicitacoes(id_usuario);
+    }
+    
+    @Override
     public boolean novaAmizade(int usuario, int amizade) {
         System.out.println(usuario + " " + amizade);
         return gerenciadorAmizade.novaAmizade(usuario, amizade);
