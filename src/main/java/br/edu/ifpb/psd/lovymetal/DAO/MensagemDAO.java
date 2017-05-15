@@ -12,7 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
@@ -56,26 +58,29 @@ public class MensagemDAO implements MensagemDAOinter{
     
     /* De acordo com a RF_09 dos Requisitos Funcionais */
     @Override
-    public List<Mensagem> verificarmensagens(int destinatario) throws PersistenceException{
-        String sql = "select * from Mensagem where destinatario=" + destinatario;
+    public List<Map<String, String>> verificarmensagens(int destinatario) throws PersistenceException{
+        String sql = "select U.apelido AS destinatario, U.apelido AS remetente, U.foto_perfil AS foto_remetente, M.mensagem, M.status from Mensagem M, Usuario U"
+                + "where (M.destinatario = U.id and M.remetente = U.id) and M.destinatario=" + destinatario
+                + " order by destinatario";
         
         try {
             PreparedStatement statement = conexao.prepareStatement(sql);
             
             ResultSet rs = statement.executeQuery();
             
-            List<Mensagem> mensagens = new ArrayList<>();
+            List<Map<String, String>> mensagens = new ArrayList<>();
             
             while(rs.next()) {
-                Mensagem mensagem = new Mensagem();
-                mensagem.setMensagemID(rs.getInt(1));
-                mensagem.setRemetente(rs.getInt(2));
-                mensagem.setMensagem(rs.getString(4));
-                mensagem.setStatus(rs.getInt(5));
+                Map<String, String> dados_mensagens= new HashMap<>();
                 
-                mensagens.add(mensagem);
+                if(rs.getInt(5) != 1){
+                    dados_mensagens.put("destinatario", ""+rs.getInt(1));
+                    dados_mensagens.put("remetente", ""+rs.getInt(2));
+                    dados_mensagens.put("foto_remetente", ""+rs.getString(3));
+                    dados_mensagens.put("mensagem", ""+rs.getString(4));
+                    dados_mensagens.put("status", ""+rs.getInt(5));
+                }               
             }
-            
             return mensagens;
             
         } catch(SQLException e) {
@@ -84,29 +89,30 @@ public class MensagemDAO implements MensagemDAOinter{
     }
     
     @Override
-    public List<Mensagem> lermensagens(int destinatario, int remetente) throws PersistenceException{
-        String sql = "select * from Mensagem where destinatario=" + destinatario + " and remetente=" + remetente;
-        String read = "alter table Mensagem where destinatario=" + destinatario + " and remetente=" + remetente
-                + " set status = 1 order by mensagem_id";
+    public List<Map<String, String>> lermensagens(int destinatario, int remetente) throws PersistenceException{
+        String sql = "select U.apelido AS destinatario, U.foto_perfil AS foto_destinatario, U.apelido AS remetente, U.foto_perfil AS foto_remetente, M.mensagem, M.status from Mensagem M, Usuario U"
+                + "where (M.destinatario = U.id and M.remetente = U.id) and M.destinatario=" + destinatario + " and remetente =" + remetente
+                + " order by destinatario";
         
         try {
             PreparedStatement statement = conexao.prepareStatement(sql);
             
             ResultSet rs = statement.executeQuery();
             
-            List<Mensagem> mensagens = new ArrayList<>();
+            List<Map<String, String>> mensagens = new ArrayList<>();
             
             while(rs.next()) {
-                Mensagem mensagem = new Mensagem();
-                mensagem.setMensagemID(rs.getInt(1));
-                mensagem.setRemetente(rs.getInt(2));
-                mensagem.setMensagem(rs.getString(4));
-                mensagem.setStatus(rs.getInt(5));
+                Map<String, String> dados_mensagens= new HashMap<>();
                 
-                mensagens.add(mensagem);
+                    dados_mensagens.put("destinatario", ""+rs.getInt(1));
+                    dados_mensagens.put("destinatario", ""+rs.getInt(2));
+                    dados_mensagens.put("remetente", ""+rs.getInt(3));
+                    dados_mensagens.put("foto_remetente", ""+rs.getString(4));
+                    dados_mensagens.put("mensagem", ""+rs.getString(5));
+                    dados_mensagens.put("status", "" +rs.getString(6));
+                    String sql1 = "update Mensagens set status = 0 where status=1 and remetente="+remetente;
+                    statement.execute(sql1);
             }
-            
-            statement.execute(read);
             return mensagens;
             
         } catch(SQLException e) {

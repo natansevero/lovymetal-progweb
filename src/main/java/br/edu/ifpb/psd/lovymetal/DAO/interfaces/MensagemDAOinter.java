@@ -7,6 +7,7 @@ package br.edu.ifpb.psd.lovymetal.DAO.interfaces;
 
 import br.edu.ifpb.psd.lovymetal.entidades.Mensagem;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.PersistenceException;
 
 /**
@@ -16,7 +17,7 @@ import javax.persistence.PersistenceException;
 public interface MensagemDAOinter {
     /* Interface da classe Mensagem */
     public String enviar(Mensagem mensagem) throws PersistenceException;
-    public List<Mensagem> verificarmensagens(int destinatario) throws PersistenceException;
-    public List<Mensagem> lermensagens(int destinatario, int remetente) throws PersistenceException;
+    public List<Map<String, String>> verificarmensagens(int destinatario) throws PersistenceException;
+    public List<Map<String, String>> lermensagens(int destinatario, int remetente) throws PersistenceException;
     public String excluir(int id) throws PersistenceException;
 }

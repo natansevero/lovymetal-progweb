@@ -23,10 +23,16 @@
   </tag>
   
     <tag>
-      <name>verMensagens</name>
+      <name>remMensagens</name>
       <tag-class>br.edu.ifpb.psd.lovymetal.tags.MensagensRemetente</tag-class>
       <body-content>empty</body-content>
-  </tag>
+    </tag>
+    
+    <tag>
+      <name>destMensagens</name>
+      <tag-class>br.edu.ifpb.psd.lovymetal.tags.MensagensDestinatario</tag-class>
+      <body-content>empty</body-content>
+    </tag>
   
   <!-- A validator verifies that the tags are used correctly at JSP
           translation time. Validator entries look like this: 

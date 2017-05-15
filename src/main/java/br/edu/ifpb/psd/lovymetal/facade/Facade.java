@@ -136,6 +136,10 @@ public class Facade implements FacadeIF {
         return gerenciadorAmizade.novaAmizade(usuario, amizade);
     }
     
+    public int verificaAmizade(int usuario, int amigo){
+        return gerenciadorAmizade.verificaAmizade(usuario, amigo);
+    }
+    
     /* Métodos implementados dos Passatempos */
     @Override
     public void novoPassatempo(int id_usuario, String passatempo) {
@@ -181,12 +185,13 @@ public class Facade implements FacadeIF {
     }
 
     @Override
-    public List<Mensagem> verificarMensagens(int destinatario) {
+    public List<Map<String, String>> verificarMensagens(int destinatario) {
         List mensagens = gerenciadorMensagem.verificarmensagens(destinatario);
         return mensagens;
     }
     
-    public List<Mensagem> lerMensagens(int destinatario, int remetente) {
+    @Override
+    public List<Map<String, String>> lerMensagens(int destinatario, int remetente) {
         List mensagens = gerenciadorMensagem.lermensagens(destinatario, remetente);
         return mensagens;
     }
