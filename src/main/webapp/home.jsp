@@ -90,7 +90,7 @@
                   </div>
               </li>
               <li><i class="icon ion-ios-people-outline"></i><div><a href="newsfeed-friends.html">Amigos</a></div></li>
-              <li><i class="icon ion-chatboxes"></i><div><a href="messages.jsp">Mensagens</a></div></li>
+              <li><i class="icon ion-chatboxes"></i><div><a href="menssages.jsp">Mensagens</a></div></li>
               <li><i class="icon ion-images"></i><div><a href="newsfeed-images.html">Galeria</a></div></li>
             </ul><!--news-feed links ends-->
           </div>

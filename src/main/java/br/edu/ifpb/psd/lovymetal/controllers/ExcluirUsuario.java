@@ -8,6 +8,7 @@ package br.edu.ifpb.psd.lovymetal.controllers;
 
 import br.edu.ifpb.psd.lovymetal.facade.FacadeFactory;
 import br.edu.ifpb.psd.lovymetal.facade.FacadeIF;
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,12 +34,34 @@ public class ExcluirUsuario implements CommandIF {
         
         HttpSession session = req.getSession();
         
-        if(facade.excluirUsuario(email, senha)) {
+        // Excluir a foto do servidor
+        String appPath = req.getServletContext().getRealPath("");
+        String local_foto = appPath + "/imagens/" + session.getAttribute("emailUsuario");
+        System.out.println("Local Fotot: " + local_foto);
+        File dir = new File(local_foto);
+        
+        if(this.deleteDir(dir) && facade.excluirUsuario(email, senha)) {
+            
             session.invalidate();
             res.sendRedirect("index.html");
         } else {
             res.sendRedirect("excluir.jsp");
         }
+    }
+    
+    private static boolean deleteDir(File dir) {
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i=0; i<children.length; i++) { 
+               boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+    
+        // Agora o diretório está vazio, restando apenas deletá-lo.
+        return dir.delete();
     }
     
 }

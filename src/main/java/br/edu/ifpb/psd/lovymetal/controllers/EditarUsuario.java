@@ -9,13 +9,16 @@ package br.edu.ifpb.psd.lovymetal.controllers;
 import br.edu.ifpb.psd.lovymetal.entidades.Usuario;
 import br.edu.ifpb.psd.lovymetal.facade.FacadeFactory;
 import br.edu.ifpb.psd.lovymetal.facade.FacadeIF;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -56,6 +59,18 @@ public class EditarUsuario implements CommandIF {
         double peso = Double.parseDouble(req.getParameter("peso"));
         String cor_cabelo = req.getParameter("cor_cabelo");
         String foto_perfil = null;
+        
+        String appPath = req.getServletContext().getRealPath("");
+        String upPath = appPath + "/imagens" + File.separator + session.getAttribute("emailUsuario");
+        
+        List<Part> list = (List) req.getParts();
+        
+        for(Part p : list) {
+            if(p.getName().equals("foto_perfil")) {
+                foto_perfil = "imagens/" + session.getAttribute("emailUsuario") + "/" + p.getSubmittedFileName();
+                p.write(upPath + File.separator + p.getSubmittedFileName());      
+            }
+        }
         
         if(facade.atualizarUsuario(id_usuario, senha, nome_completo, apelido, data_nasc, cidade, email, profissao, descricao, sexo, status, altura, peso, cor_cabelo, foto_perfil)) {
             Usuario usuario_atualizado = facade.getByEmail(email);
