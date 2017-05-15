@@ -82,7 +82,7 @@
             <ul class="nav-news-feed">
               <li><i class="icon ion-ios-paper"></i><div><a href="controller?command=ListarSolicitacao">Solicitações</a></div></li>
               <li><i class="icon ion-ios-people-outline"></i><div><a href="newsfeed-friends.html">Amigos</a></div></li>
-              <li><i class="icon ion-chatboxes"></i><div><a href="newsfeed-messages.html">Mensagens</a></div></li>
+              <li><i class="icon ion-chatboxes"></i><div><a href="messages.jsp">Mensagens</a></div></li>
               <li><i class="icon ion-images"></i><div><a href="newsfeed-images.html">Galeria</a></div></li>
             </ul><!--news-feed links ends-->
             
@@ -100,28 +100,32 @@
 
                   <!-- Contact List in Left-->
                   <ul class="nav nav-tabs contact-list scrollbar-wrapper scrollbar-outer">
-                    <li class="active">
+                      <li class="active">
+                      <c:forEach var="usuario" items="${requestScope.ListarMensagens}">
                       <a href="#contact-1" data-toggle="tab">
                         <div class="contact">
                         	<img src="${sessionScope.usuario.foto_perfil}" alt="" class="profile-photo-sm pull-left"/>
                         	<div class="msg-preview">
                         		<h6>${sessionScope.usuario.apelido}</h6>
                         		<p class="text-muted">${sessionScope.usuario.mensagem}</p>
-                            <div class="chat-alert">${sessionScope.usuario.naolidas}</div>
                         	</div>
                         </div>
                       </a>
+                      </c:forEach>
                     </li>
+                    
                   </ul><!--Contact List in Left End-->
-
+                  
                 </div>
                 <div class="col-md-7">
 
                   <!--Chat Messages in Right-->
                   <div class="tab-content scrollbar-wrapper wrapper scrollbar-outer">
-                    <div class="tab-pane active" id="contact-1">
+                      <div class="tab-pane active" id="contact-1">
                       <div class="chat-body">
                       	<ul class="chat-message">
+                            <!-- Mostra mensagens de um remetente com o destinatário o próprio usuário -->
+                            <c:forEach var="usuario" items="${requestScope.MensagensRemetente}">
                       		<li class="left">
                       			<img src="${sessionScope.usuario.foto_perfil}" alt="" class="profile-photo-sm pull-left" />
                       			<div class="chat-item">
@@ -131,7 +135,10 @@
                               <p>${sessionScope.usuario.mensagem}</p>
                             </div>
                       		</li>
-                          <li class="right">
+                            </c:foreach>
+                        <!-- Mostra mensagens com o remetente o próprio usuário e um destinatário -->
+                        <c:forEach var="usuario" items="${requestScope.MensagensRemetente}">
+                        <li class="right">
                       			<img src="${sessionScope.fullUsuario.foto_perfil}" alt="" class="profile-photo-sm pull-right" />
                       			<div class="chat-item">
                               <div class="chat-item-header">
@@ -139,8 +146,9 @@
                               </div>
                               <p>${sessionScope.fullUsuario.mensagem}</p>
                             </div>
-                      		</li>
-                      	</ul>
+                        </li>
+                        </c:foreach>
+                      </ul>
                       </div>
                     </div>
                   </div><!--Chat Messages in Right End-->
@@ -163,7 +171,7 @@
           ================================================= -->
     			<div class="col-md-2 static">
             <div class="suggestions" id="sticky-sidebar">
-              <h4 class="grey">Who to Follow</h4>
+              <h4 class="grey">Recomendações</h4>
               <div class="follow-user">
                 <img src="images/users/user-11.jpg" alt="" class="profile-photo-sm pull-left" />
                 <div>
