@@ -118,6 +118,8 @@
                             <label for="status" class="">Status: </label>
                             <select name="status" class="form-control">
                                 <option value="Solteiro(a)">Solteiro(a)</option>
+                                <option value="Namorando">Namorando</option>
+                                <option value="Casado(a)">Casado(a)</option>
                                 <option value="Divorciado(a)">Divorciado(a)</option>
                                 <option value="Viúvo(a)">Viúvo(a)</option>
                             </select>

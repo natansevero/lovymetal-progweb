@@ -32,8 +32,8 @@ public class FazerPostagem implements CommandIF{
         String descricao = req.getParameter("descricao");
         String foto = req.getParameter("foto");
         
-        facade.fazerPostagem(id_postagem, id_usuario, descricao, foto);
-        res.sendRedirect("home.jsp");
+//        facade.fazerPostagem(id_postagem, id_usuario, descricao, foto);
+//        res.sendRedirect("home.jsp");
     }
     
 }

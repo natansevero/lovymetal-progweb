@@ -65,9 +65,9 @@ public interface FacadeIF {
     
     public void removePassatempo(int id_usuario, String passatempo);
     
-    public void fazerPostagem(int postagem_id,int id_usuario,String descricao,String foto);
+    public boolean postarFoto(int id_usuario, String descricao, String foto);
     
-    public List<Postagem> verPostagens(int id_usuario);
+    public List<String> listarPostagens(int id_usuario);
     
     public void excluiPostagem(int postagem_id,int id_usuario);
     
