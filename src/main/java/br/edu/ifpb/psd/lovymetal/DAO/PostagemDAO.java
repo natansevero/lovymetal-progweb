@@ -35,41 +35,39 @@ public class PostagemDAO implements PostagemDAOinter{
     
     /* Implementação da interface PostagemDAOinter de acordo com a Regra 04 */
     @Override
-    public void novaPostagem(Postagem postagem) throws PersistenceException {
-        String sql = "INSERT INTO Postagem(postagem_id,id_usuario,descricao,foto)" +
-                "VALUES (1,2,3,4)";
+    public boolean novaPostagem(Postagem postagem) throws PersistenceException {
+        String sql = "INSERT INTO Postagem(usuario_id, descricao, foto) VALUES (?,?,?)";
         try{
             PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.setInt(1,postagem.getPostagemID());
-            statement.setInt(2,postagem.getIDUsuario());
-            statement.setString(3,postagem.getDescricao());
-            statement.setString(4,postagem.getFoto());
-            conexao.close();
+            statement.setInt(1,postagem.getIDUsuario());
+            statement.setString(2,postagem.getDescricao());
+            statement.setString(3,postagem.getFoto());
+            
+            return statement.executeUpdate() > 0;
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new PersistenceException(ex);
         }
     }
     
     @Override
-    public List<Postagem> verPostagens(int usuario) throws PersistenceException {
-        String sql = "SELECT A.amigo, P.descricao, P.foto"
-                + "FROM (Amizade A JOIN Postagem P ON A.amigo = P.id_usuario) WHERE A.usuario =" + usuario;
+    public List<String> verPostagens(int id_usuario) throws PersistenceException {
+        String sql = "SELECT foto FROM postagem WHERE usuario_id = ?";
         
         try {
             PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.setInt(1, id_usuario);
             
             ResultSet rs = statement.executeQuery();
             
-            List<Postagem> postagens = new ArrayList<>();
+            List<String> postagens = new ArrayList<>();
             
             while(rs.next()) {
                 Postagem postagem = new Postagem();
-                postagem.setIDUsuario(rs.getInt(1));
-                postagem.setDescricao(rs.getString(2));
-                postagem.setFoto(rs.getString(3));
+                String foto = rs.getString(1);
                 
-                postagens.add(postagem);
+                postagens.add(foto);
             }
+            
             return postagens;
             
         } catch(SQLException e) {

@@ -30,19 +30,17 @@ public class GerenciadorPostagem {
     }
     
     /* Método responsável por adicionar uma nova Postagem e fazer a persistência no BD */
-    public void novaPostagem(int postagem_id,int id_usuario,String descricao,String foto) throws PersistenceException{
+    public boolean novaPostagem(int id_usuario, String descricao, String foto) throws PersistenceException{
         Postagem postagem = new Postagem();
-        postagem.setPostagemID(postagem_id);
         postagem.setIDUsuario(id_usuario);
         postagem.setDescricao(descricao);
         postagem.setFoto(foto);
-        postagemdao.novaPostagem(postagem);
+        return postagemdao.novaPostagem(postagem);
     }
     
     /* Método responsável por ver as Postagens dos amigos do Usuario */
-    public List<Postagem> verPostagens(int id_usuario) throws PersistenceException{
-        List postagens = postagemdao.verPostagens(id_usuario);
-        return postagens;
+    public List<String> listarPostagens(int id_usuario) throws PersistenceException{
+        return postagemdao.verPostagens(id_usuario);
     }
     
     /* Método responsável por remover uma Postagem do BD usando o id da postagem e do usuario */
